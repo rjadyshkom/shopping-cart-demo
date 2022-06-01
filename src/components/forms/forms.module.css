@@ -1,0 +1,87 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 25px;
+}
+
+fieldset {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+input {
+    width: 100%;
+    height: 45px;
+    border: 1px solid rgba(0, 0, 0, .3);
+    padding: 10px 50px;
+}
+
+::placeholder {
+    opacity: .5;
+}
+
+.dataWrapper {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.controlsWrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.buttonWrapper {
+    grid-column: 3/4;
+}
+
+.buttonWrapper button {
+    min-width: 100%;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 36px;
+    line-height: 40px;
+    font-weight: bold;
+}
+
+.fieldWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    min-height: 65px;
+}
+
+.error {
+    font-size: 13px;
+    line-height: 15px;
+    color: red;
+}
+
+.stateMessagesContainer {
+    font-size: 15px;
+    line-height: 17px;
+    width: 100%;
+    grid-column: 3/4;
+    text-align: right;
+}
+
+.stateMessageSuccess {
+    color: green;
+    font-weight: bold;
+}
+
+.stateMessageError {
+    color: red;
+}
