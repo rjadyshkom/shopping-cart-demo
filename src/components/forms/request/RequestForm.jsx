@@ -45,7 +45,7 @@ export const RequestForm = ({
 
                 <label htmlFor={'cartEmail'} className={classes.fieldWrapper}>
                     Почта:
-                    <Field type="email" name="cartEmail" placeholder="ya@ohuel.ru" />
+                    <Field type="email" name="cartEmail" placeholder="Заявка придёт на указанную почту" />
                     <ErrorMessage name="cartEmail" component="span" className={classes.error} />
                 </label>
 

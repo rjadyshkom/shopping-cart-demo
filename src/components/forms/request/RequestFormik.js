@@ -10,8 +10,8 @@ import { AppContext } from '../../../services/appContext';
 
 export const RequestFormik = () => {
 
-    const API_URL = 'https://api.spa.ohuel.ru/wp-json';
-    const FORM_ID = '255';
+    const API_URL = 'https://api.irontiger.ru/wp-json';
+    const FORM_ID = '74';
     const { cartItems, setCartItems, modal, setModal } = useContext(AppContext);
     const [initialValues, handleUpdateForm] = useLocalStorage('form', requestFormInitialValues);
     const [submitState, setSubmitState] = useState('');
