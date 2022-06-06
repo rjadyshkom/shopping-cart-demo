@@ -1,12 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import classes from './ProductCard.module.css';
 import { Button } from '../button/Button';
 import { TrashButton } from '../trash-button/TrashButton';
 import { Lightbox } from '../lightbox/Lightbox';
-import { AppContext } from '../../../services/appContext';
 
-export const ProductCard = ({ product }) => {
-    const { cartItems, onAdd, onRemove } = useContext(AppContext);
+export const ProductCard = ({ product, cartItems, onAdd, onRemove }) => {
+
     const isExist = cartItems.find(item => item.id === product.id);
     return (
         <article className={classes.container}>

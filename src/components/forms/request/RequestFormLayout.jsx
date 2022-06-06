@@ -6,31 +6,29 @@ import { onStateSuccess, onStateError } from '../../../helpers/constants';
 import { Modal } from '../../UI/modal/Modal';
 import { Success } from '../../UI/success/Success';
 import { Error } from '../../UI/error/Error';
+import { TotalPrice } from '../../UI/total-price/TotalPrice';
 
-export const RequestForm = ({
-                                values,
-                                isSubmitting,
-                                setFieldValue,
-                                isValid,
-                                cartItems,
-                                saveForm,
-                                submitState,
-                                setSubmitState,
-                                modal,
-                                setModal
-                            }) => {
-    const productsInRequest = cartItems.length === 0 ? '[ Пользователь не добавил тренажёры в заявку]' : cartItems.map(product => `[ ${product.name}: ${product.qty} шт. ]`);
-    const productPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
-
+export const RequestFormLayout = ({
+                                      formikProps,
+                                      cartItems,
+                                      handleUpdateForm,
+                                      submitState,
+                                      setSubmitState,
+                                      isModalOpen,
+                                      setIsModalOpen
+                                  }) => {
+    const productsInRequest = cartItems.length === 0
+        ? '[ Пользователь не добавил тренажёры в заявку ]'
+        : cartItems.map(product => `[ ${product.name}: ${product.qty} шт. ]`);
     const isSubmitError = submitState === onStateError;
     const isSubmitSuccess = submitState === onStateSuccess;
 
     useEffect(() => {
-        saveForm(values);
-    }, [values, saveForm]);
+        handleUpdateForm(formikProps.values);
+    }, [formikProps.values, handleUpdateForm]);
 
     useEffect(() => {
-        setFieldValue('cartProducts', productsInRequest)
+        formikProps.setFieldValue('cartProducts', productsInRequest)
         // eslint-disable-next-line
     }, [cartItems])
 
@@ -56,23 +54,22 @@ export const RequestForm = ({
                 </label>
                 <Field type="hidden" name="cartProducts" />
             </fieldset>
-            {cartItems.length !== 0 &&
-                <div className={classes.total}>
-                    <h3>Стоимость:</h3>
-                    <span>от {productPrice} руб.</span>
-                </div>}
+            <TotalPrice cartItems={cartItems}/>
             <fieldset className={classes.controlsWrapper}>
                 <div className={classes.buttonWrapper}>
                     <Button
                         type="submit"
-                        disabled={!isValid || isSubmitting}
+                        disabled={!formikProps.isValid || formikProps.isSubmitting}
                     >
-                        {isSubmitting
+                        {formikProps.isSubmitting
                             ? 'Заявка отправляется ...'
                             : submitState ? submitState : 'Отправить заявку'}
                     </Button>
                 </div>
-                <Modal isVisible={modal} setIsVisible={setModal} setSubmitState={setSubmitState} isSubmitSuccess={isSubmitSuccess}>
+                <Modal
+                    isVisible={isModalOpen} setIsVisible={setIsModalOpen} setSubmitState={setSubmitState}
+                    isSubmitSuccess={isSubmitSuccess}
+                >
                     {
                         isSubmitError
 

@@ -44,15 +44,6 @@ input {
     min-width: 100%;
 }
 
-.total {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    font-size: 36px;
-    line-height: 40px;
-    font-weight: bold;
-}
-
 .fieldWrapper {
     display: flex;
     flex-direction: column;

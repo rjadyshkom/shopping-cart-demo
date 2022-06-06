@@ -1,20 +1,18 @@
-import React, { useContext, useState } from 'react';
+import React, {useState } from 'react';
 import { Formik } from 'formik';
 import { validationSchema } from '../../../helpers/validation';
-import { RequestForm } from './RequestForm';
+import { RequestFormLayout } from './RequestFormLayout';
 import { useLocalStorage } from '../../../hooks/useLocalStorage';
 import { requestFormInitialValues } from '../../../helpers/constants';
 import axios from 'axios';
 import { getFormData, onStateError, onStateSuccess } from '../../../helpers/constants';
-import { AppContext } from '../../../services/appContext';
 
-export const RequestFormik = () => {
+export const RequestForm = ({ cartItems, setCartItems, isModalOpen, setIsModalOpen }) => {
 
     const API_URL = 'https://api.irontiger.ru/wp-json';
     const FORM_ID = '74';
-    const { cartItems, setCartItems, modal, setModal } = useContext(AppContext);
     const [initialValues, handleUpdateForm] = useLocalStorage('form', requestFormInitialValues);
-    const [submitState, setSubmitState] = useState('');
+    const [submitState, setSubmitState] = useState(''); // 'Успешно!', 'Ошибка!'
 
     const handleSubmit = async (values, { setSubmitting, resetForm }) => {
         try {
@@ -26,7 +24,7 @@ export const RequestFormik = () => {
                 method: 'POST',
                 data: getFormData(values)
             })
-            setModal(true)
+            setIsModalOpen(true)
             setSubmitState(onStateSuccess);
             setSubmitting(false);
             setCartItems([]);
@@ -40,7 +38,7 @@ export const RequestFormik = () => {
             });
         }
         catch (error) {
-            setModal(true)
+            setIsModalOpen(true)
             setSubmitState(onStateError);
             setSubmitting(false);
             console.log(error);
@@ -55,14 +53,14 @@ export const RequestFormik = () => {
             onSubmit={handleSubmit}
         >
             {(props) => (
-                <RequestForm
-                    {...props}
+                <RequestFormLayout
+                    formikProps={props}
                     cartItems={cartItems}
-                    saveForm={handleUpdateForm}
+                    handleUpdateForm={handleUpdateForm}
                     submitState={submitState}
                     setSubmitState={setSubmitState}
-                    modal={modal}
-                    setModal={setModal}
+                    isModalOpen={isModalOpen}
+                    setIsModalOpen={setIsModalOpen}
                 />
             )}
         </Formik>

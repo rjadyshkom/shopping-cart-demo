@@ -53,16 +53,6 @@ export const data = {
             description: 'Вертикальные поручни для колясочников',
             price: 47438
         }
-    },
-    navigation: {
-        products: {
-            name: 'Продукция',
-            path: '/'
-        },
-        request: {
-            name: 'Заявка',
-            path: '/request'
-        }
     }
 }
 

@@ -1,0 +1,8 @@
+.total {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 36px;
+    line-height: 40px;
+    font-weight: bold;
+}

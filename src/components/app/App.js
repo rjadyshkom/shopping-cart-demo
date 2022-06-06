@@ -6,11 +6,13 @@ import classes from './App.module.css'
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { AppContext } from '../../services/appContext';
 import { routes } from '../../helpers/routes';
+import { Navigation } from '../UI/navigation/Navigation';
+import { CartQuantity } from '../UI/cart-quantity/CartQuantity';
 
 function App() {
 
     const [cartItems, setCartItems] = useLocalStorage('products', []);
-    const [modal, setModal] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const onAdd = (product) => {
         const isExist = cartItems.find(item => item.id === product.id);
@@ -25,7 +27,7 @@ function App() {
         const isExist = cartItems.find(item => item.id === product.id);
 
         if (isExist.qty === 1) {
-            setCartItems(cartItems.filter(item => item.id !== product.id));
+            return null
         } else {
             setCartItems(cartItems.map(item => item.id === product.id ? { ...isExist, qty: isExist.qty - 1 } : item))
         }
@@ -36,13 +38,28 @@ function App() {
     }
 
     return (
-        <AppContext.Provider value={{ cartItems, setCartItems, modal, setModal, onAdd, onDecrease, onRemove }}>
+        <AppContext.Provider
+            value={{
+                cartItems,
+                setCartItems,
+                isModalOpen: isModalOpen,
+                setIsModalOpen: setIsModalOpen,
+                onAdd,
+                onDecrease,
+                onRemove
+            }}
+        >
             <div className={classes.container}>
-                <Header />
+                <Header>
+                    <Navigation />
+                    <CartQuantity />
+                </Header>
                 <Routes>
                     {Object.values(routes).map((route, key) => {
                         return (
-                            <Route key={key} path={route.path} element={<route.element />} />
+                            <Route
+                                exact={route.exact ?? false} key={key} path={route.path} element={<route.element />}
+                            />
                         );
                     })}
                 </Routes>

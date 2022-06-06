@@ -4,10 +4,17 @@ import { Request } from '../pages/request/Request';
 export const routes = {
     products: {
         path: '/',
-        element: Products
+        element: Products,
+        exact: true,
+        navigation: {
+            title: 'Продукты'
+        }
     },
     request: {
         path: '/request',
-        element: Request
+        element: Request,
+        navigation: {
+            title: 'Заявка'
+        }
     }
 }

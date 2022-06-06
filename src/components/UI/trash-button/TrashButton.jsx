@@ -1,8 +1,8 @@
 import React from 'react';
 import classes from './TrashButton.module.css';
 
-export const TrashButton = ({ ...props }) => {
+export const TrashButton = ({ onClick }) => {
     return (
-        <button {...props} className={classes.trash} />
+        <button onClick={onClick} className={classes.trash} />
     );
 };

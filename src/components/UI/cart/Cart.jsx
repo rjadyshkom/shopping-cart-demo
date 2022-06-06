@@ -1,11 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import classes from './Cart.module.css';
 import { TrashButton } from '../trash-button/TrashButton';
 import { Lightbox } from '../lightbox/Lightbox';
-import { AppContext } from '../../../services/appContext';
 
-export const Cart = () => {
-    const { cartItems, onAdd, onDecrease, onRemove } = useContext(AppContext);
+export const Cart = ({ cartItems, onAdd, onDecrease, onRemove }) => {
     return (
         <div className={classes.container}>
             <h2 className={classes.title}>Оборудование в заявке:</h2>
@@ -20,7 +18,7 @@ export const Cart = () => {
                     </Lightbox>
                     <p className={classes.description}>{product.description}</p>
                     <div className={classes.qtyWrapper}>
-                        <button onClick={() => onDecrease(product)}>-</button>
+                        <button disabled={product.qty === 1} onClick={() => onDecrease(product)}>-</button>
                         <span className={classes.qtyNumber}>{product.qty}</span>
                         <button onClick={() => onAdd(product)}>+</button>
                     </div>
