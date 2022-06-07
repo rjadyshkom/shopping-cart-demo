@@ -5,29 +5,16 @@ import { RequestForm } from '../../components/forms/request/RequestForm';
 import { AppContext } from '../../services/appContext';
 
 export const Request = () => {
-    const {
-        cartItems,
-        setCartItems,
-        onAdd,
-        onDecrease,
-        onRemove,
-        isModalOpen,
-        setIsModalOpen
-    } = useContext(AppContext);
-    return (
-        <section className={classes.container}>
-            <Cart
-                cartItems={cartItems}
-                onAdd={onAdd}
-                onDecrease={onDecrease}
-                onRemove={onRemove}
-            />
-            <RequestForm
-                cartItems={cartItems}
-                setCartItems={setCartItems}
-                isModalOpen={isModalOpen}
-                setIsModalOpen={setIsModalOpen}
-            />
-        </section>
-    );
+  const { cartItems, setCartItems, onAdd, onDecrease, onRemove, isModalOpen, setIsModalOpen } = useContext(AppContext);
+  return (
+    <section className={classes.container}>
+      <Cart cartItems={cartItems} onAdd={onAdd} onDecrease={onDecrease} onRemove={onRemove} />
+      <RequestForm
+        cartItems={cartItems}
+        setCartItems={setCartItems}
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+      />
+    </section>
+  );
 };

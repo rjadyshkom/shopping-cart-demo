@@ -3,8 +3,6 @@ import classes from './CartQuantity.module.css';
 import { AppContext } from '../../../services/appContext';
 
 export const CartQuantity = () => {
-    const { cartItems } = useContext(AppContext);
-    return (
-        cartItems.length > 0 && <span className={classes.badge}>{cartItems.length}</span>
-    );
+  const { cartItems } = useContext(AppContext);
+  return cartItems.length > 0 && <span className={classes.badge}>{cartItems.length}</span>;
 };
