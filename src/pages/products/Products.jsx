@@ -4,13 +4,14 @@ import { ProductCard } from '../../components/UI/product-card/ProductCard';
 import { products } from '../../helpers/constants';
 import { AppContext } from '../../services/appContext';
 import { Filter } from '../../components/UI/filter/Filter';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence} from 'framer-motion';
 
 export const Products = () => {
   const { cartItems, onAdd, onRemove } = useContext(AppContext);
   const [items, setItems] = useState(products);
   const [activeCategory, setActiveCategory] = useState('все');
 
+  // noinspection JSValidateTypes
   return (
     <section className={classes.container}>
       <Filter
@@ -19,22 +20,22 @@ export const Products = () => {
         activeCategory={activeCategory}
         setActiveCategory={setActiveCategory}
       />
-      <motion.div layout className={classes.products}>
-        <AnimatePresence>
-          {Object.values(items).map((product) => (
-            <ProductCard
-              key={product.id}
-              image={product.image}
-              description={product.description}
-              price={product.price}
-              product={product}
-              cartItems={cartItems}
-              onAdd={onAdd}
-              onRemove={onRemove}
-            />
-          ))}
-        </AnimatePresence>
-      </motion.div>
+        <motion.div layout className={classes.products}>
+          <AnimatePresence>
+            {Object.values(items).map((product) => (
+              <ProductCard
+                key={product.id}
+                image={product.image}
+                description={product.description}
+                price={product.price}
+                product={product}
+                cartItems={cartItems}
+                onAdd={onAdd}
+                onRemove={onRemove}
+              />
+            ))}
+          </AnimatePresence>
+        </motion.div>
     </section>
   );
 };
