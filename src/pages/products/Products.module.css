@@ -5,5 +5,4 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 50px 20px;
-    min-height: 100vh;
 }
