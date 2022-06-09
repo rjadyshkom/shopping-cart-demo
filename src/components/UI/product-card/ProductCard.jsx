@@ -1,7 +1,6 @@
 import React from 'react';
 import classes from './ProductCard.module.css';
 import { Button } from '../button/Button';
-import { TrashButton } from '../trash-button/TrashButton';
 import { Lightbox } from '../lightbox/Lightbox';
 import { motion } from 'framer-motion';
 
@@ -23,10 +22,16 @@ export const ProductCard = ({ product, cartItems, onAdd, onRemove }) => {
       <div className={classes.wrapper}>
         <span className={classes.price}>от {product.price} руб.</span>
         <div className={classes.controls}>
-          <Button onClick={() => onAdd(product)} disabled={isExist}>
-            {isExist ? 'В заявке' : 'Добавить в заявку'}
-          </Button>
-          {isExist && <TrashButton onClick={() => onRemove(product)} />}
+          {!isExist && (
+            <Button isExist={isExist} onClick={() => onAdd(product)}>
+              Добавить в заявку
+            </Button>
+          )}
+          {isExist && (
+            <Button isExist={isExist} onClick={() => onRemove(product)}>
+              Удалить из заявки
+            </Button>
+          )}
         </div>
       </div>
     </motion.div>

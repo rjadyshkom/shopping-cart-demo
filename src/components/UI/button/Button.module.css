@@ -1,6 +1,6 @@
 .button {
     background-color: black;
-    color: #fff;
+    color: rgba(241,241,241,1);
     padding: 10px 20px;
     font-size: 16px;
     line-height: 18px;
@@ -12,11 +12,12 @@
     cursor: pointer;
     min-width: 195px;
     user-select: none;
+    border-radius: 10px;
 }
 
-.button:hover {
+.button:hover, .exist {
     color: #000;
-    background-color: #fff;
+    background-color: transparent;
 }
 
 .button:disabled {
