@@ -3,11 +3,18 @@ import classes from './ProductCard.module.css';
 import { Button } from '../button/Button';
 import { TrashButton } from '../trash-button/TrashButton';
 import { Lightbox } from '../lightbox/Lightbox';
+import { motion } from 'framer-motion';
 
 export const ProductCard = ({ product, cartItems, onAdd, onRemove }) => {
   const isExist = cartItems.find((item) => item.id === product.id);
   return (
-    <article className={classes.container}>
+    <motion.div
+      layout
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      className={classes.container}
+    >
       <Lightbox image={product.image} alt={product.description}>
         <img draggable={false} className={classes.image} src={product.image} alt={product.description} />
       </Lightbox>
@@ -22,6 +29,6 @@ export const ProductCard = ({ product, cartItems, onAdd, onRemove }) => {
           {isExist && <TrashButton onClick={() => onRemove(product)} />}
         </div>
       </div>
-    </article>
+    </motion.div>
   );
 };

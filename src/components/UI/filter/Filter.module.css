@@ -10,7 +10,7 @@
 .container {
     display: flex;
     gap: 20px;
-    grid-column: 1/4;
+    padding: 20px 0;
 }
 
 .label {
@@ -20,9 +20,11 @@
     border-radius: 50px;
     color: #000;
     cursor: pointer;
+    user-select: none;
 }
 
 .active {
     border-color: red;
     color: red;
+    pointer-events: none;
 }

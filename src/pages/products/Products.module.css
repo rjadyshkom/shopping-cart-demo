@@ -2,6 +2,9 @@
     max-width: 1440px;
     margin: 0 auto;
     padding: 20px 20px 100px;
+}
+
+.products {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 50px 20px;
