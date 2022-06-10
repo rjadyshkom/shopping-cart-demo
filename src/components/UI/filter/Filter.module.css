@@ -8,7 +8,7 @@
 }
 
 .container {
-    display: flex;
+    display: inline-flex;
     gap: 20px;
     padding: 20px 0;
 }
@@ -21,6 +21,11 @@
     color: #000;
     cursor: pointer;
     user-select: none;
+}
+
+.label:hover {
+    border-color: #ED6E00ed;
+    color: #ED6E00ed;
 }
 
 .active {

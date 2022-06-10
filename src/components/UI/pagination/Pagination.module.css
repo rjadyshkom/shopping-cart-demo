@@ -1,7 +1,7 @@
 .container {
     display: inline-flex;
     gap: 5px;
-    padding: 10px 20px;
+    padding: 20px;
     position: relative;
     z-index: 2;
     background: #fff;
@@ -25,6 +25,4 @@
 .active {
     color: #ED6E00;
     border-color: #ED6E00;
-    font-weight: bold;
-    border-width: 2px;
 }
