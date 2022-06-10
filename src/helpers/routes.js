@@ -7,14 +7,11 @@ export const routes = {
     element: Products,
     exact: true,
     navigation: {
-      title: 'Продукты',
+      title: 'Продукция',
     },
   },
   request: {
     path: '/request',
     element: Request,
-    navigation: {
-      title: 'Заявка',
-    },
   },
 };

@@ -24,7 +24,7 @@
 }
 
 .active {
-    border-color: red;
-    color: red;
+    border-color: #ED6E00ed;
+    color: #ED6E00ed;
     pointer-events: none;
 }
