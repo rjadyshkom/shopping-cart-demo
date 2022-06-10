@@ -4,25 +4,16 @@ import { validationSchema } from '../../../helpers/validation';
 import { RequestFormLayout } from './RequestFormLayout';
 import { useLocalStorage } from '../../../hooks/useLocalStorage';
 import { requestFormInitialValues } from '../../../helpers/constants';
-import axios from 'axios';
 import { getFormData, onStateError, onStateSuccess } from '../../../helpers/constants';
+import { MailService } from '../../MailService';
 
 export const RequestForm = ({ cartItems, setCartItems, isModalOpen, setIsModalOpen }) => {
-  const API_URL = 'https://api.irontiger.ru/wp-json';
-  const FORM_ID = '74';
   const [initialValues, handleUpdateForm] = useLocalStorage('form', requestFormInitialValues);
   const [submitState, setSubmitState] = useState(''); // 'Успешно!', 'Ошибка!'
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
-      await axios({
-        url: `${API_URL}/contact-form-7/v1/contact-forms/${FORM_ID}/feedback`,
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
-        },
-        method: 'POST',
-        data: getFormData(values),
-      });
+      await MailService.sendUserData(getFormData(values));
       setIsModalOpen(true);
       setSubmitState(onStateSuccess);
       setSubmitting(false);

@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classes from './Filter.module.css';
 
-export const Filter = ({ products, setItems, activeCategory, setActiveCategory }) => {
-  const chips = [...new Set(Object.values(products).map((label) => label.category))];
+export const Filter = ({ products, setProductsToFilter, activeCategory, setActiveCategory }) => {
+  const chips = [...new Set(products.map((label) => label.category))];
 
   const filter = (category) => {
-    const filtered = Object.values(products).filter((product) => product.category.includes(category));
+    const filtered = products.filter((product) => product.category.includes(category));
     setActiveCategory(category);
-    setItems(filtered);
+    setProductsToFilter(filtered);
   };
+
+  useEffect(() => {
+    if (activeCategory === 'все') {
+      setProductsToFilter(products);
+    }
+    // eslint-disable-next-line
+  }, [products]);
 
   return (
     <div className={classes.container}>
@@ -16,7 +23,7 @@ export const Filter = ({ products, setItems, activeCategory, setActiveCategory }
         className={activeCategory === 'все' ? `${classes.label} ${classes.active}` : classes.label}
         onClick={() => {
           setActiveCategory('все');
-          setItems(products);
+          setProductsToFilter(products);
         }}
       >
         Все
