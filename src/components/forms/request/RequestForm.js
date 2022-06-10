@@ -5,7 +5,7 @@ import { RequestFormLayout } from './RequestFormLayout';
 import { useLocalStorage } from '../../../hooks/useLocalStorage';
 import { requestFormInitialValues } from '../../../helpers/constants';
 import { getFormData, onStateError, onStateSuccess } from '../../../helpers/constants';
-import { MailService } from '../../MailService';
+import { MailService } from '../../../services/MailService';
 
 export const RequestForm = ({ cartItems, setCartItems, isModalOpen, setIsModalOpen }) => {
   const [initialValues, handleUpdateForm] = useLocalStorage('form', requestFormInitialValues);

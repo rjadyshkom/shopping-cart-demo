@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import classes from './CartQuantity.module.css';
-import { AppContext } from '../../../services/appContext';
+import { AppContext } from '../../../context/appContext';
 
 export const CartQuantity = () => {
   const { cartItems } = useContext(AppContext);

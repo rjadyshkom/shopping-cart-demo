@@ -4,7 +4,7 @@ import { Header } from "../UI/header/Header";
 import { Routes, Route } from "react-router-dom";
 import classes from "./App.module.css";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
-import { AppContext } from "../../services/appContext";
+import { AppContext } from "../../context/appContext";
 import { routes } from "../../helpers/routes";
 import { Navigation } from "../UI/navigation/Navigation";
 import { CartQuantity } from "../UI/cart-quantity/CartQuantity";

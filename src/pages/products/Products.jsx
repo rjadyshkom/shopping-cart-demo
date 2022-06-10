@@ -1,11 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react';
 import classes from './Products.module.css';
 import { ProductCard } from '../../components/UI/product-card/ProductCard';
-import { AppContext } from '../../services/appContext';
+import { AppContext } from '../../context/appContext';
 import { Filter } from '../../components/UI/filter/Filter';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useFetching } from '../../hooks/useFetching';
-import { ProductsService } from '../../components/ProductsService';
+import { ProductsService } from '../../services/ProductsService';
 
 export const Products = () => {
   const { cartItems, onAdd, onRemove } = useContext(AppContext);
