@@ -48,6 +48,7 @@ export const Products = () => {
           setProductsToFilter={setProductsToFilter}
           activeCategory={activeCategory}
           setActiveCategory={setActiveCategory}
+          paginate={paginate}
         />
         <Pagination
           productsPerPage={productsPerPage}

@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react';
 import classes from './Filter.module.css';
 
-export const Filter = ({ products, setProductsToFilter, activeCategory, setActiveCategory }) => {
+export const Filter = ({ products, setProductsToFilter, activeCategory, setActiveCategory, paginate }) => {
   const chips = [...new Set(products.map((label) => label.category))];
 
   const filter = (category) => {
     const filtered = products.filter((product) => product.category.includes(category));
     setActiveCategory(category);
     setProductsToFilter(filtered);
+    paginate(1);
   };
 
   useEffect(() => {
