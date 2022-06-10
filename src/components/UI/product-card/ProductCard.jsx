@@ -12,7 +12,6 @@ export const ProductCard = ({ product, cartItems, onAdd, onRemove }) => {
       animate={{ opacity: 1, translateY: 0 }}
       initial={{ opacity: 0, translateY: 20 }}
       exit={{ opacity: 0, translateY: 20 }}
-      transition={{ ease: 'easeInOut', duration: 0.3 }}
       className={classes.container}
     >
       <Lightbox image={product.image} alt={product.description}>

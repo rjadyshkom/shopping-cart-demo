@@ -49,20 +49,22 @@ export const Products = () => {
         setActiveCategory={setActiveCategory}
       />
       <motion.div layout className={classes.products}>
-        {isProductsLoadingError && <h2>Не удалось загрузить информацию о тренажёрах с сервера</h2>}
-        {isProductsLoading && <h2>Загружаю тренажёры...</h2>}
-        {currentProducts.map((product) => (
-          <ProductCard
-            key={product.id}
-            image={product.image}
-            description={product.description}
-            price={product.price}
-            product={product}
-            cartItems={cartItems}
-            onAdd={onAdd}
-            onRemove={onRemove}
-          />
-        ))}
+        <AnimatePresence>
+          {isProductsLoadingError && <h2>Не удалось загрузить информацию о тренажёрах с сервера</h2>}
+          {isProductsLoading && <h2>Загружаю тренажёры...</h2>}
+          {currentProducts.map((product) => (
+            <ProductCard
+              key={product.id}
+              image={product.image}
+              description={product.description}
+              price={product.price}
+              product={product}
+              cartItems={cartItems}
+              onAdd={onAdd}
+              onRemove={onRemove}
+            />
+          ))}
+        </AnimatePresence>
       </motion.div>
       <Pagination
         productsPerPage={productsPerPage}
