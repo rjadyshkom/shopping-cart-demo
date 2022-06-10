@@ -9,9 +9,10 @@ export const ProductCard = ({ product, cartItems, onAdd, onRemove }) => {
   return (
     <motion.div
       layout
-      animate={{ opacity: 1, translateY: 0 }}
-      initial={{ opacity: 0, translateY: 20 }}
-      exit={{ opacity: 0, translateY: 20 }}
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3, type: 'tween' }}
       className={classes.container}
     >
       <Lightbox image={product.image} alt={product.description}>

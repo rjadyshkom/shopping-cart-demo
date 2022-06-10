@@ -4,6 +4,11 @@
     padding: 20px 20px 100px;
 }
 
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
 .products {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

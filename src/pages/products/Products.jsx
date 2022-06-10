@@ -42,12 +42,20 @@ export const Products = () => {
   // noinspection JSValidateTypes
   return (
     <section className={classes.container}>
-      <Filter
-        products={products}
-        setProductsToFilter={setProductsToFilter}
-        activeCategory={activeCategory}
-        setActiveCategory={setActiveCategory}
-      />
+      <div className={classes.wrapper}>
+        <Filter
+          products={products}
+          setProductsToFilter={setProductsToFilter}
+          activeCategory={activeCategory}
+          setActiveCategory={setActiveCategory}
+        />
+        <Pagination
+          productsPerPage={productsPerPage}
+          totalProducts={productsToFilter.length}
+          paginate={paginate}
+          currentPage={currentPage}
+        />
+      </div>
       <motion.div layout className={classes.products}>
         <AnimatePresence>
           {isProductsLoadingError && <h2>Не удалось загрузить информацию о тренажёрах с сервера</h2>}
@@ -66,12 +74,6 @@ export const Products = () => {
           ))}
         </AnimatePresence>
       </motion.div>
-      <Pagination
-        productsPerPage={productsPerPage}
-        totalProducts={productsToFilter.length}
-        paginate={paginate}
-        currentPage={currentPage}
-      />
     </section>
   );
 };
