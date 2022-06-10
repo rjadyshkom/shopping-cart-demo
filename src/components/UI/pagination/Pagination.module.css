@@ -1,0 +1,30 @@
+.container {
+    display: inline-flex;
+    gap: 5px;
+    padding: 10px 20px;
+    position: relative;
+    z-index: 2;
+    background: #fff;
+    border-radius: 20px;
+}
+
+.link {
+    padding: 5px 10px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #000;
+}
+
+.link:hover {
+    color: #ED6E00;
+    border-color: #ED6E00;
+}
+
+.active {
+    color: #ED6E00;
+    border-color: #ED6E00;
+    font-weight: bold;
+    border-width: 2px;
+}

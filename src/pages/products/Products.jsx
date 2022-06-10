@@ -6,17 +6,33 @@ import { Filter } from '../../components/UI/filter/Filter';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useFetching } from '../../hooks/useFetching';
 import { ProductsService } from '../../services/ProductsService';
+import { Pagination } from '../../components/UI/pagination/Pagination';
 
 export const Products = () => {
   const { cartItems, onAdd, onRemove } = useContext(AppContext);
+
+  // начальные стейты
   const [products, setProducts] = useState([]);
   const [productsToFilter, setProductsToFilter] = useState(products);
   const [activeCategory, setActiveCategory] = useState('все');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage] = useState(6);
 
+  // данные для пагинации
+  const lastProduct = currentPage * productsPerPage;
+  const firstProduct = lastProduct - productsPerPage;
+  const currentProducts = productsToFilter.slice(firstProduct, lastProduct);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  // запрос к серверу
   const [fetchProducts, isProductsLoading, isProductsLoadingError] = useFetching(async () => {
-    return await ProductsService.getAll().then((response) => setProducts(response.data));
+    return await ProductsService.getAll().then((response) => {
+      setProducts(response.data);
+    });
   });
 
+  // рендер продукции
   useEffect(() => {
     // noinspection JSIgnoredPromiseFromCall
     fetchProducts();
@@ -36,7 +52,7 @@ export const Products = () => {
         <AnimatePresence>
           {isProductsLoadingError && <h2>Не удалось загрузить информацию о тренажёрах с сервера</h2>}
           {isProductsLoading && <h2>Загружаю тренажёры...</h2>}
-          {productsToFilter.map((product) => (
+          {currentProducts.map((product) => (
             <ProductCard
               key={product.id}
               image={product.image}
@@ -50,6 +66,12 @@ export const Products = () => {
           ))}
         </AnimatePresence>
       </motion.div>
+      <Pagination
+        productsPerPage={productsPerPage}
+        totalProducts={productsToFilter.length}
+        paginate={paginate}
+        currentPage={currentPage}
+      />
     </section>
   );
 };
