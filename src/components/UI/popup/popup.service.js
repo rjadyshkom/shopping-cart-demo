@@ -4,13 +4,14 @@ class PopupService {
     this.callbacks = [];
   }
 
-  open(id, content, onRequestClose, onRequestSetSubmitState, isSubmitSuccess) {
+  open(id, content, onRequestClose, onRequestSetSubmitState, isSubmitSuccess, disableOverlayClick) {
     this.popups.push({
       id,
       content,
       onRequestClose,
       onRequestSetSubmitState,
       isSubmitSuccess,
+      disableOverlayClick,
     });
     this._notify();
   }

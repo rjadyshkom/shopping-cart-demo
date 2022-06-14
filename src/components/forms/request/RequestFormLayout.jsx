@@ -45,6 +45,7 @@ export const RequestFormLayout = ({
           onRequestClose={handleRequestClose}
           onRequestSetSubmitState={setSubmitState}
           isSubmitSuccess={isSubmitSuccess}
+          disableOverlayClick // тест
         >
           {isSubmitError ? <Error /> : isSubmitSuccess ? <Success /> : null}
         </PopupContent>

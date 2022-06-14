@@ -32,7 +32,7 @@ export const PopupPlace = () => {
           initial={{ opacity: 0 }}
           transition={transition}
           className={classes.overlay}
-          onClick={handleOnClick}
+          onClick={currentPopup.disableOverlayClick ? null : handleOnClick}
         >
           <motion.div
             animate={{ scale: 1 }}

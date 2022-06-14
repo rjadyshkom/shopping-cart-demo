@@ -10,6 +10,7 @@ export const PopupContent = (props) => {
       props.onRequestClose,
       props.onRequestSetSubmitState,
       props.isSubmitSuccess,
+      props.disableOverlayClick,
     );
 
     return () => {
