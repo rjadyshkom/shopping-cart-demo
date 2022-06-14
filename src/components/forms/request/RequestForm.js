@@ -7,14 +7,15 @@ import { requestFormInitialValues } from '../../../helpers/constants';
 import { getFormData, onStateError, onStateSuccess } from '../../../helpers/constants';
 import { MailService } from '../../../services/MailService';
 
-export const RequestForm = ({ cartItems, setCartItems, isModalOpen, setIsModalOpen }) => {
+export const RequestForm = ({ cartItems, setCartItems}) => {
   const [initialValues, handleUpdateForm] = useLocalStorage('form', requestFormInitialValues);
   const [submitState, setSubmitState] = useState(''); // 'Успешно!', 'Ошибка!'
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
       await MailService.sendUserData(getFormData(values));
-      setIsModalOpen(true);
+      setIsPopupOpen(true);
       setSubmitState(onStateSuccess);
       setSubmitting(false);
       setCartItems([]);
@@ -27,7 +28,7 @@ export const RequestForm = ({ cartItems, setCartItems, isModalOpen, setIsModalOp
         },
       });
     } catch (error) {
-      setIsModalOpen(true);
+      setIsPopupOpen(true);
       setSubmitState(onStateError);
       setSubmitting(false);
       console.log(error);
@@ -43,8 +44,8 @@ export const RequestForm = ({ cartItems, setCartItems, isModalOpen, setIsModalOp
           handleUpdateForm={handleUpdateForm}
           submitState={submitState}
           setSubmitState={setSubmitState}
-          isModalOpen={isModalOpen}
-          setIsModalOpen={setIsModalOpen}
+          isPopupOpen={isPopupOpen}
+          setIsPopupOpen={setIsPopupOpen}
         />
       )}
     </Formik>

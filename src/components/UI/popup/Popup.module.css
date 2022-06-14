@@ -1,4 +1,4 @@
-.modal {
+.overlay {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -6,6 +6,10 @@
     left: 0;
     background-color: rgba(0, 0, 0, .75);
     z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
 .active {
@@ -23,7 +27,8 @@
     position: relative;
     display: flex;
     align-items: center;
-    align-content: center;
+    justify-content: center;
+    cursor: default;
 }
 
 .close {
@@ -31,10 +36,13 @@
     outline: none;
     width: 15px;
     height: 15px;
-    background: url(../../../images/modal-icon-close.svg) no-repeat center center transparent;
     cursor: pointer;
     position: absolute;
     right: -25px;
     top: -25px;
-    background-size: contain;
+    object-fit: contain;
+}
+
+.close svg {
+    fill: #fff;
 }

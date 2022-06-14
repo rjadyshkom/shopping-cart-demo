@@ -3,10 +3,10 @@ import classes from '../forms.module.css';
 import { ErrorMessage, Field, Form } from 'formik';
 import { Button } from '../../UI/button/Button';
 import { onStateSuccess, onStateError } from '../../../helpers/constants';
-import { Modal } from '../../UI/modal/Modal';
 import { Success } from '../../UI/success/Success';
 import { Error } from '../../UI/error/Error';
 import { TotalPrice } from '../../UI/total-price/TotalPrice';
+import { PopupContent } from '../../UI/popup/PopupContent';
 
 export const RequestFormLayout = ({
   formikProps,
@@ -14,8 +14,8 @@ export const RequestFormLayout = ({
   handleUpdateForm,
   submitState,
   setSubmitState,
-  isModalOpen,
-  setIsModalOpen,
+  isPopupOpen,
+  setIsPopupOpen,
 }) => {
   const productsInRequest =
     cartItems.length === 0
@@ -23,6 +23,10 @@ export const RequestFormLayout = ({
       : cartItems.map((product) => `[ ${product.name}: ${product.qty} шт. ]`);
   const isSubmitError = submitState === onStateError;
   const isSubmitSuccess = submitState === onStateSuccess;
+
+  const handleRequestClose = () => {
+    setIsPopupOpen(false);
+  };
 
   useEffect(() => {
     handleUpdateForm(formikProps.values);
@@ -35,6 +39,16 @@ export const RequestFormLayout = ({
 
   return (
     <Form noValidate className={classes.container}>
+      {isPopupOpen && (
+        <PopupContent
+          id={'cart'}
+          onRequestClose={handleRequestClose}
+          onRequestSetSubmitState={setSubmitState}
+          isSubmitSuccess={isSubmitSuccess}
+        >
+          {isSubmitError ? <Error /> : isSubmitSuccess ? <Success /> : null}
+        </PopupContent>
+      )}
       <fieldset className={classes.dataWrapper}>
         <label htmlFor={'cartName'} className={classes.fieldWrapper}>
           Имя:
@@ -62,14 +76,6 @@ export const RequestFormLayout = ({
             {formikProps.isSubmitting ? 'Заявка отправляется ...' : submitState ? submitState : 'Отправить заявку'}
           </Button>
         </div>
-        <Modal
-          isVisible={isModalOpen}
-          setIsVisible={setIsModalOpen}
-          setSubmitState={setSubmitState}
-          isSubmitSuccess={isSubmitSuccess}
-        >
-          {isSubmitError ? <Error /> : isSubmitSuccess ? <Success /> : null}
-        </Modal>
       </fieldset>
     </Form>
   );
