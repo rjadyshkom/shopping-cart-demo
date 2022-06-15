@@ -4,14 +4,7 @@ import { popupService } from './popup.service';
 
 export const PopupContent = (props) => {
   useEffect(() => {
-    popupService.open(
-      props.id,
-      props.children,
-      props.onRequestClose,
-      props.onRequestSetSubmitState,
-      props.isSubmitSuccess,
-      props.disableOverlayClick,
-    );
+    popupService.open(props);
 
     return () => {
       popupService.close(props.id);
