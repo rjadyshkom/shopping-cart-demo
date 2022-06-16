@@ -7,6 +7,8 @@ import { motion } from 'framer-motion';
 
 export const PopupPlace = () => {
   const [popups, setPopups] = useState([]);
+  const currentPopup = popups[popups.length - 1];
+
   const transition = { duration: 0.3, type: 'spring' };
   const navigate = useNavigate();
 
@@ -28,7 +30,6 @@ export const PopupPlace = () => {
     });
   }, []);
 
-  const currentPopup = popups[popups.length - 1];
   return !!currentPopup
     ? createPortal(
         <motion.div
