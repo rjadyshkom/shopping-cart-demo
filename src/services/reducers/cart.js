@@ -9,13 +9,13 @@ export const cartReducer = (state = initialState, action) => {
     case INCREASE_ITEM: {
       return {
         ...state,
-        items: [...state.items].map((item) => (item.id === action.id ? { ...item, qty: ++item.qty } : item)),
+        items: [...state.items].map((item) => (item.id === action.id ? { ...item, qty: item.qty + 1 } : item)),
       };
     }
     case DECREASE_ITEM: {
       return {
         ...state,
-        items: [...state.items].map((item) => (item.id === action.id ? { ...item, qty: --item.qty } : item)),
+        items: [...state.items].map((item) => (item.id === action.id ? { ...item, qty: item.qty - 1 } : item)),
       };
     }
     case DELETE_ITEM: {
