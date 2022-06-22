@@ -1,9 +1,14 @@
 import React from 'react';
 import classes from './Pagination.module.css';
+import * as productsActions from '../../../services/actions/products';
+import { useDispatch, useSelector } from 'react-redux';
 
-export const Pagination = ({ productsPerPage, totalProducts, paginate, currentPage }) => {
+export const Pagination = ({ pagesCount }) => {
   const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(totalProducts / productsPerPage); i++) {
+  const currentPage = useSelector((state) => state.products.currentPage);
+  const dispatch = useDispatch();
+  const paginate = (pageNumber) => dispatch(productsActions.setPage(pageNumber));
+  for (let i = 1; i <= pagesCount; i++) {
     pageNumbers.push(i);
   }
   return (

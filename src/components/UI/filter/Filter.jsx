@@ -1,39 +1,19 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import classes from './Filter.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import * as productsActions from './../../../services/actions/products';
 
-export const Filter = ({ products, setProductsToFilter, activeCategory, setActiveCategory, paginate }) => {
-  const chips = [...new Set(products.map((label) => label.category))];
-
-  const filter = (category) => {
-    const filtered = products.filter((product) => product.category.includes(category));
-    setActiveCategory(category);
-    setProductsToFilter(filtered);
-    paginate(1);
-  };
-
-  useEffect(() => {
-    if (activeCategory === 'все') {
-      setProductsToFilter(products);
-    }
-    // eslint-disable-next-line
-  }, [products]);
-
+export const Filter = () => {
+  const chips = useSelector((state) => state.products.categories);
+  const dispatch = useDispatch();
+  const activeCategory = useSelector((state) => state.products.currentCategory);
   return (
     <div className={classes.container}>
-      <span
-        className={activeCategory === 'все' ? `${classes.label} ${classes.active}` : classes.label}
-        onClick={() => {
-          setActiveCategory('все');
-          setProductsToFilter(products);
-        }}
-      >
-        Все
-      </span>
       {chips.map((category, key) => (
         <span
           className={activeCategory === category ? `${classes.label} ${classes.active}` : classes.label}
           key={key}
-          onClick={() => filter(category)}
+          onClick={() => dispatch(productsActions.setCategory(category))}
         >
           {category}
         </span>

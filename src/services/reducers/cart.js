@@ -19,7 +19,10 @@ export const cartReducer = (state = initialState, action) => {
       };
     }
     case DELETE_ITEM: {
-      return { ...state, items: [...state.items].filter((item) => item.id !== action.id) };
+      return {
+        ...state,
+        items: [...state.items].filter((item) => item.id !== action.id),
+      };
     }
     default: {
       return state;

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import classes from './Products.module.css';
 import { ProductCard } from '../../components/UI/product-card/ProductCard';
 import { AppContext } from '../../context/appContext';
@@ -12,29 +12,29 @@ import * as productsActions from './../../services/actions/products';
 
 export const Products = () => {
   const { cartItems, onAdd, onRemove } = useContext(AppContext);
-
-  // redux
-  const productsPerPage = useSelector((state) => state.products.productsPerPage);
-  const currentPage = useSelector((state) => state.products.currentPage);
-
   const dispatch = useDispatch();
-
-  // начальные стейты
-  const [products, setProducts] = useState([]);
-  const [productsToFilter, setProductsToFilter] = useState(products);
-  const [activeCategory, setActiveCategory] = useState('все');
-
-  // данные для пагинации
-  const lastProduct = currentPage * productsPerPage;
-  const firstProduct = lastProduct - productsPerPage;
-  const currentProducts = productsToFilter.slice(firstProduct, lastProduct);
-
-  const paginate = (pageNumber) => dispatch(productsActions.setPage(pageNumber));
+  const productsPerPage = useSelector((state) => state.products.productsPerPage);
+  const { products, pagesCount } = useSelector((state) => {
+    const currentCategory = state.products.currentCategory;
+    const currentPage = state.products.currentPage;
+    const lastProduct = currentPage * productsPerPage;
+    const firstProduct = lastProduct - productsPerPage;
+    const tempProducts =
+      currentCategory === 'все'
+        ? state.products.products
+        : state.products.products.filter((p) => p.category === currentCategory);
+    const resultProducts = tempProducts.slice(firstProduct, lastProduct);
+    return {
+      products: resultProducts,
+      pagesCount: Math.ceil(tempProducts.length / productsPerPage),
+    };
+  });
 
   // запрос к серверу
   const [fetchProducts, isProductsLoading, isProductsLoadingError] = useFetching(async () => {
     return await ProductsService.getAll().then((response) => {
-      setProducts(response.data);
+      const products = response.data;
+      dispatch(productsActions.setProducts(products));
     });
   });
 
@@ -49,25 +49,14 @@ export const Products = () => {
   return (
     <section className={classes.container}>
       <div className={classes.wrapper}>
-        <Filter
-          products={products}
-          setProductsToFilter={setProductsToFilter}
-          activeCategory={activeCategory}
-          setActiveCategory={setActiveCategory}
-          paginate={paginate}
-        />
-        <Pagination
-          productsPerPage={productsPerPage}
-          totalProducts={productsToFilter.length}
-          paginate={paginate}
-          currentPage={currentPage}
-        />
+        <Filter />
+        <Pagination pagesCount={pagesCount} />
       </div>
       <motion.div layout className={classes.products}>
         <AnimatePresence>
           {isProductsLoadingError && <h2>Не удалось загрузить информацию о тренажёрах с сервера</h2>}
           {isProductsLoading && <h2>Загружаю тренажёры...</h2>}
-          {currentProducts.map((product) => (
+          {products.map((product) => (
             <ProductCard
               key={product.id}
               image={product.image}
