@@ -9,26 +9,12 @@ import { ProductsService } from '../../services/ProductsService';
 import { Pagination } from '../../components/UI/pagination/Pagination';
 import { useDispatch, useSelector } from 'react-redux';
 import * as productsActions from './../../services/actions/products';
+import { productsSelector } from '../../services/selectors/products';
 
 export const Products = () => {
   const { cartItems, onAdd, onRemove } = useContext(AppContext);
   const dispatch = useDispatch();
-  const productsPerPage = useSelector((state) => state.products.productsPerPage);
-  const { products, pagesCount } = useSelector((state) => {
-    const currentCategory = state.products.currentCategory;
-    const currentPage = state.products.currentPage;
-    const lastProduct = currentPage * productsPerPage;
-    const firstProduct = lastProduct - productsPerPage;
-    const tempProducts =
-      currentCategory === 'все'
-        ? state.products.products
-        : state.products.products.filter((p) => p.category === currentCategory);
-    const resultProducts = tempProducts.slice(firstProduct, lastProduct);
-    return {
-      products: resultProducts,
-      pagesCount: Math.ceil(tempProducts.length / productsPerPage),
-    };
-  });
+  const { products, pagesCount } = useSelector(productsSelector);
 
   // запрос к серверу
   const [fetchProducts, isProductsLoading, isProductsLoadingError] = useFetching(async () => {
