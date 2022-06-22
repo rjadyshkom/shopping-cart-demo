@@ -7,23 +7,29 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useFetching } from '../../hooks/useFetching';
 import { ProductsService } from '../../services/ProductsService';
 import { Pagination } from '../../components/UI/pagination/Pagination';
+import { useDispatch, useSelector } from 'react-redux';
+import * as productsActions from './../../services/actions/products';
 
 export const Products = () => {
   const { cartItems, onAdd, onRemove } = useContext(AppContext);
+
+  // redux
+  const productsPerPage = useSelector((state) => state.products.productsPerPage);
+  const currentPage = useSelector((state) => state.products.currentPage);
+
+  const dispatch = useDispatch();
 
   // начальные стейты
   const [products, setProducts] = useState([]);
   const [productsToFilter, setProductsToFilter] = useState(products);
   const [activeCategory, setActiveCategory] = useState('все');
-  const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage] = useState(6);
 
   // данные для пагинации
   const lastProduct = currentPage * productsPerPage;
   const firstProduct = lastProduct - productsPerPage;
   const currentProducts = productsToFilter.slice(firstProduct, lastProduct);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => dispatch(productsActions.setPage(pageNumber));
 
   // запрос к серверу
   const [fetchProducts, isProductsLoading, isProductsLoadingError] = useFetching(async () => {
