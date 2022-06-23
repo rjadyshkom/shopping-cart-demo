@@ -1,7 +1,6 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import classes from './Products.module.css';
 import { ProductCard } from '../../components/UI/product-card/ProductCard';
-import { AppContext } from '../../context/appContext';
 import { Filter } from '../../components/UI/filter/Filter';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Pagination } from '../../components/UI/pagination/Pagination';
@@ -10,17 +9,15 @@ import { productsSelector } from '../../services/selectors/products';
 import { getProductsThunk } from '../../services/thunk/products';
 
 export const Products = () => {
-  const { cartItems, onAdd, onRemove } = useContext(AppContext);
   const dispatch = useDispatch();
   const { products, pagesCount } = useSelector(productsSelector);
+  const isProductsLoading = useSelector((state) => state.products.loading);
+  const isProductsLoadingError = useSelector((state) => state.products.error);
 
   useEffect(() => {
     dispatch(getProductsThunk);
     // eslint-disable-next-line
   }, []);
-
-  const isProductsLoading = useSelector((state) => state.products.loading);
-  const isProductsLoadingError = useSelector((state) => state.products.error);
 
   // noinspection JSValidateTypes
   return (
@@ -40,9 +37,6 @@ export const Products = () => {
               description={product.description}
               price={product.price}
               product={product}
-              cartItems={cartItems}
-              onAdd={onAdd}
-              onRemove={onRemove}
             />
           ))}
         </AnimatePresence>

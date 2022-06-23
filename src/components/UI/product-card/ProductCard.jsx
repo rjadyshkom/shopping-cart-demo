@@ -3,8 +3,11 @@ import classes from './ProductCard.module.css';
 import { Button } from '../button/Button';
 import { Lightbox } from '../lightbox/Lightbox';
 import { motion } from 'framer-motion';
+import { useContext } from 'react';
+import { AppContext } from '../../../context/appContext';
 
-export const ProductCard = ({ product, cartItems, onAdd, onRemove }) => {
+export const ProductCard = ({ product }) => {
+  const { cartItems, onAdd, onRemove } = useContext(AppContext);
   const isExist = cartItems.find((item) => item.id === product.id);
   return (
     <motion.div
