@@ -18,6 +18,8 @@ export const Products = () => {
     dispatch(getProductsThunk);
   }, []);
 
+  const isProductsLoadingError = useSelector(state => state.products.error);
+
   // noinspection JSValidateTypes
   return (
     <section className={classes.container}>
@@ -27,7 +29,7 @@ export const Products = () => {
       </div>
       <motion.div layout className={classes.products}>
         <AnimatePresence>
-          {/*{isProductsLoadingError && <h2>Не удалось загрузить информацию о тренажёрах с сервера</h2>}*/}
+          {isProductsLoadingError && <h2>Не удалось загрузить информацию о тренажёрах с сервера</h2>}
           {/*{isProductsLoading && <h2>Загружаю тренажёры...</h2>}*/}
           {products.map((product) => (
             <ProductCard

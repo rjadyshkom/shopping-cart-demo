@@ -7,6 +7,7 @@ const initialState = {
   currentPage: 1,
   currentCategory: 'все',
   categories: ['все '],
+  error: false,
 };
 
 export const productsReducer = (state = initialState, action) => {
@@ -24,6 +25,10 @@ export const productsReducer = (state = initialState, action) => {
       case productsActions.SET_CATEGORY: {
         draftState.currentCategory = action.payload;
         draftState.currentPage = 1;
+        break;
+      }
+      case productsActions.SET_ERROR: {
+        draftState.error = action.payload;
         break;
       }
       default: {
