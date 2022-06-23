@@ -8,6 +8,7 @@ const initialState = {
   currentCategory: 'все',
   categories: ['все '],
   error: false,
+  loading: false,
 };
 
 export const productsReducer = (state = initialState, action) => {
@@ -29,6 +30,10 @@ export const productsReducer = (state = initialState, action) => {
       }
       case productsActions.SET_ERROR: {
         draftState.error = action.payload;
+        break;
+      }
+      case productsActions.SET_LOADING: {
+        draftState.loading = action.payload;
         break;
       }
       default: {

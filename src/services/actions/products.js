@@ -6,3 +6,5 @@ export const SET_CATEGORY = 'SET_CATEGORY';
 export const setCategory = (category) => ({ type: SET_CATEGORY, payload: category });
 export const SET_ERROR = 'SET_ERROR';
 export const setError = (error) => ({ type: SET_ERROR, payload: error });
+export const SET_LOADING = 'SET_LOADING';
+export const setLoading = (loading) => ({ type: SET_LOADING, payload: loading });

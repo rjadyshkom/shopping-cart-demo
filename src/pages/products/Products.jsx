@@ -16,9 +16,11 @@ export const Products = () => {
 
   useEffect(() => {
     dispatch(getProductsThunk);
+    // eslint-disable-next-line
   }, []);
 
-  const isProductsLoadingError = useSelector(state => state.products.error);
+  const isProductsLoading = useSelector((state) => state.products.loading);
+  const isProductsLoadingError = useSelector((state) => state.products.error);
 
   // noinspection JSValidateTypes
   return (
@@ -29,8 +31,8 @@ export const Products = () => {
       </div>
       <motion.div layout className={classes.products}>
         <AnimatePresence>
+          {isProductsLoading && <h2>Загружаю тренажёры...</h2>}
           {isProductsLoadingError && <h2>Не удалось загрузить информацию о тренажёрах с сервера</h2>}
-          {/*{isProductsLoading && <h2>Загружаю тренажёры...</h2>}*/}
           {products.map((product) => (
             <ProductCard
               key={product.id}
