@@ -7,7 +7,7 @@ export const productsSelector = (state) => {
   const lastProduct = currentPage * productsPerPage;
   const firstProduct = lastProduct - productsPerPage;
   const tempProducts =
-    currentCategory === 'все'
+    currentCategory === 'Все'
       ? state.products.products
       : state.products.products.filter((p) => p.category === currentCategory);
   const resultProducts = tempProducts.slice(firstProduct, lastProduct);
