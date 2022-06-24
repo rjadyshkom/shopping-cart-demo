@@ -1,7 +1,9 @@
 import React from 'react';
 import classes from './TotalPrice.module.css';
+import { useSelector } from 'react-redux';
 
-export const TotalPrice = ({ cartItems }) => {
+export const TotalPrice = () => {
+  const cartItems = useSelector((state) => state.cart.items);
   const totalPrice = cartItems.reduce((a, c) => a + c.price * c.qty, 0);
   return (
     cartItems.length !== 0 && (

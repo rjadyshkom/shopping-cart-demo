@@ -6,11 +6,14 @@ import { useLocalStorage } from '../../../hooks/useLocalStorage';
 import { requestFormInitialValues } from '../../../helpers/constants';
 import { getFormData, onStateError, onStateSuccess } from '../../../helpers/constants';
 import { MailService } from '../../../services/MailService';
+import * as cartActions from './../../../services/actions/cart';
+import { useDispatch } from 'react-redux';
 
-export const RequestForm = ({ cartItems, setCartItems}) => {
+export const RequestForm = () => {
   const [initialValues, handleUpdateForm] = useLocalStorage('form', requestFormInitialValues);
   const [submitState, setSubmitState] = useState(''); // 'Успешно!', 'Ошибка!'
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
@@ -18,7 +21,7 @@ export const RequestForm = ({ cartItems, setCartItems}) => {
       setIsPopupOpen(true);
       setSubmitState(onStateSuccess);
       setSubmitting(false);
-      setCartItems([]);
+      dispatch(cartActions.setItems([]));
       resetForm({
         values: {
           cartName: '',
@@ -40,7 +43,6 @@ export const RequestForm = ({ cartItems, setCartItems}) => {
       {(props) => (
         <RequestFormLayout
           formikProps={props}
-          cartItems={cartItems}
           handleUpdateForm={handleUpdateForm}
           submitState={submitState}
           setSubmitState={setSubmitState}

@@ -7,16 +7,17 @@ import { Success } from '../../UI/success/Success';
 import { Error } from '../../UI/error/Error';
 import { TotalPrice } from '../../UI/total-price/TotalPrice';
 import { PopupContent } from '../../UI/popup/PopupContent';
+import { useSelector } from 'react-redux';
 
 export const RequestFormLayout = ({
   formikProps,
-  cartItems,
   handleUpdateForm,
   submitState,
   setSubmitState,
   isPopupOpen,
   setIsPopupOpen,
 }) => {
+  const cartItems = useSelector((state) => state.cart.items);
   const productsInRequest =
     cartItems.length === 0
       ? '[ Пользователь не добавил тренажёры в заявку ]'
@@ -45,7 +46,6 @@ export const RequestFormLayout = ({
           onRequestClose={handleRequestClose}
           onRequestSetSubmitState={setSubmitState}
           isSubmitSuccess={isSubmitSuccess}
-          disableOverlayClick // тест
         >
           {isSubmitError ? <Error /> : isSubmitSuccess ? <Success /> : null}
         </PopupContent>
@@ -70,7 +70,7 @@ export const RequestFormLayout = ({
         </label>
         <Field type="hidden" name="cartProducts" />
       </fieldset>
-      <TotalPrice cartItems={cartItems} />
+      <TotalPrice />
       <fieldset className={classes.controlsWrapper}>
         <div className={classes.buttonWrapper}>
           <Button type="submit" disabled={!formikProps.isValid || formikProps.isSubmitting}>

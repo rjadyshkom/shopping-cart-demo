@@ -3,12 +3,12 @@ import classes from './ProductCard.module.css';
 import { Button } from '../button/Button';
 import { Lightbox } from '../lightbox/Lightbox';
 import { motion } from 'framer-motion';
-import { useContext } from 'react';
-import { AppContext } from '../../../context/appContext';
+import { useDispatch, useSelector } from 'react-redux';
+import * as cartActions from './../../../services/actions/cart';
 
 export const ProductCard = ({ product }) => {
-  const { cartItems, onAdd, onRemove } = useContext(AppContext);
-  const isExist = cartItems.find((item) => item.id === product.id);
+  const dispatch = useDispatch();
+  const isExist = useSelector((state) => state.cart.items.find((item) => item.id === product.id));
   return (
     <motion.div
       layout
@@ -27,12 +27,12 @@ export const ProductCard = ({ product }) => {
         <span className={classes.price}>от {product.price} руб.</span>
         <div className={classes.controls}>
           {!isExist && (
-            <Button isExist={isExist} onClick={() => onAdd(product)}>
+            <Button isExist={isExist} onClick={() => dispatch(cartActions.addItem(product))}>
               Добавить в заявку
             </Button>
           )}
           {isExist && (
-            <Button isExist={isExist} onClick={() => onRemove(product)}>
+            <Button isExist={isExist} onClick={() => dispatch(cartActions.deleteItem(product))}>
               Удалить из заявки
             </Button>
           )}

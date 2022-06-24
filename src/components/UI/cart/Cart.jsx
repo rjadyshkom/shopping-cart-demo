@@ -2,8 +2,12 @@ import React from 'react';
 import classes from './Cart.module.css';
 import { TrashButton } from '../trash-button/TrashButton';
 import { Lightbox } from '../lightbox/Lightbox';
+import { useDispatch, useSelector } from 'react-redux';
+import * as cartActions from './../../../services/actions/cart';
 
-export const Cart = ({ cartItems, onAdd, onDecrease, onRemove }) => {
+export const Cart = () => {
+  const cartItems = useSelector((state) => state.cart.items);
+  const dispatch = useDispatch();
   return (
     <div className={classes.container}>
       <h2 className={classes.title}>Оборудование в заявке:</h2>
@@ -15,14 +19,14 @@ export const Cart = ({ cartItems, onAdd, onDecrease, onRemove }) => {
           </Lightbox>
           <p className={classes.description}>{product.description}</p>
           <div className={classes.qtyWrapper}>
-            <button disabled={product.qty === 1} onClick={() => onDecrease(product)}>
+            <button disabled={product.qty === 1} onClick={() => dispatch(cartActions.decreaseItem(product))}>
               -
             </button>
             <span className={classes.qtyNumber}>{product.qty}</span>
-            <button onClick={() => onAdd(product)}>+</button>
+            <button onClick={() => dispatch(cartActions.addItem(product))}>+</button>
           </div>
           <p className={classes.price}>от {product.qty * product.price} руб.</p>
-          <TrashButton onClick={() => onRemove(product)} />
+          <TrashButton onClick={() => dispatch(cartActions.deleteItem(product))} />
         </div>
       ))}
     </div>
