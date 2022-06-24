@@ -25,7 +25,7 @@ const store = createStore(rootReducer, persistedState, applyMiddleware(thunk));
 
 store.subscribe(
   throttle(() => {
-    saveState({ cart: store.getState().cart });
+    saveState({ cart: store.getState().cart, form: store.getState().form });
   }, 1000),
 );
 const root = ReactDOM.createRoot(document.getElementById('root'));

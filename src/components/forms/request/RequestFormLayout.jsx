@@ -7,17 +7,12 @@ import { Success } from '../../UI/success/Success';
 import { Error } from '../../UI/error/Error';
 import { TotalPrice } from '../../UI/total-price/TotalPrice';
 import { PopupContent } from '../../UI/popup/PopupContent';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import * as formActions from './../../../services/actions/form';
 
-export const RequestFormLayout = ({
-  formikProps,
-  handleUpdateForm,
-  submitState,
-  setSubmitState,
-  isPopupOpen,
-  setIsPopupOpen,
-}) => {
+export const RequestFormLayout = ({ formikProps, submitState, setSubmitState, isPopupOpen, setIsPopupOpen }) => {
   const cartItems = useSelector((state) => state.cart.items);
+  const dispatch = useDispatch();
   const productsInRequest =
     cartItems.length === 0
       ? '[ Пользователь не добавил тренажёры в заявку ]'
@@ -30,8 +25,8 @@ export const RequestFormLayout = ({
   };
 
   useEffect(() => {
-    handleUpdateForm(formikProps.values);
-  }, [formikProps.values, handleUpdateForm]);
+    dispatch(formActions.setData(formikProps.values));
+  }, [formikProps.values, dispatch]);
 
   useEffect(() => {
     formikProps.setFieldValue('cartProducts', productsInRequest);
