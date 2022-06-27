@@ -28,7 +28,8 @@ store.subscribe(
     saveState({ cart: store.getState().cart, form: store.getState().form });
   }, 1000),
 );
-const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const root = ReactDOM.createRoot(document.querySelector('#root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
