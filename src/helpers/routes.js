@@ -5,7 +5,6 @@ export const routes = {
   products: {
     path: '/',
     element: Products,
-    exact: true,
     navigation: {
       title: 'Продукция',
     },
