@@ -9,9 +9,9 @@ import { rootReducer } from './services/reducers';
 import { loadState, saveState } from './helpers/localStorage';
 import { throttle } from 'lodash';
 
-function thunk(store) {
-  return function (next) {
-    return function (action) {
+function thunk(store: any) {
+  return function (next: any) {
+    return function (action: any) {
       if (typeof action !== 'function') {
         return next(action);
       }
@@ -29,7 +29,7 @@ store.subscribe(
   }, 1000),
 );
 
-const root = ReactDOM.createRoot(document.querySelector('#root'));
+const root = ReactDOM.createRoot(document.querySelector('#root') as HTMLElement);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
