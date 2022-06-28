@@ -10,13 +10,13 @@ import { PopupContent } from '../../UI/popup/PopupContent';
 import { useDispatch, useSelector } from 'react-redux';
 import * as formActions from './../../../services/actions/form';
 
-export const RequestFormLayout = ({ formikProps, submitState, setSubmitState, isPopupOpen, setIsPopupOpen }) => {
-  const cartItems = useSelector((state) => state.cart.items);
+export const RequestFormLayout = ({ formikProps, submitState, setSubmitState, isPopupOpen, setIsPopupOpen }: any) => {
+  const cartItems = useSelector((state:any) => state.cart.items);
   const dispatch = useDispatch();
   const productsInRequest =
     cartItems.length === 0
       ? '[ Пользователь не добавил тренажёры в заявку ]'
-      : cartItems.map((product) => `[ ${product.name}: ${product.qty} шт. ]`);
+      : cartItems.map((product: any) => `[ ${product.name}: ${product.qty} шт. ]`);
   const isSubmitError = submitState === onStateError;
   const isSubmitSuccess = submitState === onStateSuccess;
 
@@ -65,7 +65,7 @@ export const RequestFormLayout = ({ formikProps, submitState, setSubmitState, is
         </label>
         <Field type="hidden" name="cartProducts" />
       </fieldset>
-      <TotalPrice />
+      <TotalPrice /> 
       <fieldset className={classes.controlsWrapper}>
         <div className={classes.buttonWrapper}>
           <Button type="submit" disabled={!formikProps.isValid || formikProps.isSubmitting}>

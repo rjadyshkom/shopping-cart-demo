@@ -8,12 +8,12 @@ import * as cartActions from './../../../services/actions/cart';
 import { useDispatch, useSelector } from 'react-redux';
 
 export const RequestForm = () => {
-  const initialValues = useSelector(state => state.form.data);
+  const initialValues = useSelector((state: any) => state.form.data);
   const [submitState, setSubmitState] = useState(''); // 'Успешно!', 'Ошибка!'
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const dispatch = useDispatch();
 
-  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+  const handleSubmit = async (values: any, { setSubmitting, resetForm }: any) => {
     try {
       await MailService.sendUserData(getFormData(values));
       setIsPopupOpen(true);
