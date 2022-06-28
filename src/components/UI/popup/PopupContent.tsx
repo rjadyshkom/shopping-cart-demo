@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { popupService } from './popup.service';
 
-export const PopupContent = (props) => {
+export const PopupContent = (props:any) => {
   useEffect(() => {
     popupService.open(props);
 

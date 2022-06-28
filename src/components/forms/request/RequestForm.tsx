@@ -4,7 +4,7 @@ import { validationSchema } from '../../../helpers/validation';
 import { RequestFormLayout } from './RequestFormLayout';
 import { getFormData, onStateError, onStateSuccess } from '../../../helpers/constants';
 import { MailService } from '../../../services/MailService';
-import * as cartActions from './../../../services/actions/cart';
+import * as cartActions from '../../../services/actions/cart';
 import { useDispatch, useSelector } from 'react-redux';
 
 export const RequestForm = () => {

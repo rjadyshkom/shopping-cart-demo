@@ -1,7 +1,7 @@
 import { ProductsService } from '../ProductsService';
 import * as productsActions from '../actions/products';
 
-export function getProductsThunk(dispatch) {
+export function getProductsThunk(dispatch:any) {
   return ProductsService.getAll()
     .then((response) => {
       dispatch(productsActions.setLoading(true));

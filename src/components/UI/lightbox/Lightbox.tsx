@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import classes from './Lightbox.module.css';
 import { motion, useDomEvent } from 'framer-motion';
 
-export const Lightbox = ({ children, image, alt, Wrapper = 'div' }) => {
+export const Lightbox = ({ children, image, alt, Wrapper = 'div' }:any) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleIsOpen = () => setIsOpen(!isOpen);
   const transition = {

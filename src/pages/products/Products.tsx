@@ -9,10 +9,10 @@ import { productsSelector } from '../../services/selectors/products';
 import { getProductsThunk } from '../../services/thunk/products';
 
 export const Products = () => {
-  const dispatch = useDispatch();
+  const dispatch: any = useDispatch();
   const { products, pagesCount } = useSelector(productsSelector);
-  const isProductsLoading = useSelector((state) => state.products.loading);
-  const isProductsLoadingError = useSelector((state) => state.products.error);
+  const isProductsLoading = useSelector((state: any) => state.products.loading);
+  const isProductsLoadingError = useSelector((state: any) => state.products.error);
 
   useEffect(() => {
     dispatch(getProductsThunk);
@@ -30,7 +30,7 @@ export const Products = () => {
         <AnimatePresence>
           {isProductsLoading && <h2>Загружаю тренажёры...</h2>}
           {isProductsLoadingError && <h2>Не удалось загрузить информацию о тренажёрах с сервера</h2>}
-          {products.map((product) => (
+          {products.map((product: any) => (
             <ProductCard
               key={product.id}
               image={product.image}

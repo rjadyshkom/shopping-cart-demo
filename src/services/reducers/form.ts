@@ -1,5 +1,5 @@
 import produce from 'immer';
-import * as formActions from './../actions/form';
+import * as formActions from '../actions/form';
 
 const initialState = {
   data: {
@@ -10,7 +10,7 @@ const initialState = {
   },
 };
 
-export const formReducer = (state = initialState, action) => {
+export const formReducer = (state = initialState, action:any) => {
   return produce(state, (draftState) => {
     switch (action.type) {
       case formActions.SET_DATA: {

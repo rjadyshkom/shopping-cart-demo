@@ -1,5 +1,5 @@
 import produce from 'immer';
-import * as productsActions from './../actions/products';
+import * as productsActions from '../actions/products';
 
 const initialState = {
   products: [],
@@ -11,11 +11,11 @@ const initialState = {
   loading: false,
 };
 
-export const productsReducer = (state = initialState, action) => {
-  return produce(state, (draftState) => {
+export const productsReducer = (state = initialState, action: any) => {
+  return produce(state, (draftState: any) => {
     switch (action.type) {
       case productsActions.SET_PRODUCTS: {
-        draftState.categories = ['Все', ...new Set(action.payload.map((label) => label.category))];
+        draftState.categories = ['Все', ...new Set(action.payload.map((label: any) => label.category))];
         draftState.products = action.payload;
         break;
       }

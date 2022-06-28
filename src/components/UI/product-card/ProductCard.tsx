@@ -4,11 +4,11 @@ import { Button } from '../button/Button';
 import { Lightbox } from '../lightbox/Lightbox';
 import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
-import * as cartActions from './../../../services/actions/cart';
+import * as cartActions from '../../../services/actions/cart';
 
-export const ProductCard = ({ product }) => {
+export const ProductCard = ({ product }: any) => {
   const dispatch = useDispatch();
-  const isExist = useSelector((state) => state.cart.items.find((item) => item.id === product.id));
+  const isExist = useSelector((state: any) => state.cart.items.find((item: any) => item.id === product.id));
   return (
     <motion.div
       layout

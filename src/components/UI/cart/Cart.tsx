@@ -3,16 +3,16 @@ import classes from './Cart.module.css';
 import { TrashButton } from '../trash-button/TrashButton';
 import { Lightbox } from '../lightbox/Lightbox';
 import { useDispatch, useSelector } from 'react-redux';
-import * as cartActions from './../../../services/actions/cart';
+import * as cartActions from '../../../services/actions/cart';
 
 export const Cart = () => {
-  const cartItems = useSelector((state) => state.cart.items);
+  const cartItems = useSelector((state:any) => state.cart.items);
   const dispatch = useDispatch();
   return (
     <div className={classes.container}>
       <h2 className={classes.title}>Оборудование в заявке:</h2>
       {cartItems.length < 1 && <p className={classes.empty}>Вы ничего не добавили!</p>}
-      {cartItems.map((product) => (
+      {cartItems.map((product:any) => (
         <div key={product.id} className={classes.wrapper}>
           <Lightbox image={product.image} alt={product.description}>
             <img className={classes.image} src={product.image} alt={product.description} />

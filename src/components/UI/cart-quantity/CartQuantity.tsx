@@ -5,7 +5,7 @@ import cartIcon from '../../../images/cart-icon.svg';
 import { useSelector } from 'react-redux';
 
 export const CartQuantity = () => {
-  const cartItems = useSelector((state) => state.cart.items);
+  const cartItems = useSelector((state: any) => state.cart.items);
   return (
     <Link className={classes.link} to={'/request'}>
       <img src={cartIcon} alt="Иконка корзины" />

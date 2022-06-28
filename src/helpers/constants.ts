@@ -1,8 +1,7 @@
-export const requestFormInitialValues = { cartName: '', cartEmail: '', cartPhone: '', cartProducts: [] };
 export const onStateSuccess = 'Успешно!';
 export const onStateError = 'Ошибка!';
 
-export const getFormData = (json) => {
+export const getFormData = (json:any) => {
   try {
     const data = new FormData();
     for (let key in json) {

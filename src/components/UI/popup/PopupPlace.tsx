@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 
 export const PopupPlace = () => {
   const [popups, setPopups] = useState([]);
-  const currentPopup = popups[popups.length - 1];
+  const currentPopup: any = popups[popups.length - 1];
 
   const transition = { duration: 0.3, type: 'spring' };
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ export const PopupPlace = () => {
   };
 
   useEffect(() => {
-    return popupService.listen((items) => {
+    return popupService.listen((items:any) => {
       setPopups(items);
     });
   }, []);
@@ -37,7 +37,7 @@ export const PopupPlace = () => {
           initial={{ opacity: 0 }}
           transition={transition}
           className={classes.overlay}
-          onClick={currentPopup.hasOwnProperty('disableOverlayClick') ? null : handleOnClick}
+          onClick={currentPopup.hasOwnProperty('disableOverlayClick') ? undefined : handleOnClick}
         >
           <motion.div
             animate={{ scale: 1 }}

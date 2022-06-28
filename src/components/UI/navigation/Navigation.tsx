@@ -7,7 +7,7 @@ export const Navigation = () => {
   // noinspection JSValidateTypes
   return (
     <nav className={classes.links}>
-      {Object.values(routes).map((item, key) =>
+      {Object.values(routes).map((item: any, key) =>
         item.navigation ? (
           <NavLink key={key} className={({ isActive }) => (isActive ? classes.active : classes.link)} to={item.path}>
             {item.navigation.title}

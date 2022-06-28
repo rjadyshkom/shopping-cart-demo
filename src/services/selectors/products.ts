@@ -1,6 +1,6 @@
-export const currentPageSelector = (state) => state.products.currentPage;
-export const productsPerPageSelector = (state) => state.products.productsPerPage;
-export const productsSelector = (state) => {
+export const currentPageSelector = (state: any) => state.products.currentPage;
+export const productsPerPageSelector = (state: any) => state.products.productsPerPage;
+export const productsSelector = (state: any) => {
   const currentCategory = state.products.currentCategory;
   const currentPage = currentPageSelector(state);
   const productsPerPage = productsPerPageSelector(state);
@@ -9,7 +9,7 @@ export const productsSelector = (state) => {
   const tempProducts =
     currentCategory === 'Все'
       ? state.products.products
-      : state.products.products.filter((p) => p.category === currentCategory);
+      : state.products.products.filter((p: any) => p.category === currentCategory);
   const resultProducts = tempProducts.slice(firstProduct, lastProduct);
   return {
     products: resultProducts,

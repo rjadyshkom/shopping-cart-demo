@@ -8,7 +8,7 @@ import { Error } from '../../UI/error/Error';
 import { TotalPrice } from '../../UI/total-price/TotalPrice';
 import { PopupContent } from '../../UI/popup/PopupContent';
 import { useDispatch, useSelector } from 'react-redux';
-import * as formActions from './../../../services/actions/form';
+import * as formActions from '../../../services/actions/form';
 
 export const RequestFormLayout = ({ formikProps, submitState, setSubmitState, isPopupOpen, setIsPopupOpen }: any) => {
   const cartItems = useSelector((state:any) => state.cart.items);
