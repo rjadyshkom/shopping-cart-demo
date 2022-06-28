@@ -6,5 +6,5 @@ export const Button = ({ children, isExist, ...props }: any) => {
     <button {...props} className={isExist ? `${classes.button} ${classes.exist}` : classes.button}>
       {children}
     </button>
-  ) as JSX.Element;
+  );
 };
