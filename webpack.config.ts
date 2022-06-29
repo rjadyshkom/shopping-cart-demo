@@ -1,4 +1,4 @@
-const { resolve } = require('path');
+const path = require('path');
 
 module.exports = {
   entry: './src/index.ts',
@@ -16,6 +16,6 @@ module.exports = {
   },
   output: {
     filename: 'bundle.js',
-    path: resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, 'build'),
   },
 };
