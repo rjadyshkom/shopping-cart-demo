@@ -1,13 +1,14 @@
 import { ProductsService } from '../ProductsService';
 import * as productsActions from '../actions/products';
+import { makeTimeout } from '../../helpers/constants';
 
-export function getProductsThunk(dispatch:any) {
-  return ProductsService.getAll()
-    .then((response) => {
-      dispatch(productsActions.setLoading(true));
+export function getProductsThunk(dispatch: any) {
+  dispatch(productsActions.setLoading(true));
+  return Promise.all([ProductsService.getAll(), makeTimeout(3000)])
+    .then(([response]) => {
       dispatch(productsActions.setProducts(response.data));
+      dispatch(productsActions.setLoading(false));
     })
-    .then(() => dispatch(productsActions.setLoading(false)))
     .catch(() => {
       dispatch(productsActions.setLoading(false));
       dispatch(productsActions.setError(true));

@@ -28,7 +28,7 @@ export const Products = () => {
       </div>
       <motion.div layout className={classes.products}>
         <AnimatePresence>
-          {isProductsLoading && <h2>Загружаю тренажёры...</h2>}
+          {isProductsLoading && products.length === 0 && <h2>Загружаю тренажёры...</h2>}
           {isProductsLoadingError && <h2>Не удалось загрузить информацию о тренажёрах с сервера</h2>}
           {products.map((product: any) => (
             <ProductCard
