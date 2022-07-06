@@ -21,8 +21,9 @@ export const ProductCard = ({ product }: any) => {
       <Lightbox image={product.image} alt={product.name}>
         <img draggable={false} className={classes.image} src={product.image} alt={product.name} />
       </Lightbox>
-
-      <p className={classes.description}>{product.name}</p>
+      <h2 className={classes.name}>{product.name}</h2>
+      <p className={classes.description}>{product.description}</p>
+      <span className={classes.activities}>{product.activities.join(', ')}</span>
       <div className={classes.wrapper}>
         <span className={classes.price}>от {product.price} руб.</span>
         <div className={classes.controls}>
