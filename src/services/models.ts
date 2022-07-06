@@ -9,10 +9,6 @@ export type TItem = {
   price: number;
 };
 
-export type TCartItem = TItem & {
-  qty: number;
-};
-
 // Типы в экшенах
 
 export type TCartAction =
@@ -34,6 +30,12 @@ export type TFormState = {
     cartPhone: string;
     cartProducts: TItem;
   };
+};
+
+// Пересечение типов
+
+export type TCartItem = TItem & {
+  qty: number;
 };
 
 // Комбинированные типы
