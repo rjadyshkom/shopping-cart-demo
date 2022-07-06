@@ -1,12 +1,15 @@
 // Базовые типы
 
 export type TItem = {
-  category: string;
-  description: string;
-  id: number;
+  id: string;
   image: string;
   name: string;
+  description: string;
   price: number;
+  category: string;
+  activities: Array<string>;
+  size: string;
+  weight: number;
 };
 
 // Типы в экшенах

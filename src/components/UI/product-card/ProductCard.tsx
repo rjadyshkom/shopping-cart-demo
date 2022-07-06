@@ -18,11 +18,11 @@ export const ProductCard = ({ product }: any) => {
       transition={{ duration: 0.4, type: 'tween' }}
       className={classes.container}
     >
-      <Lightbox image={product.image} alt={product.description}>
-        <img draggable={false} className={classes.image} src={product.image} alt={product.description} />
+      <Lightbox image={product.image} alt={product.name}>
+        <img draggable={false} className={classes.image} src={product.image} alt={product.name} />
       </Lightbox>
 
-      <p className={classes.description}>{product.description}</p>
+      <p className={classes.description}>{product.name}</p>
       <div className={classes.wrapper}>
         <span className={classes.price}>от {product.price} руб.</span>
         <div className={classes.controls}>

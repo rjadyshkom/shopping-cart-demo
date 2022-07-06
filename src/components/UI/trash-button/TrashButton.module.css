@@ -3,4 +3,5 @@
     height: 20px;
     background: url(../../../images/trash-icon.svg) no-repeat center center;
     background-size: contain;
+    flex-shrink: 0;
 }
