@@ -27,7 +27,7 @@ export const ProductCard = ({ product }: any) => {
         <p className={classes.description}>{product.description}</p>
         <div className={classes.activities}>
           <p className={classes.groups}>Группы мышц:</p>
-          {product.activities.map((item: string, key: number) => (
+          {[...product.activities].sort().map((item: string, key: number) => (
             <span key={key} className={currentCategory === item ? classes.active : classes.activity}>
               {item}
             </span>
