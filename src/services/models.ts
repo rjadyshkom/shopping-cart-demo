@@ -8,8 +8,12 @@ export type TItem = {
   price: number;
   category: string;
   activities: Array<string>;
-  size: string;
-  weight: number;
+  sizes: {
+    length: number;
+    width: number;
+    height: number;
+    weight: number;
+  };
 };
 
 // Типы в экшенах
