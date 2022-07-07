@@ -24,7 +24,6 @@ export const Products = () => {
     <section className={classes.container}>
       <div className={classes.wrapper}>
         <Filter />
-        <Pagination pagesCount={pagesCount} />
       </div>
       <motion.div layout className={classes.products}>
         <AnimatePresence>
@@ -39,6 +38,7 @@ export const Products = () => {
               product={product}
             />
           ))}
+          {pagesCount > 1 && <Pagination pagesCount={pagesCount} />}
         </AnimatePresence>
       </motion.div>
     </section>

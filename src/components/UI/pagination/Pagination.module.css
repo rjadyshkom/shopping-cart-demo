@@ -4,6 +4,9 @@
     padding: 20px 0;
     position: relative;
     z-index: 2;
+    grid-column: 1 / 4;
+    background: #fff;
+    border-radius: 25px;
 }
 
 .link {
