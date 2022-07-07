@@ -45,6 +45,12 @@
     font-style: italic;
     font-size: 14px;
     font-weight: bold;
+    display: flex;
+    gap: 5px;
+}
+
+.activities .active {
+    color: #ED6E00;
 }
 
 .image {

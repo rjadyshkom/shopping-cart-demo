@@ -9,6 +9,7 @@ import * as cartActions from '../../../services/actions/cart';
 export const ProductCard = ({ product }: any) => {
   const dispatch = useDispatch();
   const isExist = useSelector((state: any) => state.cart.items.find((item: any) => item.id === product.id));
+  const currentCategory = useSelector((state: any) => state.products.currentCategory);
   return (
     <motion.div
       layout
@@ -23,7 +24,13 @@ export const ProductCard = ({ product }: any) => {
       </Lightbox>
       <h2 className={classes.name}>{product.name}</h2>
       <p className={classes.description}>{product.description}</p>
-      <span className={classes.activities}>{product.activities.join(', ')}</span>
+      <div className={classes.activities}>
+        {product.activities.map((item: string, key: number) => (
+          <span key={key} className={currentCategory === item ? classes.active : null}>
+            {item}
+          </span>
+        ))}
+      </div>
       <div className={classes.wrapper}>
         <span className={classes.price}>от {product.price} руб.</span>
         <div className={classes.controls}>
