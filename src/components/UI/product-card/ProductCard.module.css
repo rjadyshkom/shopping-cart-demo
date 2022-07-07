@@ -42,18 +42,31 @@
     overflow: hidden;
     font-size: 16px;
     line-height: 18px;
+    margin-top: 5px;
+}
+
+.groups {
+    margin-right: 10px;
 }
 
 .activities {
     text-transform: lowercase;
-    font-style: italic;
     font-size: 14px;
     font-weight: bold;
     display: flex;
     gap: 5px;
+    margin-top: 10px;
 }
 
-.activities .active {
+.activities span::after {
+    content: ',';
+}
+
+.activities span:last-child::after {
+    content: '';
+}
+
+.active {
     color: #ED6E00;
 }
 
