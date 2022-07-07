@@ -22,15 +22,18 @@ export const ProductCard = ({ product }: any) => {
       <Lightbox image={product.image} alt={product.name}>
         <img draggable={false} className={classes.image} src={product.image} alt={product.name} />
       </Lightbox>
-      <h2 className={classes.name}>{product.name}</h2>
-      <p className={classes.description}>{product.description}</p>
-      <div className={classes.activities}>
-        {product.activities.map((item: string, key: number) => (
-          <span key={key} className={currentCategory === item ? classes.active : null}>
-            {item}
-          </span>
-        ))}
+      <div className={classes.specs}>
+        <h2 className={classes.name}>{product.name}</h2>
+        <p className={classes.description}>{product.description}</p>
+        <div className={classes.activities}>
+          {product.activities.map((item: string, key: number) => (
+            <span key={key} className={currentCategory === item ? classes.active : null}>
+              {item}
+            </span>
+          ))}
+        </div>
       </div>
+
       <div className={classes.wrapper}>
         <span className={classes.price}>от {product.price} руб.</span>
         <div className={classes.controls}>
