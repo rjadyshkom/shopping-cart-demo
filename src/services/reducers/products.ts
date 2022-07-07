@@ -15,7 +15,7 @@ export const productsReducer = (state = initialState, action: any) => {
   return produce(state, (draftState: any) => {
     switch (action.type) {
       case productsActions.SET_PRODUCTS: {
-        draftState.categories = ['Все', ...new Set(action.payload.map((label: any) => label.category))];
+        draftState.categories = ['Все', ...new Set(action.payload.map((item:any) => item.activities).join().split(','))];
         draftState.products = action.payload;
         break;
       }
