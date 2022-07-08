@@ -9,6 +9,7 @@
 
 .container {
     display: inline-flex;
+    flex-wrap: wrap;
     gap: 20px;
     padding: 20px 0;
 }

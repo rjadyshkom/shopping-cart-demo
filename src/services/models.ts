@@ -7,7 +7,7 @@ export type TItem = {
   description: string;
   price: number;
   category: string;
-  activities: Array<string>;
+  chips: Array<string>;
   sizes: {
     length: number;
     width: number;

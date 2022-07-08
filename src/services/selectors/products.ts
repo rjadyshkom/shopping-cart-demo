@@ -9,7 +9,7 @@ export const productsSelector = (state: any) => {
   const tempProducts =
     currentCategory === 'Все'
       ? state.products.products
-      : state.products.products.filter((p: any) => p.activities.includes(currentCategory));
+      : state.products.products.filter((p: any) => p.chips.includes(currentCategory));
   const resultProducts = tempProducts.slice(firstProduct, lastProduct);
   return {
     products: resultProducts,

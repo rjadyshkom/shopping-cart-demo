@@ -19,7 +19,7 @@ export const productsReducer = (state = initialState, action: any) => {
           'Все',
           ...new Set(
             action.payload
-              .map((item: any) => item.activities)
+              .map((item: any) => item.chips)
               .join()
               .split(',')
               .sort(),
