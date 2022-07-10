@@ -3,7 +3,6 @@
     margin: 0 auto;
     padding: 60px 60px 100px;
     display: grid;
-    grid-auto-flow: row dense;
     grid-template-columns: repeat(3, 1fr);
     gap: 50px 15px;
     grid-template-areas:

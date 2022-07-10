@@ -4,6 +4,7 @@
     gap: 10px;
     font-size: 22px;
     line-height: 26px;
+    overflow: hidden;
 }
 
 .info {
@@ -31,6 +32,9 @@
     line-height: 30px;
     color: #252525;
     text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .description {
@@ -69,6 +73,7 @@
 .imageWrapper {
     background-color: rgb(242, 242, 242);
     aspect-ratio: 4 / 3;
+    padding: 20px;
 }
 
 .image {
