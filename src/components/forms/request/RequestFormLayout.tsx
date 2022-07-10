@@ -5,7 +5,7 @@ import { Button } from '../../UI/button/Button';
 import { onStateSuccess, onStateError } from '../../../helpers/constants';
 import { Success } from '../../UI/success/Success';
 import { Error } from '../../UI/error/Error';
-import { TotalPrice } from '../../UI/total-price/TotalPrice';
+import { TotalPrice } from '../../UI/cart/total-price/TotalPrice';
 import { PopupContent } from '../../UI/popup/PopupContent';
 import { useDispatch, useSelector } from 'react-redux';
 import * as formActions from '../../../services/actions/form';

@@ -8,6 +8,7 @@
     grid-template-areas:
     "categories filters filters"
     "categories message message"
+    "categories message message"
 }
 
 
@@ -21,5 +22,5 @@
 
 .statusMessage {
  grid-area: message;
-    text-align: center;
+    justify-self: center;
 }

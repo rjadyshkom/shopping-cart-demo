@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './CartQuantity.module.css';
 import { Link } from 'react-router-dom';
-import cartIcon from '../../../images/cart-icon.svg';
+import cartIcon from '../../../../images/cart-icon.svg';
 import { useSelector } from 'react-redux';
 
 export const CartQuantity = () => {

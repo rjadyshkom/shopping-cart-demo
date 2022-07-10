@@ -37,7 +37,7 @@ export const Products = () => {
           product={product}
         />
       ))}
-      {isProductsLoading && products.length === 0 && <h2 className={classes.statusMessage}>Загружаю тренажёры...</h2>}
+      {isProductsLoading && products.length === 0 && <h2 className={classes.statusMessage}>Загрузка данных...</h2>}
       {isProductsLoadingError && (
         <h2 className={classes.statusMessage}>Не удалось загрузить информацию о тренажёрах с сервера</h2>
       )}
