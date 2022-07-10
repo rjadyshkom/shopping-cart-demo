@@ -3,7 +3,7 @@ import * as productsActions from '../actions/products';
 
 const initialState = {
   products: [],
-  productsPerPage: 6,
+  productsPerPage: 8,
   currentPage: 1,
   currentCategory: 'Все',
   categories: ['Все'],

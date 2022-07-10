@@ -1,25 +1,17 @@
 import React from 'react';
 import classes from './ProductCard.module.css';
-import { Button } from '../button/Button';
-import { Lightbox } from '../lightbox/Lightbox';
-import { motion } from 'framer-motion';
+import { Button } from '../../button/Button';
+import { Lightbox } from '../../lightbox/Lightbox';
 import { useDispatch, useSelector } from 'react-redux';
-import * as cartActions from '../../../services/actions/cart';
-import { TrashButton } from '../trash-button/TrashButton';
+import * as cartActions from '../../../../services/actions/cart';
+import { TrashButton } from '../../trash-button/TrashButton';
 
 export const ProductCard = ({ product }: any) => {
   const dispatch = useDispatch();
   const isExist = useSelector((state: any) => state.cart.items.find((item: any) => item.id === product.id));
   const currentCategory = useSelector((state: any) => state.products.currentCategory);
   return (
-    <motion.div
-      layout
-      animate={{ opacity: 1 }}
-      initial={{ opacity: 0 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.4, type: 'tween' }}
-      className={classes.container}
-    >
+    <div className={classes.container}>
       <Lightbox image={product.image} alt={product.name}>
         <div className={classes.imageWrapper}>
           <img draggable={false} className={classes.image} src={product.image} alt={product.name} />
@@ -45,11 +37,13 @@ export const ProductCard = ({ product }: any) => {
         )}
         {isExist && (
           <div className={classes.controls}>
-            <Button disabled={isExist} isExist={isExist}>В заявке</Button>
+            <Button disabled={isExist} isExist={isExist}>
+              В заявке
+            </Button>
             <TrashButton onClick={() => dispatch(cartActions.deleteItem(product))} />
           </div>
         )}
       </div>
-    </motion.div>
+    </div>
   );
 };

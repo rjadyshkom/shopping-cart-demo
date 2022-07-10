@@ -2,18 +2,25 @@
     max-width: 1280px;
     margin: 0 auto;
     padding: 60px 60px 100px;
-}
-
-.wrapper {
-    display: flex;
-    flex-direction: column;
-}
-
-.products {
     display: grid;
-    min-height: 100vh;
+    grid-auto-flow: row dense;
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: minmax(min-content, max-content);
     gap: 50px 15px;
-    padding-top: 60px;
+    grid-template-areas:
+    "categories filters filters"
+    "categories message message"
+}
+
+
+.categoriesWrapper {
+   grid-area: categories;
+}
+
+.filterWrapper {
+    grid-area: filters
+}
+
+.statusMessage {
+ grid-area: message;
+    text-align: center;
 }
