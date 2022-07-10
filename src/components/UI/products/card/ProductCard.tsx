@@ -4,7 +4,7 @@ import { Button } from '../../button/Button';
 import { Lightbox } from '../../lightbox/Lightbox';
 import { useDispatch, useSelector } from 'react-redux';
 import * as cartActions from '../../../../services/actions/cart';
-import { TrashButton } from '../../trash-button/TrashButton';
+import { Quantity } from '../../quantity/Quantity';
 
 export const ProductCard = ({ product }: any) => {
   const dispatch = useDispatch();
@@ -40,7 +40,7 @@ export const ProductCard = ({ product }: any) => {
             <Button disabled={isExist} isExist={isExist}>
               В заявке
             </Button>
-            <TrashButton onClick={() => dispatch(cartActions.deleteItem(product))} />
+            <Quantity product={isExist} isRemovable />
           </div>
         )}
       </div>

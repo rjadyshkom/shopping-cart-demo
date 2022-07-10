@@ -34,7 +34,7 @@ export const cartReducer = (state: TCartState = initialState, action: TCartActio
         // undefined | не присваивается тип
         const isItemExist: TCartItem | any = state.items.find((item: TItem) => item.id === action.payload.id);
         if (isItemExist.qty === 1) {
-          return null;
+          return
         }
         draftState.items = state.items.map((item: TItem) =>
           item.id === action.payload.id
