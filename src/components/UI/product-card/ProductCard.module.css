@@ -4,33 +4,33 @@
     gap: 10px;
     font-size: 22px;
     line-height: 26px;
-    border-radius: 25px;
-    overflow: hidden;
-    background-color: rgba(241, 241, 241, 1);
-    padding: 50px 0;
 }
 
-.wrapper {
-    padding: 20px 50px 0;
+.info {
     display: flex;
     gap: 10px;
     justify-content: space-between;
-    align-items: center;
-}
-
-.specs {
-    padding: 0 50px;
 }
 
 .price {
-    font-weight: bold;
-    font-size: 16px;
+    color: #828282;
+    font-size: 20px;
+    padding-right: 20px;
+}
+
+.id {
+    font-size: 20px;
+    line-height: 30px;
+    color: #252525;
+    text-transform: uppercase;
 }
 
 .name {
     font-weight: bold;
-    font-size: 18px;
-    line-height: 25px;
+    font-size: 20px;
+    line-height: 30px;
+    color: #252525;
+    text-transform: uppercase;
 }
 
 .description {
@@ -48,10 +48,10 @@
 .activities {
     text-transform: lowercase;
     font-size: 14px;
-    font-weight: bold;
+    color: #4f4f4f;
     display: flex;
     gap: 5px;
-    margin-top: 10px;
+    margin: 10px 0;
 }
 
 .activities span::after {
@@ -66,16 +66,27 @@
     color: #ED6E00;
 }
 
+.imageWrapper {
+    background-color: rgb(242, 242, 242);
+    aspect-ratio: 4 / 3;
+}
+
 .image {
     width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: contain;
-    object-position: center;
+    height: 100%;
+    object-fit: scale-down;
+    object-position: center center;
     cursor: zoom-in;
 }
 
 .controls {
     display: flex;
+    width: 100%;
     gap: 20px;
     align-items: center;
+    justify-content: space-between;
+}
+
+.controls button:last-child {
+    margin-right: 40px;
 }
