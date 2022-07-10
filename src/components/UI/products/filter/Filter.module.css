@@ -10,7 +10,7 @@
 .container {
     display: inline-flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 20px 10px;
 }
 
 .label {
@@ -21,6 +21,7 @@
     color: #000;
     cursor: pointer;
     user-select: none;
+    font-size: 16px;
 }
 
 .label:hover {
