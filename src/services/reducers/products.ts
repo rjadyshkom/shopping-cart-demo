@@ -7,6 +7,8 @@ const initialState = {
   currentPage: 1,
   activeFilter: 'Все',
   filters: ['Все'],
+  activeCategory: 'Уличные тренажёры',
+  categories: [],
   error: false,
   loading: false,
 };
@@ -15,6 +17,16 @@ export const productsReducer = (state = initialState, action: any) => {
   return produce(state, (draftState: any) => {
     switch (action.type) {
       case productsActions.SET_PRODUCTS: {
+        draftState.categories = [
+          ...new Set(
+            action.payload
+              .map((category: any) => category.category)
+              .join()
+              .split(',')
+              .sort(),
+          ),
+        ];
+
         draftState.filters = [
           'Все',
           ...new Set(
@@ -25,6 +37,7 @@ export const productsReducer = (state = initialState, action: any) => {
               .sort(),
           ),
         ];
+
         draftState.products = action.payload;
         break;
       }
@@ -34,6 +47,11 @@ export const productsReducer = (state = initialState, action: any) => {
       }
       case productsActions.SET_FILTER: {
         draftState.activeFilter = action.payload;
+        draftState.currentPage = 1;
+        break;
+      }
+      case productsActions.SET_CATEGORY: {
+        draftState.activeCategory = action.payload;
         draftState.currentPage = 1;
         break;
       }

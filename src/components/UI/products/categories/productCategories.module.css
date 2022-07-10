@@ -1,5 +1,33 @@
 .container {
     width: 280px;
     height: 705px;
-    background: rgb(242, 242, 242);
+}
+
+.category {
+    font-size: 16px;
+    line-height: 23px;
+    text-transform: uppercase;
+    color: #252525;
+    border-bottom: 1px solid #252525;
+    padding: 16px 0 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.active, .category:hover {
+    color: #828282;
+    border-bottom-color: #828282;
+}
+
+.active:after {
+    content: url(./../../../../images/category-icon-active.svg);
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    object-position: center center;
+    flex-shrink: 0;
+    padding-right: 10px;
 }

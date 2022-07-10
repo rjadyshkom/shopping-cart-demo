@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import classes from './Products.module.css';
 import { ProductCard } from '../../components/UI/products/card/ProductCard';
-import { Filter } from '../../components/UI/filter/Filter';
+import { Filter } from '../../components/UI/products/filter/Filter';
 import { Pagination } from '../../components/UI/pagination/Pagination';
 import { useDispatch, useSelector } from 'react-redux';
 import { productsSelector } from '../../services/selectors/products';
