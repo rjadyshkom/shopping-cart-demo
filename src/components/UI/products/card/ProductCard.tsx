@@ -9,7 +9,7 @@ import { TrashButton } from '../../trash-button/TrashButton';
 export const ProductCard = ({ product }: any) => {
   const dispatch = useDispatch();
   const isExist = useSelector((state: any) => state.cart.items.find((item: any) => item.id === product.id));
-  const currentCategory = useSelector((state: any) => state.products.currentCategory);
+  const activeFilter = useSelector((state: any) => state.products.activeFilter);
   return (
     <div className={classes.container}>
       <Lightbox image={product.image} alt={product.name}>
@@ -22,10 +22,10 @@ export const ProductCard = ({ product }: any) => {
         <span className={classes.price}>{`от ${product.price} р.`}</span>
       </div>
       <h2 className={classes.name}>{product.name}</h2>
-      <div className={classes.activities}>
-        {[...product.chips].sort().map((item: string, key: number) => (
-          <span key={key} className={currentCategory === item ? classes.active : classes.activity}>
-            {item}
+      <div className={classes.filters}>
+        {[...product.filters].sort().map((filter: string, key: number) => (
+          <span key={key} className={activeFilter === filter ? classes.active : classes.activity}>
+            {filter}
           </span>
         ))}
       </div>

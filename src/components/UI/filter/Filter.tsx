@@ -4,18 +4,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as productsActions from '../../../services/actions/products';
 
 export const Filter = () => {
-  const chips = useSelector((state: any) => state.products.categories);
+  const chips = useSelector((state: any) => state.products.filters);
   const dispatch = useDispatch();
-  const activeCategory = useSelector((state: any) => state.products.currentCategory);
+  const activeFilter = useSelector((state: any) => state.products.activeFilter);
   return (
     <div className={classes.container}>
-      {chips.map((category: any, key: any) => (
+      {chips.map((filter: any, key: any) => (
         <span
-          className={activeCategory === category ? `${classes.label} ${classes.active}` : classes.label}
+          className={activeFilter === filter ? `${classes.label} ${classes.active}` : classes.label}
           key={key}
-          onClick={() => dispatch(productsActions.setCategory(category))}
+          onClick={() => dispatch(productsActions.setFilter(filter))}
         >
-          {category}
+          {filter}
         </span>
       ))}
     </div>

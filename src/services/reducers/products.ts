@@ -5,8 +5,8 @@ const initialState = {
   products: [],
   productsPerPage: 8,
   currentPage: 1,
-  currentCategory: 'Все',
-  categories: ['Все'],
+  activeFilter: 'Все',
+  filters: ['Все'],
   error: false,
   loading: false,
 };
@@ -15,11 +15,11 @@ export const productsReducer = (state = initialState, action: any) => {
   return produce(state, (draftState: any) => {
     switch (action.type) {
       case productsActions.SET_PRODUCTS: {
-        draftState.categories = [
+        draftState.filters = [
           'Все',
           ...new Set(
             action.payload
-              .map((item: any) => item.chips)
+              .map((filter: any) => filter.filters)
               .join()
               .split(',')
               .sort(),
@@ -32,8 +32,8 @@ export const productsReducer = (state = initialState, action: any) => {
         draftState.currentPage = action.payload;
         break;
       }
-      case productsActions.SET_CATEGORY: {
-        draftState.currentCategory = action.payload;
+      case productsActions.SET_FILTER: {
+        draftState.activeFilter = action.payload;
         draftState.currentPage = 1;
         break;
       }
