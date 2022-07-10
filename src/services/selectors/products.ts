@@ -9,19 +9,22 @@ export const productsSelector = (state: any) => {
   const lastProduct = currentPage * productsPerPage;
   const firstProduct = lastProduct - productsPerPage;
   const tempProducts =
-    activeFilter === 'Все'
-      ? resultCategory
-      : resultCategory.filter((p: any) => p.filters.includes(activeFilter));
-
+    activeFilter === 'Все' ? resultCategory : resultCategory.filter((p: any) => p.filters.includes(activeFilter));
 
   const resultProducts = tempProducts.slice(firstProduct, lastProduct);
-
-
-
-  console.log(resultCategory);
-
+  const resultFilters = [
+    'Все',
+    ...new Set(
+      resultCategory
+        .map((filter: any) => filter.filters)
+        .join()
+        .split(',')
+        .sort(),
+    ),
+  ];
   return {
     products: resultProducts,
+    filters: resultFilters,
     pagesCount: Math.ceil(tempProducts.length / productsPerPage),
   };
 };

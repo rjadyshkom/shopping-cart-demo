@@ -52,6 +52,7 @@ export const productsReducer = (state = initialState, action: any) => {
       }
       case productsActions.SET_CATEGORY: {
         draftState.activeCategory = action.payload;
+        draftState.activeFilter = 'Все';
         draftState.currentPage = 1;
         break;
       }

@@ -2,9 +2,10 @@ import React from 'react';
 import classes from './Filter.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import * as productsActions from '../../../../services/actions/products';
+import { productsSelector } from '../../../../services/selectors/products';
 
 export const Filter = () => {
-  const filters = useSelector((state: any) => state.products.filters);
+  const { filters } = useSelector(productsSelector);
   const dispatch = useDispatch();
   const activeFilter = useSelector((state: any) => state.products.activeFilter);
   return (
