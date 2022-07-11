@@ -1,4 +1,4 @@
-import React from 'react';
+import React  from 'react';
 import classes from './Filter.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import * as productsActions from '../../../../services/actions/products';
