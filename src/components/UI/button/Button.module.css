@@ -22,4 +22,9 @@
 
 .button:disabled {
     pointer-events: none;
+    opacity: .2;
+}
+
+.exist:disabled {
+    opacity: 1;
 }
