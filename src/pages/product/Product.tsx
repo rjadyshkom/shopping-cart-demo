@@ -10,9 +10,9 @@ export const Product = () => {
   const { productId }: any = useParams();
   const dispatch: any = useDispatch();
   const { products } = useSelector(productsSelector);
-  const initialJsonId = productId.split('-').join(' ').toUpperCase();
+  const initialId = productId.split('-').join(' ').toUpperCase();
 
-  const productData = products.find((product: any) => product.id === initialJsonId);
+  const productData = products.find((product: any) => product.id === initialId);
 
   useEffect(() => {
     dispatch(getProductsThunk);
