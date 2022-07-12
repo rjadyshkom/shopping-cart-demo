@@ -9,6 +9,7 @@ import { PopupPlace } from '../UI/popup/PopupPlace';
 import { Products } from '../../pages/products/Products';
 import { Request } from '../../pages/request/Request';
 import { Categories } from '../../pages/categories/Categories';
+import { Product } from '../../pages/product/Product';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           {/*})}*/}
           <Route path={'/'} element={<Categories />} />
           <Route path={'/:categoryId'} element={<Products />} />
+          <Route path={'/:categoryId/:productId'} element={<Product />} />
           <Route path={'/request'} element={<Request />} />
         </Routes>
       </div>

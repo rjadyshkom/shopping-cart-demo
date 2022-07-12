@@ -7,6 +7,10 @@
     overflow: hidden;
 }
 
+.container a {
+    text-decoration: none;
+}
+
 .info {
     display: flex;
     gap: 10px;
@@ -82,7 +86,6 @@
     height: 100%;
     object-fit: scale-down;
     object-position: center center;
-    cursor: zoom-in;
 }
 
 .controls {
