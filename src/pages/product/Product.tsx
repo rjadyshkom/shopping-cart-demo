@@ -20,7 +20,7 @@ export const Product = () => {
 
   return (
     <section className={classes.product}>
-      {products.length !== 0 && <h2 className={classes.id}>{productData.name}</h2>}
+      {productData !== undefined && <h2 className={classes.id}>{productData.name}</h2>}
       <Loader />
     </section>
   );
