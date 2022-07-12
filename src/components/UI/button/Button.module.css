@@ -16,8 +16,8 @@
 
 .button:hover, .exist {
     color: #fff;
-    background-color: #ED6E00;
-    border-color: #ED6E00;
+    background-color: #ff5c00;
+    border-color: #ff5c00;
 }
 
 .button:disabled {

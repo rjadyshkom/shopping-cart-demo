@@ -25,12 +25,12 @@
 }
 
 .label:hover {
-    border-color: #ED6E00ed;
-    color: #ED6E00ed;
+    border-color: #ff5c00;
+    color: #ff5c00;
 }
 
 .active {
-    border-color: #ED6E00ed;
-    color: #ED6E00ed;
+    border-color: #ff5c00;
+    color: #ff5c00;
     pointer-events: none;
 }

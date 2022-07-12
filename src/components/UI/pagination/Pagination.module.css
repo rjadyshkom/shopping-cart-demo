@@ -23,11 +23,11 @@
 }
 
 .link:hover {
-    color: #ED6E00;
-    border-color: #ED6E00;
+    color: #ff5c00;
+    border-color: #ff5c00;
 }
 
 .active {
-    color: #ED6E00;
-    border-color: #ED6E00;
+    color: #ff5c00;
+    border-color: #ff5c00;
 }
