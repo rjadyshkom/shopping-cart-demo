@@ -1,0 +1,21 @@
+.categories {
+    display: grid;
+    max-width: 1280px;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 60px 60px 100px;
+    gap: 15px;
+    margin: 0 auto;
+    grid-auto-rows: min-content;
+}
+
+.link {
+    background: rgb(242, 242, 242);
+    text-decoration: none;
+    color: #252525;
+    font-size: 20px;
+    font-weight: bold;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

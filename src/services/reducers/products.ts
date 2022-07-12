@@ -7,7 +7,7 @@ const initialState = {
   currentPage: 1,
   activeFilter: 'Все',
   filters: ['Все'],
-  activeCategory: 'Уличные тренажёры',
+  activeCategory: 'Благоустройство',
   categories: [],
   error: false,
   loading: false,

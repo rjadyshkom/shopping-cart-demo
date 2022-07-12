@@ -6,6 +6,9 @@ import { routes } from '../../helpers/routes';
 import { Navigation } from '../UI/navigation/Navigation';
 import { CartQuantity } from '../UI/cart/quantity/CartQuantity';
 import { PopupPlace } from '../UI/popup/PopupPlace';
+import { Products } from '../../pages/products/Products';
+import { Request } from '../../pages/request/Request';
+import { Categories } from '../../pages/categories/Categories';
 
 function App() {
   return (
@@ -17,9 +20,12 @@ function App() {
           <CartQuantity />
         </Header>
         <Routes>
-          {Object.values(routes).map((route, key) => {
-            return <Route key={key} path={route.path} element={<route.element />} />;
-          })}
+          {/*{Object.values(routes).map((route, key) => {*/}
+          {/*  return <Route key={key} path={route.path} element={<route.element />} />;*/}
+          {/*})}*/}
+          <Route path={'/'} element={<Categories />} />
+          <Route path={'/:categoryId'} element={<Products />} />
+          <Route path={'/request'} element={<Request />} />
         </Routes>
       </div>
     </>

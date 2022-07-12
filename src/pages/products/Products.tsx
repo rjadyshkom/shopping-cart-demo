@@ -29,9 +29,8 @@ export const Products = () => {
 
   useEffect(() => {
     navigate({
-      pathname: '/',
+      pathname: `/${transliterate(activeCategory).toLowerCase()}`,
       search: createSearchParams({
-        category: `${transliterate(activeCategory)}`,
         filter: `${transliterate(activeFilter)}`,
       })
         .toString()
