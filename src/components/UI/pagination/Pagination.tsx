@@ -7,7 +7,6 @@ export const Pagination = ({ pagesCount }: any) => {
   const pageNumbers = [];
   const currentPage = useSelector((state: any) => state.products.currentPage);
   const dispatch = useDispatch();
-  const paginate = (pageNumber: any) => dispatch(productsActions.setPage(pageNumber));
   for (let i = 1; i <= pagesCount; i++) {
     pageNumbers.push(i);
   }
@@ -15,7 +14,7 @@ export const Pagination = ({ pagesCount }: any) => {
     <nav className={classes.container}>
       {pageNumbers.map((number) => (
         <span
-          onClick={() => paginate(number)}
+          onClick={() => dispatch((productsActions.setPage(number)))}
           className={currentPage === number ? `${classes.link} ${classes.active}` : classes.link}
           key={number}
         >

@@ -19,6 +19,7 @@ export const Products = () => {
 
   const activeFilter = useSelector((state: any) => state.products.activeFilter);
   const activeCategory = useSelector((state: any) => state.products.activeCategory);
+  const currentPage = useSelector((state: any) => state.products.currentPage);
 
   useEffect(() => {
     dispatch(getProductsThunk);
@@ -30,12 +31,13 @@ export const Products = () => {
       pathname: `/${transliterate(activeCategory).toLowerCase()}`,
       search: createSearchParams({
         filter: `${transliterate(activeFilter)}`,
+        ...(pagesCount > 1 && { page: `${currentPage}` }),
       })
         .toString()
         .toLowerCase(),
     });
     // eslint-disable-next-line
-  }, [activeFilter, activeCategory]);
+  }, [activeFilter, activeCategory, currentPage]);
 
   // noinspection JSValidateTypes
   return (
