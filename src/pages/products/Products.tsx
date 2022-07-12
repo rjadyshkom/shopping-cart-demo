@@ -35,7 +35,7 @@ export const Products = () => {
         .toLowerCase(),
     });
     // eslint-disable-next-line
-  }, [activeFilter, activeCategory]);
+  }, [activeFilter]);
 
   // noinspection JSValidateTypes
   return (
