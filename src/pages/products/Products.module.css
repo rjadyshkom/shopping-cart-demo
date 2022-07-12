@@ -7,7 +7,7 @@
     gap: 50px 15px;
     grid-template-areas:
     "categories filters filters"
-    "categories message message"
+    "categories . ."
 }
 
 
@@ -19,7 +19,7 @@
     grid-area: filters
 }
 
-.statusMessage {
- grid-area: message;
+.loaderWrapper {
+    grid-column: 1 / 4;
     justify-self: center;
 }

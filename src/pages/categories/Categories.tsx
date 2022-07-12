@@ -22,7 +22,9 @@ export const Categories = () => {
           {category}
         </Link>
       ))}
-      <Loader />
+      <div className={classes.loaderWrapper}>
+        <Loader />
+      </div>
     </section>
   );
 };

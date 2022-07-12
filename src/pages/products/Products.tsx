@@ -47,7 +47,9 @@ export const Products = () => {
         <Filter />
       </div>
       <ProductsList />
-      <Loader />
+      <div className={classes.loaderWrapper}>
+        <Loader />
+      </div>
       {pagesCount > 1 && <Pagination pagesCount={pagesCount} />}
     </section>
   );
