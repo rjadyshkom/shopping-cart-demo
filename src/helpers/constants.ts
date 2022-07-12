@@ -89,6 +89,7 @@ export const transliterate = function (text: any) {
     .replace(/\u0442/g, 't')
     .replace(/\u044C/g, '')
     .replace(/\u0431/g, 'b')
-    .replace(/\u044E/g, 'yu');
+    .replace(/\u044E/g, 'yu')
+    .replace(/ /g, '-');
   return text;
 };
