@@ -9,15 +9,13 @@ import { ProductCategories } from '../../components/UI/products/categories/Produ
 import { createSearchParams, useNavigate } from 'react-router-dom';
 import { transliterate } from '../../helpers/constants';
 import { ProductsList } from '../../components/UI/products/list/ProductsList';
+import { Loader } from '../../components/UI/products/loader/Loader';
 
 export const Products = () => {
   const dispatch: any = useDispatch();
   const navigate = useNavigate();
 
-  const { products, pagesCount } = useSelector(productsSelector);
-
-  const isProductsLoading = useSelector((state: any) => state.products.loading);
-  const isProductsLoadingError = useSelector((state: any) => state.products.error);
+  const { pagesCount } = useSelector(productsSelector);
 
   const activeFilter = useSelector((state: any) => state.products.activeFilter);
   const activeCategory = useSelector((state: any) => state.products.activeCategory);
@@ -49,10 +47,7 @@ export const Products = () => {
         <Filter />
       </div>
       <ProductsList />
-      {isProductsLoading && products.length === 0 && <h2 className={classes.statusMessage}>Загрузка данных...</h2>}
-      {isProductsLoadingError && (
-        <h2 className={classes.statusMessage}>Не удалось загрузить информацию о тренажёрах с сервера</h2>
-      )}
+      <Loader />
       {pagesCount > 1 && <Pagination pagesCount={pagesCount} />}
     </section>
   );

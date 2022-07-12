@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getProductsThunk } from '../../services/thunk/products';
 import { transliterate } from '../../helpers/constants';
+import { Loader } from '../../components/UI/products/loader/Loader';
 
 export const Categories = () => {
   const categories = useSelector((state: any) => state.products.categories);
-
   const dispatch: any = useDispatch();
 
   useEffect(() => {
@@ -18,14 +18,11 @@ export const Categories = () => {
   return (
     <section className={classes.categories}>
       {categories.map((category: any, key: number) => (
-        <Link
-          className={classes.link}
-          key={key}
-          to={`${transliterate(category).toLowerCase()}`}
-        >
+        <Link className={classes.link} key={key} to={`${transliterate(category).toLowerCase()}`}>
           {category}
         </Link>
       ))}
+      <Loader />
     </section>
   );
 };
