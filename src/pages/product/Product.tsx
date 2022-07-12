@@ -7,8 +7,8 @@ import { getProductsThunk } from '../../services/thunk/products';
 import { Loader } from '../../components/UI/products/loader/Loader';
 
 export const Product = () => {
-  const { productId }: any = useParams();
   const dispatch: any = useDispatch();
+  const { productId }: any = useParams();
   const { products } = useSelector(productsSelector);
   const initialId = productId.split('-').join(' ').toUpperCase();
 
