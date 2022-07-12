@@ -25,8 +25,8 @@ function App() {
           {/*  return <Route key={key} path={route.path} element={<route.element />} />;*/}
           {/*})}*/}
           <Route path={'/'} element={<Categories />} />
-          <Route path={'/:categoryId'} element={<Products />} />
           <Route path={'/:categoryId/:productId'} element={<Product />} />
+          <Route path={'/:categoryId'} element={<Products />} />
           <Route path={'/request'} element={<Request />} />
         </Routes>
       </div>
