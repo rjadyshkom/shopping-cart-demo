@@ -7,7 +7,7 @@ import { productsSelector } from '../../services/selectors/products';
 import { getProductsThunk } from '../../services/thunk/products';
 import { ProductCategories } from '../../components/UI/products/categories/ProductCategories';
 import { createSearchParams, useNavigate } from 'react-router-dom';
-import { transliterate } from '../../helpers/constants';
+import { transliterateUrl } from '../../helpers/constants';
 import { ProductsList } from '../../components/UI/products/list/ProductsList';
 import { Loader } from '../../components/UI/products/loader/Loader';
 
@@ -28,9 +28,9 @@ export const Products = () => {
 
   useEffect(() => {
     navigate({
-      pathname: `/${transliterate(activeCategory).toLowerCase()}`,
+      pathname: `/${transliterateUrl(activeCategory).toLowerCase()}`,
       search: createSearchParams({
-        filter: `${transliterate(activeFilter)}`,
+        filter: `${transliterateUrl(activeFilter)}`,
         ...(pagesCount > 1 && { page: `${currentPage}` }),
       })
         .toString()

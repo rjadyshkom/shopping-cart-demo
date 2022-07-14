@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as cartActions from '../../../../services/actions/cart';
 import { Quantity } from '../../quantity/Quantity';
 import { Link} from 'react-router-dom';
-import { transliterate } from '../../../../helpers/constants';
+import { transliterateUrl } from '../../../../helpers/constants';
 
 export const ProductCard = ({ product }: any) => {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ export const ProductCard = ({ product }: any) => {
 
   return (
     <div className={classes.container}>
-      <Link to={`${transliterate(product.id).toLowerCase()}`}>
+      <Link to={`${transliterateUrl(product.id).toLowerCase()}`}>
         <div className={classes.imageWrapper}>
           <img draggable={false} className={classes.image} src={product.image} alt={product.name} />
         </div>

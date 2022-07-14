@@ -3,7 +3,7 @@ import classes from './categories.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getProductsThunk } from '../../services/thunk/products';
-import { transliterate } from '../../helpers/constants';
+import { transliterateUrl } from '../../helpers/constants';
 import { Loader } from '../../components/UI/products/loader/Loader';
 import * as productsActions from './../../services/actions/products';
 
@@ -22,7 +22,7 @@ export const Categories = () => {
         <Link
           className={classes.link}
           key={key}
-          to={`${transliterate(category).toLowerCase()}`}
+          to={`${transliterateUrl(category).toLowerCase()}`}
           onClick={() => dispatch(productsActions.setCategory(category))}
         >
           {category}
