@@ -28,13 +28,12 @@ export const Products = () => {
 
   useEffect(() => {
     navigate({
-      pathname: `/${transliterateUrl(activeCategory).toLowerCase()}`,
+      pathname: `/${transliterateUrl(activeCategory)}`,
       search: createSearchParams({
         filter: `${transliterateUrl(activeFilter)}`,
         ...(pagesCount > 1 && { page: `${currentPage}` }),
       })
         .toString()
-        .toLowerCase(),
     });
     // eslint-disable-next-line
   }, [activeFilter, activeCategory, currentPage]);
