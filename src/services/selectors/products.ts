@@ -11,11 +11,11 @@ export const productsSelector = (state: any) => {
 
   const resultCategory = state.products.products.filter((c: any) => c.category.includes(activeCategory));
   const tempProducts =
-    activeFilter === 'Все' ? resultCategory : resultCategory.filter((p: any) => p.filters.includes(activeFilter));
+    activeFilter === 'все' ? resultCategory : resultCategory.filter((p: any) => p.filters.includes(activeFilter));
 
   const resultProducts = tempProducts.slice(firstProduct, lastProduct);
   const resultFilters = [
-    'Все',
+    'все',
     ...new Set(
       resultCategory
         .map((filter: any) => filter.filters)

@@ -5,9 +5,9 @@ const initialState = {
   products: [],
   productsPerPage: 8,
   currentPage: 1,
-  activeFilter: 'Все',
-  filters: ['Все'],
-  activeCategory: 'Благоустройство',
+  activeFilter: 'все',
+  filters: ['все'],
+  activeCategory: 'благоустройство',
   categories: [],
   error: false,
   loading: false,
@@ -28,7 +28,7 @@ export const productsReducer = (state = initialState, action: any) => {
         ];
 
         draftState.filters = [
-          'Все',
+          'все',
           ...new Set(
             action.payload
               .map((filter: any) => filter.filters)
@@ -52,7 +52,7 @@ export const productsReducer = (state = initialState, action: any) => {
       }
       case productsActions.SET_CATEGORY: {
         draftState.activeCategory = action.payload;
-        draftState.activeFilter = 'Все';
+        draftState.activeFilter = 'все';
         draftState.currentPage = 1;
         break;
       }

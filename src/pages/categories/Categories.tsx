@@ -22,7 +22,7 @@ export const Categories = () => {
         <Link
           className={classes.link}
           key={key}
-          to={`${transliterateUrl(category).toLowerCase()}`}
+          to={`${transliterateUrl(category)}`}
           onClick={() => dispatch(productsActions.setCategory(category))}
         >
           {category}
