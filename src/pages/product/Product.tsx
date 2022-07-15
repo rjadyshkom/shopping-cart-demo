@@ -8,6 +8,7 @@ import { getProductsThunk } from '../../services/thunk/products';
 import { Button } from '../../components/UI/button/Button';
 import * as cartActions from '../../services/actions/cart';
 import { Quantity } from '../../components/UI/quantity/Quantity';
+import { Lightbox } from '../../components/UI/lightbox/Lightbox';
 
 export const Product = () => {
   const { productId }: any = useParams();
@@ -23,7 +24,9 @@ export const Product = () => {
     <section className={classes.product}>
       <div className={classes.container}>
         <div className={classes.slider}>
-          <img className={classes.image} src={product.image} alt={product.name} />
+          <Lightbox image={product.image} alt={product.name}>
+            <img className={classes.image} src={product.image} alt={product.name} />
+          </Lightbox>
         </div>
         <div>
           <h1 className={classes.name}>{product.name}</h1>
@@ -32,7 +35,7 @@ export const Product = () => {
               <span>Артикул:</span> <span className={classes.id}>{product.id}</span>
             </li>
             <li className={classes.activities}>
-              <span>Группы мышц:</span> <span>{product.filters.join(', ')}</span>
+              <span>Категория:</span> <span>{product.category}</span>
             </li>
             <li className={classes.priceInfo}>
               <span>от:</span> <span className={classes.price}>{product.price} руб.</span>
