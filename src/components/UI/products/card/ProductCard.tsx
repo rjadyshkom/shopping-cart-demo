@@ -14,7 +14,7 @@ export const ProductCard = ({ product }: any) => {
 
   return (
     <div className={classes.container}>
-      <Link to={`${transliterateUrl(product.id).toLowerCase()}`}>
+      <Link to={`${transliterateUrl(product.id)}`}>
         <div className={classes.imageWrapper}>
           <img draggable={false} className={classes.image} src={product.image} alt={product.name} />
         </div>
@@ -38,12 +38,12 @@ export const ProductCard = ({ product }: any) => {
           </Button>
         )}
         {isExist && (
-          <div className={classes.controls}>
+          <>
             <Button disabled={isExist} isExist={isExist}>
               В заявке
             </Button>
             <Quantity product={isExist} isRemovable />
-          </div>
+          </>
         )}
       </div>
     </div>
