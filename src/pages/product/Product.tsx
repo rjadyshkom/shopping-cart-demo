@@ -20,6 +20,7 @@ export const Product = () => {
   useEffect(() => {
     dispatch(getProductsThunk);
   }, []);
+
   return (
     <section className={classes.product}>
       <div className={classes.container}>
