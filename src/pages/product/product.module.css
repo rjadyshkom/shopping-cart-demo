@@ -100,12 +100,7 @@ li {
 .controls {
     display: flex;
     width: 100%;
-    gap: 20px;
+    gap: 70px;
     align-items: center;
-    justify-content: space-between;
     margin: 35px 0 55px;
-}
-
-.controls button:last-child {
-    margin-right: 165px;
 }
