@@ -30,13 +30,16 @@
 26. Redux
 27. Thunk 
 28. Selectors
-29. Publish-Subscribe modal service
+29. Publish-subscribe modal service
 30. Mail service
 31. Products service
+32. Dynamic routes
+33. Stateful url (categories, filters, pagination)
+34. Persisted state
 
 >Отправка заявки для тестирования isSubmitSuccess || isSubmitError возможна только с 3000 порта (http://localhost:3000)
 
-***Макет не адаптивен, горизонтальный скролл может присутствовать на экранах, имеющих разрешение менее 1440px по ширине***
+***Макет не адаптивен, горизонтальный скролл может присутствовать на экранах, имеющих разрешение менее 1280px по ширине***
 
 ## Запуск проекта
 
