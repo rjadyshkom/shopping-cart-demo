@@ -1,6 +1,6 @@
 # Демо корзины сайта
 
-## Реализованный функционал
+## Что внутри
 
 1. Добавление товаров в корзину
 2. Удаление товаров в карточке товара
@@ -24,18 +24,19 @@
 20. Лайтбокс
 21. Условные состояния и имена кнопок
 22. Условный рендеринг компонентов
-23. Бейдж, отображающий количество добавленных в корзину товаров
-24. Анимация лайтбокса
-25. Закрытие лайтбокса при скролле
-26. Redux
-27. Thunk 
-28. Selectors
-29. Publish-subscribe modal service
-30. Mail service
-31. Products service
-32. Dynamic routes
-33. Stateful url (categories, filters, pagination)
-34. Persisted state
+23. Условный функционал в компонентах (Modal, Quantity )
+24. Бейдж, отображающий количество добавленных в корзину товаров
+25. Анимация лайтбокса
+26. Закрытие лайтбокса при скролле
+27. Redux
+28. Thunk 
+29. Selectors
+30. Publish-subscribe modal service
+31. Mail service
+32. Products service
+33. Dynamic routes
+34. Stateful url (categories, filters, pagination)
+35. Persisted state
 
 >Отправка заявки для тестирования isSubmitSuccess || isSubmitError возможна только с 3000 порта (http://localhost:3000)
 
