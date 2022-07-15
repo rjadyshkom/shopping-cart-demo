@@ -6,22 +6,29 @@ import { useDispatch, useSelector } from 'react-redux';
 import { productsSelector } from '../../services/selectors/products';
 import { getProductsThunk } from '../../services/thunk/products';
 import { ProductCategories } from '../../components/UI/products/categories/ProductCategories';
-import { createSearchParams, useNavigate } from 'react-router-dom';
-import { transliterateUrl } from '../../helpers/constants';
+import { createSearchParams, useNavigate, useParams } from 'react-router-dom';
+import { transliterateUrl, urlToCyrillic } from '../../helpers/constants';
 import { ProductsList } from '../../components/UI/products/list/ProductsList';
 import { Loader } from '../../components/UI/products/loader/Loader';
+import * as productAction from './../../services/actions/products';
 
 export const Products = () => {
   const dispatch: any = useDispatch();
   const navigate = useNavigate();
+  const params = useParams();
 
   const { pagesCount } = useSelector(productsSelector);
 
   const activeFilter = useSelector((state: any) => state.products.activeFilter);
   const activeCategory = useSelector((state: any) => state.products.activeCategory);
   const currentPage = useSelector((state: any) => state.products.currentPage);
+  const categories = useSelector((state: any) => state.products.categories);
+
+  const categoryFromUrl = urlToCyrillic(params.categoryId);
+  const isCategoryFromUrlExist = categories.includes(categoryFromUrl);
 
   useEffect(() => {
+    dispatch(productAction.setCategory(isCategoryFromUrlExist ? categoryFromUrl : activeCategory));
     dispatch(getProductsThunk);
     // eslint-disable-next-line
   }, []);
@@ -32,8 +39,7 @@ export const Products = () => {
       search: createSearchParams({
         filter: `${transliterateUrl(activeFilter)}`,
         ...(pagesCount > 1 && { page: `${currentPage}` }),
-      })
-        .toString()
+      }).toString(),
     });
     // eslint-disable-next-line
   }, [activeFilter, activeCategory, currentPage]);

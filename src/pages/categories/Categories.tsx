@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import { getProductsThunk } from '../../services/thunk/products';
 import { transliterateUrl } from '../../helpers/constants';
 import { Loader } from '../../components/UI/products/loader/Loader';
-import * as productsActions from './../../services/actions/products';
 
 export const Categories = () => {
   const categories = useSelector((state: any) => state.products.categories);
@@ -23,7 +22,6 @@ export const Categories = () => {
           className={classes.link}
           key={key}
           to={`${transliterateUrl(category)}`}
-          onClick={() => dispatch(productsActions.setCategory(category))}
         >
           {category}
         </Link>

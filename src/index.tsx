@@ -25,7 +25,7 @@ const store = createStore(rootReducer, persistedState, applyMiddleware(thunk));
 
 store.subscribe(
   throttle(() => {
-    saveState({ cart: store.getState().cart, form: store.getState().form });
+    saveState({ cart: store.getState().cart, form: store.getState().form, products: store.getState().products });
   }, 1000),
 );
 
