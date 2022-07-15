@@ -18,7 +18,7 @@ export const Categories = () => {
   return (
     <section className={classes.categories}>
       {categories.map((category: any, key: number) => (
-        <Link className={classes.link} key={key} to={`${transliterateUrl(category)}?filter=vse`}>
+        <Link className={classes.link} key={key} to={`${transliterateUrl(category)}?filter=vse&page=1`}>
           {category}
         </Link>
       ))}

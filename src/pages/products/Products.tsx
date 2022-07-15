@@ -23,7 +23,6 @@ export const Products = () => {
   const activeFilter = useSelector((state: any) => state.products.activeFilter);
   const activeCategory = useSelector((state: any) => state.products.activeCategory);
   const currentPage = useSelector((state: any) => state.products.currentPage);
-
   const stateCategories = useSelector((state: any) => state.products.categories);
 
   const categoryFromUrl = urlToCyrillic(params.categoryId);
@@ -32,9 +31,13 @@ export const Products = () => {
   const filterFromUrl = urlToCyrillic(searchParams.get('filter'));
   const isFilterFromUrlExist = filters.includes(filterFromUrl);
 
+  const pageNumberFromUrl = Number(searchParams.get('page'));
+  const isPageNumberFromUrlExist = pageNumberFromUrl <= pagesCount;
+
   useEffect(() => {
     dispatch(productAction.setCategory(isCategoryFromUrlExist ? categoryFromUrl : activeCategory));
-    dispatch(productAction.setFilter(isFilterFromUrlExist ? filterFromUrl : 'все'));
+    dispatch(productAction.setFilter(isFilterFromUrlExist ? filterFromUrl : filters[0]));
+    dispatch(productAction.setPage(isPageNumberFromUrlExist ? pageNumberFromUrl : pagesCount));
     dispatch(getProductsThunk);
     // eslint-disable-next-line
   }, []);
@@ -44,7 +47,7 @@ export const Products = () => {
       pathname: `/${transliterateUrl(activeCategory)}`,
       search: createSearchParams({
         filter: `${transliterateUrl(activeFilter)}`,
-        ...(pagesCount > 1 && { page: `${currentPage}` }),
+        page: `${currentPage}`,
       }).toString(),
     });
     // eslint-disable-next-line
