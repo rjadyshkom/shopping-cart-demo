@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { productsSelector } from '../../services/selectors/products';
 import { getProductsThunk } from '../../services/thunk/products';
 import { ProductCategories } from '../../components/UI/products/categories/ProductCategories';
-import { createSearchParams, useNavigate, useParams } from 'react-router-dom';
+import { createSearchParams, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { transliterateUrl, urlToCyrillic } from '../../helpers/constants';
 import { ProductsList } from '../../components/UI/products/list/ProductsList';
 import { Loader } from '../../components/UI/products/loader/Loader';
@@ -16,19 +16,25 @@ export const Products = () => {
   const dispatch: any = useDispatch();
   const navigate = useNavigate();
   const params = useParams();
+  const [searchParams] = useSearchParams();
 
-  const { pagesCount } = useSelector(productsSelector);
+  const { pagesCount, filters } = useSelector(productsSelector);
 
   const activeFilter = useSelector((state: any) => state.products.activeFilter);
   const activeCategory = useSelector((state: any) => state.products.activeCategory);
   const currentPage = useSelector((state: any) => state.products.currentPage);
-  const categories = useSelector((state: any) => state.products.categories);
+
+  const stateCategories = useSelector((state: any) => state.products.categories);
 
   const categoryFromUrl = urlToCyrillic(params.categoryId);
-  const isCategoryFromUrlExist = categories.includes(categoryFromUrl);
+  const isCategoryFromUrlExist = stateCategories.includes(categoryFromUrl);
+
+  const filterFromUrl = urlToCyrillic(searchParams.get('filter'));
+  const isFilterFromUrlExist = filters.includes(filterFromUrl);
 
   useEffect(() => {
     dispatch(productAction.setCategory(isCategoryFromUrlExist ? categoryFromUrl : activeCategory));
+    dispatch(productAction.setFilter(isFilterFromUrlExist ? filterFromUrl : 'все'));
     dispatch(getProductsThunk);
     // eslint-disable-next-line
   }, []);
