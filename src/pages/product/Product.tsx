@@ -14,8 +14,12 @@ export const Product = () => {
   const { productId }: any = useParams();
   const { products } = useSelector(productsSelector);
   const dispatch: any = useDispatch();
+
   const product = products.find((product: any) => product.id === productId.split('_').join(' ').toUpperCase());
   const inCart = useSelector((state: any) => state.cart.items.find((item: any) => item.id === product.id));
+
+  const notAFitnessCategory = ['благоустройство'];
+  const isAFitnessMachine = notAFitnessCategory.includes(product.category);
 
   useEffect(() => {
     dispatch(getProductsThunk);
@@ -44,11 +48,16 @@ export const Product = () => {
               <span className={classes.taxBadge}>*Без НДС</span>
             </li>
           </ul>
-          <p className={classes.alert}>Цены уточняйте у менеджеров!</p>
+          <div className={classes.alertContainer}>
+            <p className={classes.alert}>Цены уточняйте у менеджеров!</p>
+            <span className={classes.infoIcon}></span>
+          </div>
 
-          <button className={classes.link}>
-            Каждый тренажёр можно оборудовать уникальной мультимедийной системой
-          </button>
+          {!isAFitnessMachine && (
+            <button className={classes.link}>
+              Каждый тренажёр можно оборудовать уникальной мультимедийной системой
+            </button>
+          )}
           <div className={classes.controls}>
             {!inCart && (
               <Button isExist={inCart} onClick={() => dispatch(cartActions.addItem(product))}>

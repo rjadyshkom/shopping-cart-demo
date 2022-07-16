@@ -32,4 +32,5 @@
     object-position: center center;
     flex-shrink: 0;
     padding-right: 10px;
+    opacity: .5;
 }
