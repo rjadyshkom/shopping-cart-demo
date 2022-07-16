@@ -20,7 +20,7 @@ export const ProductCard = ({ product }: any) => {
         </div>
         <div className={classes.info}>
           <span className={classes.id}>{product.id}</span>
-          <span className={classes.price}>{`от ${product.price} р.`}</span>
+          <span className={classes.price}>{`от ${product.price.toLocaleString()} р.`}</span>
         </div>
         <h2 className={classes.name}>{product.name}</h2>
         <div className={classes.filters}>

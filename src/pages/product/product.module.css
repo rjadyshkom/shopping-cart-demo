@@ -95,6 +95,18 @@ li {
     margin: 35px 0 40px;
     display: inline-block;
     max-width: 425px;
+    text-align: left;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.link:active {
+    transform: scale(1);
+}
+
+.link:hover {
+    opacity: .5;
 }
 
 .controls {

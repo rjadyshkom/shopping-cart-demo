@@ -8,7 +8,7 @@ export const TotalPrice = () => {
   return (cartItems.length !== 0 && (
     <div className={classes.total}>
       <h3>Стоимость:</h3>
-      <span>от {totalPrice} руб.</span>
+      <span>от {totalPrice.toLocaleString()} руб.</span>
     </div>
   )) as JSX.Element;
 };

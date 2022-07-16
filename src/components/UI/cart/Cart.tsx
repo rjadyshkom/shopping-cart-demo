@@ -23,7 +23,7 @@ export const Cart = () => {
             <p className={classes.description}>{product.description}</p>
           </div>
           <Quantity product={product}/>
-          <p className={classes.price}>от {product.qty * product.price} руб.</p>
+          <p className={classes.price}>от {(product.qty * product.price).toLocaleString()} руб.</p>
           <TrashButton onClick={() => dispatch(cartActions.deleteItem(product))} />
         </div>
       ))}

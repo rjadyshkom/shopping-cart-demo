@@ -19,6 +19,7 @@ export const Product = () => {
 
   useEffect(() => {
     dispatch(getProductsThunk);
+    // eslint-disable-next-line
   }, []);
 
   return (
@@ -39,14 +40,15 @@ export const Product = () => {
               <span>Категория:</span> <span>{product.category}</span>
             </li>
             <li className={classes.priceInfo}>
-              <span>от:</span> <span className={classes.price}>{product.price} руб.</span>
+              <span>от:</span> <span className={classes.price}>{product.price.toLocaleString()} руб.</span>
               <span className={classes.taxBadge}>*Без НДС</span>
             </li>
           </ul>
           <p className={classes.alert}>Цены уточняйте у менеджеров!</p>
-          <a href="#" className={classes.link}>
+
+          <button className={classes.link}>
             Каждый тренажёр можно оборудовать уникальной мультимедийной системой
-          </a>
+          </button>
           <div className={classes.controls}>
             {!inCart && (
               <Button isExist={inCart} onClick={() => dispatch(cartActions.addItem(product))}>
