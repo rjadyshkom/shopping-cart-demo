@@ -40,7 +40,7 @@ button {
     cursor: pointer;
 }
 
-.info {
+.infoFitness {
     width: 400px;
     flex-shrink: 0;
 }

@@ -36,7 +36,7 @@ export const Product = () => {
         </div>
         <div className={classes.wrapper}>
           <h1 className={classes.name}>{product.name}</h1>
-          <ul className={classes.info}>
+          <ul className={!isAFitnessMachine ? classes.infoFitness : classes.infoNonFitness}>
             <li>
               <span>Артикул:</span> <span className={classes.id}>{product.id}</span>
             </li>
