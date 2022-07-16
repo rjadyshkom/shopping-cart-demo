@@ -11,7 +11,7 @@
     text-decoration: none;
 }
 
-.infoFitness {
+.info {
     display: flex;
     gap: 10px;
     justify-content: space-between;
