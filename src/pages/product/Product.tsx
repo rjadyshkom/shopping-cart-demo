@@ -19,7 +19,7 @@ export const Product = () => {
   const inCart = useSelector((state: any) => state.cart.items.find((item: any) => item.id === product.id));
 
   const notAFitnessCategory = ['благоустройство'];
-  const isAFitnessMachine = notAFitnessCategory.includes(product.category);
+  const isNotAFitnessMachine = notAFitnessCategory.includes(product.category);
 
   useEffect(() => {
     dispatch(getProductsThunk);
@@ -36,7 +36,7 @@ export const Product = () => {
         </div>
         <div className={classes.wrapper}>
           <h1 className={classes.name}>{product.name}</h1>
-          <ul className={!isAFitnessMachine ? classes.infoFitness : classes.infoNonFitness}>
+          <ul className={isNotAFitnessMachine ? classes.infoNonFitness : classes.infoFitness}>
             <li>
               <span>Артикул:</span> <span className={classes.id}>{product.id}</span>
             </li>
@@ -53,7 +53,7 @@ export const Product = () => {
             <span className={classes.infoIcon}></span>
           </div>
 
-          {!isAFitnessMachine && (
+          {!isNotAFitnessMachine && (
             <button className={classes.link}>
               Каждый тренажёр можно оборудовать уникальной мультимедийной системой
             </button>
