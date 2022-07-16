@@ -34,7 +34,7 @@ export const Product = () => {
             <img className={classes.image} src={product.image} alt={product.name} />
           </Lightbox>
         </div>
-        <div>
+        <div className={classes.wrapper}>
           <h1 className={classes.name}>{product.name}</h1>
           <ul className={classes.info}>
             <li>
