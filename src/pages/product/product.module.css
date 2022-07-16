@@ -117,7 +117,7 @@ li {
 
 .link::after {
     content: '';
-    background: url(./../../images/category-icon-active.svg) no-repeat center center;
+    background: url(../../images/arrow-right-icon.svg) no-repeat center center;
     width: 18px;
     height: 18px;
     background-size: contain;

@@ -25,7 +25,7 @@
 }
 
 .active:after {
-    content: url(./../../../../images/category-icon-active.svg);
+    content: url(../../../../images/arrow-right-icon.svg);
     width: 18px;
     height: 18px;
     object-fit: contain;
