@@ -19,8 +19,3 @@
     align-items: center;
     text-transform: uppercase;
 }
-
-.loaderWrapper {
-    grid-column: 1/ 4;
-    justify-self: center;
-}

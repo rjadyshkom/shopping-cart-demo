@@ -1,19 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import classes from './categories.module.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getProductsThunk } from '../../services/thunk/products';
 import { transliterateUrl } from '../../helpers/constants';
-import { Loader } from '../../components/UI/products/loader/Loader';
 
 export const Categories = () => {
   const categories = useSelector((state: any) => state.products.categories);
-  const dispatch: any = useDispatch();
-
-  useEffect(() => {
-    dispatch(getProductsThunk);
-    // eslint-disable-next-line
-  }, []);
 
   return (
     <section className={classes.categories}>
@@ -22,9 +14,6 @@ export const Categories = () => {
           {category}
         </Link>
       ))}
-      <div className={classes.loaderWrapper}>
-        <Loader />
-      </div>
     </section>
   );
 };

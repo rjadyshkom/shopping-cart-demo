@@ -1,10 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import classes from './product.module.css';
 import { useParams } from 'react-router-dom';
-import { Loader } from '../../components/UI/products/loader/Loader';
 import { useDispatch, useSelector } from 'react-redux';
-import { productsSelector } from '../../services/selectors/products';
-import { getProductsThunk } from '../../services/thunk/products';
 import { Button } from '../../components/UI/button/Button';
 import * as cartActions from '../../services/actions/cart';
 import { Quantity } from '../../components/UI/quantity/Quantity';
@@ -12,7 +9,7 @@ import { Lightbox } from '../../components/UI/lightbox/Lightbox';
 
 export const Product = () => {
   const { productId }: any = useParams();
-  const { products } = useSelector(productsSelector);
+  const products = useSelector((state: any) => state.products.products);
   const dispatch: any = useDispatch();
 
   const product = products.find((product: any) => product.id === productId.split('_').join(' ').toUpperCase());
@@ -20,11 +17,6 @@ export const Product = () => {
 
   const notAFitnessCategory = ['благоустройство'];
   const isNotAFitnessMachine = notAFitnessCategory.includes(product.category);
-
-  useEffect(() => {
-    dispatch(getProductsThunk);
-    // eslint-disable-next-line
-  }, []);
 
   return (
     <section className={classes.product}>
@@ -75,7 +67,6 @@ export const Product = () => {
           </div>
         </div>
       </div>
-      <Loader />
     </section>
   );
 };

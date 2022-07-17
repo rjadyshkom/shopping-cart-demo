@@ -4,12 +4,10 @@ import { Filter } from '../../components/UI/products/filter/Filter';
 import { Pagination } from '../../components/UI/pagination/Pagination';
 import { useDispatch, useSelector } from 'react-redux';
 import { productsSelector } from '../../services/selectors/products';
-import { getProductsThunk } from '../../services/thunk/products';
 import { ProductCategories } from '../../components/UI/products/categories/ProductCategories';
 import { createSearchParams, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { transliterateUrl, urlToCyrillic } from '../../helpers/constants';
 import { ProductsList } from '../../components/UI/products/list/ProductsList';
-import { Loader } from '../../components/UI/products/loader/Loader';
 import * as productAction from './../../services/actions/products';
 
 export const Products = () => {
@@ -38,7 +36,6 @@ export const Products = () => {
     dispatch(productAction.setCategory(isCategoryFromUrlExist ? categoryFromUrl : activeCategory));
     dispatch(productAction.setFilter(isFilterFromUrlExist ? filterFromUrl : filters[0]));
     dispatch(productAction.setPage(isPageNumberFromUrlExist ? pageNumberFromUrl : pagesCount));
-    dispatch(getProductsThunk);
     // eslint-disable-next-line
   }, []);
 
@@ -63,9 +60,6 @@ export const Products = () => {
         <Filter />
       </div>
       <ProductsList />
-      <div className={classes.loaderWrapper}>
-        <Loader />
-      </div>
       {pagesCount > 1 && <Pagination pagesCount={pagesCount} />}
     </section>
   );

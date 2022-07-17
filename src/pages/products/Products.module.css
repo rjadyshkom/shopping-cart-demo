@@ -18,8 +18,3 @@
 .filterWrapper {
     grid-area: filters
 }
-
-.loaderWrapper {
-    grid-column: 1 / 4;
-    justify-self: center;
-}
