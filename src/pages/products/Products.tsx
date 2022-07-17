@@ -16,18 +16,19 @@ export const Products = () => {
   const params = useParams();
   const [searchParams] = useSearchParams();
 
-  const { pagesCount, filters } = useSelector(productsSelector);
-
   const activeFilter = useSelector((state: any) => state.products.activeFilter);
   const activeCategory = useSelector((state: any) => state.products.activeCategory);
   const currentPage = useSelector((state: any) => state.products.currentPage);
   const stateCategories = useSelector((state: any) => state.products.categories);
+  const filters = useSelector((state: any) => state.products.filters);
 
   const categoryFromUrl = urlToCyrillic(params.categoryId);
   const isCategoryFromUrlExist = stateCategories.includes(categoryFromUrl);
 
   const filterFromUrl = urlToCyrillic(searchParams.get('filter'));
   const isFilterFromUrlExist = filters.includes(filterFromUrl);
+
+  const { pagesCount } = useSelector(productsSelector);
 
   const pageNumberFromUrl = Number(searchParams.get('page'));
   const isPageNumberFromUrlExist = pageNumberFromUrl <= pagesCount;

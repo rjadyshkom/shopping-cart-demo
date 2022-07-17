@@ -13,6 +13,8 @@ export const productsSelector = (state: any) => {
   const tempProducts =
     activeFilter === 'все' ? resultCategory : resultCategory.filter((p: any) => p.filters.includes(activeFilter));
 
+  const pagesCount = Math.ceil(tempProducts.length / productsPerPage);
+
   const resultProducts = tempProducts.slice(firstProduct, lastProduct);
   const resultFilters = [
     'все',
@@ -27,6 +29,6 @@ export const productsSelector = (state: any) => {
   return {
     products: resultProducts,
     filters: resultFilters,
-    pagesCount: Math.ceil(tempProducts.length / productsPerPage),
+    pagesCount: pagesCount,
   };
 };
