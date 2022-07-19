@@ -2,7 +2,6 @@ import React from 'react';
 import { Header } from '../UI/header/Header';
 import { Routes, Route } from 'react-router-dom';
 import classes from './App.module.css';
-import { routes } from '../../helpers/routes';
 import { Navigation } from '../UI/navigation/Navigation';
 import { CartQuantity } from '../UI/cart/quantity/CartQuantity';
 import { PopupPlace } from '../UI/popup/PopupPlace';
@@ -21,9 +20,6 @@ function App() {
           <CartQuantity />
         </Header>
         <Routes>
-          {/*{Object.values(routes).map((route, key) => {*/}
-          {/*  return <Route key={key} path={route.path} element={<route.element />} />;*/}
-          {/*})}*/}
           <Route path={'/'} element={<Categories />} />
           <Route path={'/:categoryId'} element={<Products />} />
           <Route path={'/:categoryId/:productId'} element={<Product />} />

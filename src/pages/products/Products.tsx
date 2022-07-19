@@ -45,7 +45,9 @@ export const Products = () => {
       pathname: `/${transliterateUrl(activeCategory)}`,
       search: createSearchParams({
         filter: `${transliterateUrl(activeFilter)}`,
-        page: `${currentPage}`,
+        ...(pagesCount > 1 && {
+          page: `${currentPage}`,
+        }),
       }).toString(),
     });
     // eslint-disable-next-line
