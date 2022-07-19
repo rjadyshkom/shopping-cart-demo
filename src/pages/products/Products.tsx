@@ -31,12 +31,12 @@ export const Products = () => {
   const { pagesCount } = useSelector(productsSelector);
 
   const pageNumberFromUrl = Number(searchParams.get('page'));
-  const isPageNumberFromUrlExist = pageNumberFromUrl <= pagesCount;
+  // const isPageNumberFromUrlExist = pageNumberFromUrl <= pagesCount; // разобраться, как побороть прилетающую единичку
 
   useEffect(() => {
     dispatch(productAction.setCategory(isCategoryFromUrlExist ? categoryFromUrl : activeCategory));
     dispatch(productAction.setFilter(isFilterFromUrlExist ? filterFromUrl : filters[0]));
-    dispatch(productAction.setPage(isPageNumberFromUrlExist ? pageNumberFromUrl : pagesCount));
+    dispatch(productAction.setPage(pageNumberFromUrl)); // пока без защиты от несуществующих страниц
     // eslint-disable-next-line
   }, []);
 
