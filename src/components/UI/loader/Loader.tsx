@@ -6,10 +6,10 @@ import { productsSelector } from '../../../services/selectors/products';
 export const Loader = () => {
   const isProductsLoading = useSelector((state: any) => state.products.loading);
   const isProductsLoadingError = useSelector((state: any) => state.products.error);
-  const { products } = useSelector(productsSelector);
+  // const { products } = useSelector(productsSelector);
   return (
     <>
-      {isProductsLoading && products.length === 0 && (
+      {isProductsLoading && (
         <svg className={classes.svg} viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
           <circle
             className={classes.circle}

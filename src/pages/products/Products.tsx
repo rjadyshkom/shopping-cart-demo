@@ -14,44 +14,42 @@ export const Products = () => {
   const dispatch: any = useDispatch();
   const navigate = useNavigate();
   const params = useParams();
-  const [searchParams] = useSearchParams();
-
-  const activeFilter = useSelector((state: any) => state.products.activeFilter);
+  // const [searchParams] = useSearchParams();
+  //
+  // const activeFilter = useSelector((state: any) => state.products.activeFilter);
   const activeCategory = useSelector((state: any) => state.products.activeCategory);
-  const currentPage = useSelector((state: any) => state.products.currentPage);
+  // const currentPage = useSelector((state: any) => state.products.currentPage);
   const stateCategories = useSelector((state: any) => state.products.categories);
-  const filters = useSelector((state: any) => state.products.filters);
-
+  // const filters = useSelector((state: any) => state.products.filters);
+  //
   const categoryFromUrl = urlToCyrillic(params.categoryId);
   const isCategoryFromUrlExist = stateCategories.includes(categoryFromUrl);
-
-  const filterFromUrl = urlToCyrillic(searchParams.get('filter'));
-  const isFilterFromUrlExist = filters.includes(filterFromUrl);
-
-  const { pagesCount } = useSelector(productsSelector);
-
-  const pageNumberFromUrl = Number(searchParams.get('page'));
+  //
+  // // const filterFromUrl = urlToCyrillic(searchParams.get('filter'));
+  // // const isFilterFromUrlExist = filters.includes(filterFromUrl);
+  //
+  // // const { pagesCount } = useSelector(productsSelector);
+  //
+  // const pageNumberFromUrl = Number(searchParams.get('page'));
   // const isPageNumberFromUrlExist = pageNumberFromUrl <= pagesCount; // разобраться, как побороть прилетающую единичку
 
   useEffect(() => {
     dispatch(productAction.setCategory(isCategoryFromUrlExist ? categoryFromUrl : activeCategory));
-    dispatch(productAction.setFilter(isFilterFromUrlExist ? filterFromUrl : filters[0]));
-    dispatch(productAction.setPage(pageNumberFromUrl)); // пока без защиты от несуществующих страниц
+    // dispatch(productAction.setFilter(isFilterFromUrlExist ? filterFromUrl : filters[0]));
+    // dispatch(productAction.setPage(pageNumberFromUrl)); // пока без защиты от несуществующих страниц
     // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
-    navigate({
-      pathname: `/${transliterateUrl(activeCategory)}`,
-      search: createSearchParams({
-        filter: `${transliterateUrl(activeFilter)}`,
-        ...(pagesCount > 1 && {
-          page: `${currentPage}`,
-        }),
-      }).toString(),
-    });
+    navigate(`/${transliterateUrl(activeCategory)}`);
+    // search: createSearchParams({
+    //   filter: `${transliterateUrl(activeFilter)}`,
+    //   // ...(pagesCount > 1 && {
+    //   //   page: `${currentPage}`,
+    //   // }),
+    // }).toString(),);
     // eslint-disable-next-line
-  }, [activeFilter, activeCategory, currentPage]);
+  }, [activeCategory]);
 
   // noinspection JSValidateTypes
   return (
@@ -63,7 +61,7 @@ export const Products = () => {
         <Filter />
       </div>
       <ProductsList />
-      {pagesCount > 1 && <Pagination pagesCount={pagesCount} />}
+      {/*{pagesCount > 1 && <Pagination pagesCount={pagesCount} />}*/}
     </section>
   );
 };

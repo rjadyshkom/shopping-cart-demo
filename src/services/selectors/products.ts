@@ -27,8 +27,6 @@ export const productsSelector = (state: any) => {
     ),
   ];
   return {
-    products: resultProducts,
-    filters: resultFilters,
-    pagesCount: pagesCount,
+    categoryProducts: resultCategory,
   };
 };
