@@ -1,7 +1,7 @@
 export const currentPageSelector = (state: any) => state.products.currentPage;
 export const productsPerPageSelector = (state: any) => state.products.productsPerPage;
 export const productsSelector = (state: any) => {
-  const activeFilter = state.products.activeFilter;
+  // const activeFilter = state.products.activeFilter;
   const activeCategory = state.products.activeCategory;
 
   // const currentPage = currentPageSelector(state);

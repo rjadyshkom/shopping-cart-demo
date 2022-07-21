@@ -8,14 +8,14 @@ import * as productsActions from './../../services/actions/products';
 export const Categories = () => {
   const categories = useSelector((state: any) => state.products.categories);
   const dispatch: any = useDispatch();
-
+  const activeFilter = useSelector((state:any) => state.products.activeFilter)
   return (
     <section className={classes.categories}>
       {categories.map((category: any, key: number) => (
         <Link
           className={classes.link}
           key={key}
-          to={`/${transliterateUrl(category)}`}
+          to={`/category/${transliterateUrl(category)}/filter/${transliterateUrl(activeFilter)}`}
           onClick={() => {
             dispatch(productsActions.setCategory(category));
           }}
