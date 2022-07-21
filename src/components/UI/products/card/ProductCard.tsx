@@ -4,18 +4,23 @@ import { Button } from '../../button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import * as cartActions from '../../../../services/actions/cart';
 import { Quantity } from '../../quantity/Quantity';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { transliterateUrl } from '../../../../helpers/constants';
 
 export const ProductCard = ({ product }: any) => {
   const dispatch = useDispatch();
   const isExist = useSelector((state: any) => state.cart.items.find((item: any) => item.id === product.id));
-  const activeCategory = useSelector((state:any) => state.products.activeCategory);
+  const activeCategory = useSelector((state: any) => state.products.activeCategory);
   const activeFilter = useSelector((state: any) => state.products.activeFilter);
+  const currentPage = useSelector((state: any) => state.products.currentPage);
 
   return (
     <div className={classes.container}>
-      <Link to={`/${transliterateUrl(activeCategory)}/${transliterateUrl(activeFilter)}/${transliterateUrl(product.id)}`}>
+      <Link
+        to={`/${transliterateUrl(activeCategory)}/${transliterateUrl(activeFilter)}/${currentPage}/${transliterateUrl(
+          product.id,
+        )}`}
+      >
         <div className={classes.imageWrapper}>
           <img draggable={false} className={classes.image} src={product.image} alt={product.name} />
         </div>

@@ -8,14 +8,16 @@ import { transliterateUrl } from '../../../../helpers/constants';
 
 export const Filter = () => {
   const { categoryFilters } = useSelector(productsSelector);
-  const activeFilter = useSelector((state: any) => state.products.activeFilter);
   const activeCategory = useSelector((state: any) => state.products.activeCategory);
+  const activeFilter = useSelector((state: any) => state.products.activeFilter);
+  const currentPage = useSelector((state: any) => state.products.currentPage);
+
   const dispatch = useDispatch();
   return (
     <div className={classes.container}>
       {categoryFilters.map((filter: any, key: any) => (
         <Link
-          to={`/${transliterateUrl(activeCategory)}/${transliterateUrl(activeFilter)}`}
+          to={`/${transliterateUrl(activeCategory)}/${transliterateUrl(activeFilter)}/${currentPage}`}
           className={activeFilter === filter ? `${classes.label} ${classes.active}` : classes.label}
           key={key}
           onClick={() => dispatch(productsActions.setFilter(filter))}
