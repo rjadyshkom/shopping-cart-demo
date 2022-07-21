@@ -21,8 +21,8 @@ function App() {
         </Header>
         <Routes>
           <Route path={'/'} element={<Categories />} />
-          <Route path={'/category/:categoryId/filter/:filterId'} element={<Products />} />
-          <Route path={'/category/:categoryId/:productId'} element={<Product />} />
+          <Route path={'/:categoryId/:filterId'} element={<Products />} />
+          <Route path={'/:categoryId/:filterId/:productId'} element={<Product />} />
           <Route path={'/request'} element={<Request />} />
         </Routes>
       </div>

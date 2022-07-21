@@ -10,11 +10,12 @@ import { transliterateUrl } from '../../../../helpers/constants';
 export const ProductCard = ({ product }: any) => {
   const dispatch = useDispatch();
   const isExist = useSelector((state: any) => state.cart.items.find((item: any) => item.id === product.id));
+  const activeCategory = useSelector((state:any) => state.products.activeCategory);
   const activeFilter = useSelector((state: any) => state.products.activeFilter);
 
   return (
     <div className={classes.container}>
-      <Link to={`${transliterateUrl(product.id)}`}>
+      <Link to={`/${transliterateUrl(activeCategory)}/${transliterateUrl(activeFilter)}/${transliterateUrl(product.id)}`}>
         <div className={classes.imageWrapper}>
           <img draggable={false} className={classes.image} src={product.image} alt={product.name} />
         </div>

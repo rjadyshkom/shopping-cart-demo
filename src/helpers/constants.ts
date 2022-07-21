@@ -23,6 +23,7 @@ export const makeTimeout = (delay = 1000) => {
 };
 
 export const transliterateUrl = function (text: any) {
+  if (!text) return text;
   text = text
     .replace(/\u0401/g, 'YO')
     .replace(/\u0419/g, 'J')
@@ -95,6 +96,7 @@ export const transliterateUrl = function (text: any) {
 };
 
 export const urlToCyrillic = function (text: any) {
+  if (!text) return text;
   text = text
     .replace(/YO/g, 'Ё')
     .replace(/I/g, 'И')

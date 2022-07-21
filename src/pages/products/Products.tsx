@@ -38,7 +38,7 @@ export const Products = () => {
   }, []);
 
   useEffect(() => {
-    navigate(`/category/${transliterateUrl(activeCategory)}/filter/${transliterateUrl(activeFilter)}`);
+    navigate(`/${transliterateUrl(activeCategory)}/${transliterateUrl(activeFilter)}`);
   }, [activeCategory, activeFilter]);
 
   // noinspection JSValidateTypes

@@ -15,7 +15,7 @@ export const Filter = () => {
     <div className={classes.container}>
       {categoryFilters.map((filter: any, key: any) => (
         <Link
-          to={`/category/${transliterateUrl(activeCategory)}/filter/${transliterateUrl(activeFilter)}`}
+          to={`/${transliterateUrl(activeCategory)}/${transliterateUrl(activeFilter)}`}
           className={activeFilter === filter ? `${classes.label} ${classes.active}` : classes.label}
           key={key}
           onClick={() => dispatch(productsActions.setFilter(filter))}

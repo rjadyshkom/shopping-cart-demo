@@ -15,7 +15,7 @@ export const Categories = () => {
         <Link
           className={classes.link}
           key={key}
-          to={`/category/${transliterateUrl(category)}/filter/${transliterateUrl(activeFilter)}`}
+          to={`/${transliterateUrl(category)}/${transliterateUrl(activeFilter)}`}
           onClick={() => {
             dispatch(productsActions.setCategory(category));
           }}
