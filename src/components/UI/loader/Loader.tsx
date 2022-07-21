@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 
 export const Loader = () => {
   const isProductsLoading = useSelector((state: any) => state.products.loading);
-  const isProductsLoadingError = useSelector((state: any) => state.products.error);
   return (
     <>
       {isProductsLoading && (
@@ -20,7 +19,6 @@ export const Loader = () => {
           ></circle>
         </svg>
       )}
-      {isProductsLoadingError && <h2 className={classes.message}>Не удалось загрузить информацию с сервера</h2>}
     </>
   );
 };
