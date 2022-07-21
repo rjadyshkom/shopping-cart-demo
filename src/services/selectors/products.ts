@@ -14,8 +14,7 @@ export const productsSelector = (state: any) => {
     activeFilter === 'все' ? categoryProducts : categoryProducts.filter((p: any) => p.filters.includes(activeFilter));
 
   const categoryPagesCount = Math.ceil(tempProducts.length / productsPerPage);
-  //
-  // const resultProducts = tempProducts.slice(firstProduct, lastProduct);
+  const productsToRender = tempProducts.slice(firstProduct, lastProduct);
   const categoryFilters = [
     'все',
     ...new Set(
@@ -29,6 +28,7 @@ export const productsSelector = (state: any) => {
   return {
     categoryProducts,
     categoryFilters,
-    categoryPagesCount
+    categoryPagesCount,
+    productsToRender
   };
 };

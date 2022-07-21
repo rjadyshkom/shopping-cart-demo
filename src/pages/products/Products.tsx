@@ -5,7 +5,7 @@ import { Pagination } from '../../components/UI/pagination/Pagination';
 import { useDispatch, useSelector } from 'react-redux';
 import { productsSelector } from '../../services/selectors/products';
 import { ProductCategories } from '../../components/UI/products/categories/ProductCategories';
-import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { transliterateUrl, urlToCyrillic } from '../../helpers/constants';
 import { ProductsList } from '../../components/UI/products/list/ProductsList';
 import * as productAction from './../../services/actions/products';
@@ -14,7 +14,6 @@ export const Products = () => {
   const dispatch: any = useDispatch();
   const navigate = useNavigate();
   const params = useParams();
-  const [searchParams] = useSearchParams();
   const activeFilter = useSelector((state: any) => state.products.activeFilter);
   const activeCategory = useSelector((state: any) => state.products.activeCategory);
   const currentPage = useSelector((state: any) => state.products.currentPage);
@@ -30,17 +29,17 @@ export const Products = () => {
   const { categoryPagesCount } = useSelector(productsSelector);
 
   const pageNumberFromUrl = Number(params.pageId);
-  // const isPageNumberFromUrlExist = pageNumberFromUrl <= pagesCount;
+  const isPageNumberFromUrlExist = pageNumberFromUrl <= categoryPagesCount;
+
+  useEffect(() => {
+    navigate(`/${transliterateUrl(activeCategory)}/${transliterateUrl(activeFilter)}/${currentPage}`);
+  }, [activeCategory, activeFilter, currentPage]);
 
   useEffect(() => {
     dispatch(productAction.setCategory(isCategoryFromUrlExist ? categoryFromUrl : activeCategory));
     dispatch(productAction.setFilter(isFilterFromUrlExist ? filterFromUrl : filters[0]));
-    dispatch(productAction.setPage(pageNumberFromUrl));
+    dispatch(productAction.setPage(isPageNumberFromUrlExist ? pageNumberFromUrl : categoryPagesCount));
   }, []);
-
-  useEffect(() => {
-    navigate(`/${transliterateUrl(activeCategory)}/${transliterateUrl(activeFilter)}/${pageNumberFromUrl}`);
-  }, [activeCategory, activeFilter, currentPage]);
 
   // noinspection JSValidateTypes
   return (

@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux';
 import { productsSelector } from '../../../../services/selectors/products';
 
 export const ProductsList = () => {
-  const { categoryProducts } = useSelector(productsSelector);
-  return categoryProducts.map((product: any) => (
+  const { productsToRender } = useSelector(productsSelector);
+  return productsToRender.map((product: any) => (
     <ProductCard
       key={product.id}
       image={product.image}
