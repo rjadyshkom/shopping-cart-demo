@@ -9,6 +9,7 @@ import { Products } from '../../pages/products/Products';
 import { Request } from '../../pages/request/Request';
 import { Categories } from '../../pages/categories/Categories';
 import { Product } from '../../pages/product/Product';
+import { NotFound } from '../../pages/not-found/NotFound';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <CartQuantity />
         </Header>
         <Routes>
+          <Route path={'*'} element={<NotFound />} />
           <Route path={'/'} element={<Categories />} />
           <Route path={'/:categoryId/:filterId/:pageId'} element={<Products />} />
           <Route path={'/:categoryId/:filterId/:pageId/:productId'} element={<Product />} />
