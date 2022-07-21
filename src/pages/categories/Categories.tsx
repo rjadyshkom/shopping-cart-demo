@@ -6,9 +6,11 @@ import { transliterateUrl } from '../../helpers/constants';
 import * as productsActions from './../../services/actions/products';
 
 export const Categories = () => {
-  const categories = useSelector((state: any) => state.products.categories);
   const dispatch: any = useDispatch();
-  const activeFilter = useSelector((state: any) => state.products.activeFilter);
+
+  const categories = useSelector((state: any) => state.products.categories);
+  const filters = useSelector((state: any) => state.products.filters);
+
   const currentPage = useSelector((state: any) => state.products.currentPage);
   return (
     <section className={classes.categories}>
@@ -16,7 +18,7 @@ export const Categories = () => {
         <Link
           className={classes.link}
           key={key}
-          to={`/${transliterateUrl(category)}/${transliterateUrl(activeFilter)}/${currentPage}`}
+          to={`/${transliterateUrl(category)}/${transliterateUrl(filters[0])}/${currentPage}`} // написать проверку, чтобы не сбрасывать фильтры при клике
           onClick={() => {
             dispatch(productsActions.setCategory(category));
           }}

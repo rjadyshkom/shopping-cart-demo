@@ -12,7 +12,7 @@ export const Product = () => {
   const products = useSelector((state: any) => state.products.products);
   const dispatch: any = useDispatch();
 
-  const product = products.find((product: any) => product.id === productId.split('_').join(' ').toUpperCase());
+  const product = products.find((product: any) => product.id === productId.split('_').join(' ').toUpperCase()); // написать проверку существования id в json
   const inCart = useSelector((state: any) => state.cart.items.find((item: any) => item.id === product.id));
 
   const notAFitnessCategory = ['благоустройство'];

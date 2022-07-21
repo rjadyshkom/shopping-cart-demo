@@ -29,7 +29,7 @@ export const Products = () => {
   const { categoryPagesCount } = useSelector(productsSelector);
 
   const pageNumberFromUrl = Number(params.pageId);
-  const isPageNumberFromUrlExist = pageNumberFromUrl <= categoryPagesCount;
+  const isPageNumberFromUrlExist = pageNumberFromUrl <= categoryPagesCount; // победить единичку
 
   useEffect(() => {
     navigate(`/${transliterateUrl(activeCategory)}/${transliterateUrl(activeFilter)}/${currentPage}`);
@@ -38,7 +38,7 @@ export const Products = () => {
   useEffect(() => {
     dispatch(productAction.setCategory(isCategoryFromUrlExist ? categoryFromUrl : activeCategory));
     dispatch(productAction.setFilter(isFilterFromUrlExist ? filterFromUrl : filters[0]));
-    dispatch(productAction.setPage(isPageNumberFromUrlExist ? pageNumberFromUrl : categoryPagesCount));
+    dispatch(productAction.setPage(isPageNumberFromUrlExist ? pageNumberFromUrl : categoryPagesCount)); // некорректное поведение без победы над единичкой
   }, []);
 
   // noinspection JSValidateTypes
