@@ -18,7 +18,7 @@ export const Categories = () => {
         <Link
           className={classes.link}
           key={key}
-          to={`/${transliterateUrl(category)}/${transliterateUrl(filters[0])}/${currentPage}`} // написать проверку, чтобы не сбрасывать фильтры при клике
+          to={`/${transliterateUrl(category)}/${transliterateUrl(filters[0])}/page-${currentPage}`} // написать проверку, чтобы не сбрасывать фильтры при клике
           onClick={() => {
             dispatch(productsActions.setCategory(category));
           }}

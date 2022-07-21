@@ -32,13 +32,15 @@ export const Products = () => {
   const isPageNumberFromUrlExist = pageNumberFromUrl <= categoryPagesCount; // победить единичку
 
   useEffect(() => {
-    navigate(`/${transliterateUrl(activeCategory)}/${transliterateUrl(activeFilter)}/${currentPage}`);
+    navigate(`/${transliterateUrl(activeCategory)}/${transliterateUrl(activeFilter)}/page-${currentPage}`);
+    // eslint-disable-next-line
   }, [activeCategory, activeFilter, currentPage]);
 
   useEffect(() => {
     dispatch(productAction.setCategory(isCategoryFromUrlExist ? categoryFromUrl : activeCategory));
     dispatch(productAction.setFilter(isFilterFromUrlExist ? filterFromUrl : filters[0]));
     dispatch(productAction.setPage(isPageNumberFromUrlExist ? pageNumberFromUrl : categoryPagesCount)); // некорректное поведение без победы над единичкой
+    // eslint-disable-next-line
   }, []);
 
   // noinspection JSValidateTypes

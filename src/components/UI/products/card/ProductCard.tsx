@@ -17,7 +17,7 @@ export const ProductCard = ({ product }: any) => {
   return (
     <div className={classes.container}>
       <Link
-        to={`/${transliterateUrl(activeCategory)}/${transliterateUrl(activeFilter)}/${currentPage}/${transliterateUrl(
+        to={`/${transliterateUrl(activeCategory)}/${transliterateUrl(activeFilter)}/page-${currentPage}/${transliterateUrl(
           product.id,
         )}`}
       >

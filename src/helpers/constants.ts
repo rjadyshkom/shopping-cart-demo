@@ -37,7 +37,7 @@ export const transliterateUrl = function (text: any) {
     .replace(/\u0429/g, 'SCH')
     .replace(/\u0417/g, 'Z')
     .replace(/\u0425/g, 'H')
-    .replace(/\u042A/g, '---')
+    .replace(/\u042A/g, '___')
     .replace(/\u0451/g, 'yo')
     .replace(/\u0439/g, 'j')
     .replace(/\u0446/g, 'ts')
@@ -77,7 +77,7 @@ export const transliterateUrl = function (text: any) {
     .replace(/\u041C/g, 'M')
     .replace(/\u0418/g, 'I')
     .replace(/\u0422/g, 'T')
-    .replace(/\u042C/g, '--')
+    .replace(/\u042C/g, '__')
     .replace(/\u0411/g, 'B')
     .replace(/\u042E/g, 'YU')
     .replace(/\u044F/g, 'ya')
@@ -86,12 +86,12 @@ export const transliterateUrl = function (text: any) {
     .replace(/\u043C/g, 'm')
     .replace(/\u0438/g, 'i')
     .replace(/\u0442/g, 't')
-    .replace(/\u044C/g, '--')
+    .replace(/\u044C/g, '__')
     .replace(/\u0431/g, 'b')
     .replace(/\u044E/g, 'yu')
     .replace(/\u0437/g, 'z')
     .replace(/\u0445/g, 'h')
-    .replace(/\u0020/g, '_');
+    .replace(/\u0020/g, '-');
   return text.toLowerCase();
 };
 
@@ -110,7 +110,7 @@ export const urlToCyrillic = function (text: any) {
     .replace(/SCH/g, 'Щ')
     .replace(/Z/g, 'З')
     .replace(/H/g, 'Х')
-    .replace(/---/g, 'ъ')
+    .replace(/___/g, 'ъ')
     .replace(/yo/g, 'ё')
     .replace(/j/g, 'й')
     .replace(/ts/g, 'ц')
@@ -121,7 +121,7 @@ export const urlToCyrillic = function (text: any) {
     .replace(/g/g, 'г')
     .replace(/sh/g, 'ш')
     .replace(/sch/g, 'щ')
-    .replace(/---/g, 'ъ')
+    .replace(/___/g, 'ъ')
     .replace(/F/g, 'Ф')
     .replace(/I/g, 'И')
     .replace(/V/g, 'В')
@@ -150,7 +150,7 @@ export const urlToCyrillic = function (text: any) {
     .replace(/M/g, 'М')
     .replace(/I/g, 'И')
     .replace(/T/g, 'Т')
-    .replace(/--/g, 'ь')
+    .replace(/__/g, 'ь')
     .replace(/B/g, 'Б')
     .replace(/YU/g, 'Ю')
     .replace(/ya/g, 'я')
@@ -159,11 +159,11 @@ export const urlToCyrillic = function (text: any) {
     .replace(/m/g, 'м')
     .replace(/i/g, 'и')
     .replace(/t/g, 'т')
-    .replace(/--/g, 'ь')
+    .replace(/__/g, 'ь')
     .replace(/b/g, 'б')
     .replace(/yu/g, 'ю')
     .replace(/z/g, 'з')
     .replace(/h/g, 'х')
-    .replace(/_/g, ' ');
+    .replace(/-/g, ' ');
   return text.toLowerCase();
 };
