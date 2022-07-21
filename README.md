@@ -36,7 +36,7 @@
 32. Products service
 33. Dynamic routes
 34. Stateful url (categories, filters, pagination)
-35. Persisted state
+35. Preloading wrapper
 
 >Из корзины можно отправить себе письмо с данными формы и списком товаров. Сервер принимает запрос только с 3000 порта (http://localhost:3000). Для тестирования модалки с ошибкой нужно отправлять запрос с любого другого порта, например http://localhost:3001.
 
@@ -49,3 +49,5 @@
 >npm i
 
 >npm start
+
+Потыкать тут https://sandbox.irontiger.ru/ (возможны ошибки в логике)
