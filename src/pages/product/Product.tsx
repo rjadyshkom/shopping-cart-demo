@@ -6,7 +6,6 @@ import { Button } from '../../components/UI/button/Button';
 import * as cartActions from '../../services/actions/cart';
 import { Quantity } from '../../components/UI/quantity/Quantity';
 import { Lightbox } from '../../components/UI/lightbox/Lightbox';
-import { ErrorMessage } from '../../components/UI/error-message/ErrorMessage';
 
 export const Product = () => {
   const { productId }: any = useParams();
@@ -23,56 +22,53 @@ export const Product = () => {
 
   return (
     <section className={classes.product}>
-      {!product && <ErrorMessage message={'Заглушка страницы с несуществующим товаром'} />}
-      {product && (
-        <div className={classes.container}>
-          <div className={classes.slider}>
-            <Lightbox image={product.image} alt={product.name}>
-              <img className={classes.image} src={product.image} alt={product.name} />
-            </Lightbox>
+      <div className={classes.container}>
+        <div className={classes.slider}>
+          <Lightbox image={product.image} alt={product.name}>
+            <img className={classes.image} src={product.image} alt={product.name} />
+          </Lightbox>
+        </div>
+        <div className={classes.wrapper}>
+          <h1 className={classes.name}>{product.name}</h1>
+          <ul className={isNotAFitnessMachine ? classes.infoNonFitness : classes.infoFitness}>
+            <li>
+              <span>Артикул:</span> <span className={classes.id}>{product.id}</span>
+            </li>
+            <li className={classes.activities}>
+              <span>Категория:</span> <span>{product.category}</span>
+            </li>
+            <li className={classes.priceInfo}>
+              <span>от:</span> <span className={classes.price}>{product.price.toLocaleString()} руб.</span>
+              <span className={classes.taxBadge}>*Без НДС</span>
+            </li>
+          </ul>
+          <div className={classes.alertContainer}>
+            <p className={classes.alert}>Цены уточняйте у менеджеров!</p>
+            <span className={classes.infoIcon}></span>
           </div>
-          <div className={classes.wrapper}>
-            <h1 className={classes.name}>{product.name}</h1>
-            <ul className={isNotAFitnessMachine ? classes.infoNonFitness : classes.infoFitness}>
-              <li>
-                <span>Артикул:</span> <span className={classes.id}>{product.id}</span>
-              </li>
-              <li className={classes.activities}>
-                <span>Категория:</span> <span>{product.category}</span>
-              </li>
-              <li className={classes.priceInfo}>
-                <span>от:</span> <span className={classes.price}>{product.price.toLocaleString()} руб.</span>
-                <span className={classes.taxBadge}>*Без НДС</span>
-              </li>
-            </ul>
-            <div className={classes.alertContainer}>
-              <p className={classes.alert}>Цены уточняйте у менеджеров!</p>
-              <span className={classes.infoIcon}></span>
-            </div>
 
-            {!isNotAFitnessMachine && (
-              <button className={classes.link}>
-                Каждый тренажёр можно оборудовать уникальной мультимедийной системой
-              </button>
+          {!isNotAFitnessMachine && (
+            <button className={classes.link}>
+              Каждый тренажёр можно оборудовать уникальной мультимедийной системой
+            </button>
+          )}
+          <div className={classes.controls}>
+            {!inCart && (
+              <Button isExist={inCart} onClick={() => dispatch(cartActions.addItem(product))}>
+                Добавить в заявку
+              </Button>
             )}
-            <div className={classes.controls}>
-              {!inCart && (
-                <Button isExist={inCart} onClick={() => dispatch(cartActions.addItem(product))}>
-                  Добавить в заявку
+            {inCart && (
+              <>
+                <Button disabled={inCart} isExist={inCart}>
+                  В заявке
                 </Button>
-              )}
-              {inCart && (
-                <>
-                  <Button disabled={inCart} isExist={inCart}>
-                    В заявке
-                  </Button>
-                  <Quantity product={inCart} isRemovable />
-                </>
-              )}
-            </div>
+                <Quantity product={inCart} isRemovable />
+              </>
+            )}
           </div>
         </div>
-      )}
+      </div>
     </section>
   );
 };
