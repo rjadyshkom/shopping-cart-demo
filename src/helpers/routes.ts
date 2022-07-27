@@ -1,13 +1,28 @@
 import { Products } from '../pages/products/Products';
 import { Request } from '../pages/request/Request';
+import { Categories } from '../pages/categories/Categories';
+import { Product } from '../pages/product/Product';
+import { NotFound } from '../pages/not-found/NotFound';
 
 export const routes = {
-  products: {
+  categories: {
     path: '/',
-    element: Products,
+    element: Categories,
     navigation: {
       title: 'Продукция',
     },
+  },
+  products: {
+    path: '/:categoryId/:filterId/:pageId',
+    element: Products,
+  },
+  product: {
+    path: '/:categoryId/:filterId/:pageId/:productId',
+    element: Product,
+  },
+  notFoundPage: {
+    path: '/404',
+    element: NotFound,
   },
   request: {
     path: '/request',
