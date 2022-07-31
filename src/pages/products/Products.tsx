@@ -32,25 +32,30 @@ export const Products = () => {
   const pageNumberFromUrl = Number(searchParams.get('page'));
 
   useEffect(() => {
-    navigate({
-      pathname: `/${transliterateUrl(activeCategory)}/${transliterateUrl(activeFilter)}`,
-      search: createSearchParams({
-        ...(categoryPagesCount > 1 && {
-          page: `${currentPage}`,
-        }),
-      }).toString(),
-    }, {replace: true});
+    navigate(
+      {
+        pathname: `/${transliterateUrl(activeCategory)}/${transliterateUrl(activeFilter)}`,
+        search: createSearchParams({
+          ...(categoryPagesCount > 1 && {
+            page: `${currentPage}`,
+          }),
+        }).toString(),
+      },
+      { replace: true },
+    );
     // eslint-disable-next-line
   }, [activeFilter, activeCategory, currentPage]);
 
   useEffect(() => {
     dispatch(productAction.setCategory(isCategoryFromUrlExist ? categoryFromUrl : activeCategory));
     dispatch(productAction.setFilter(isFilterFromUrlExist ? filterFromUrl : filters[0]));
-    dispatch(productAction.setPage(!pageNumberFromUrl ? currentPage : pageNumberFromUrl)); // некорректное поведение без победы над единичкой
+    dispatch(productAction.setPage(!pageNumberFromUrl ? currentPage : pageNumberFromUrl));
     // eslint-disable-next-line
   }, []);
 
-  // noinspection JSValidateTypes
+  if (pageNumberFromUrl > categoryPagesCount) {
+    navigate('/404'); // можно сделать компонент с предложениями похожих товаров и перекидывать на него
+  }
   return (
     <section className={classes.container}>
       <div className={classes.categoriesWrapper}>
