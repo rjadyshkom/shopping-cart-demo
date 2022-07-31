@@ -39,7 +39,7 @@ export const Products = () => {
           page: `${currentPage}`,
         }),
       }).toString(),
-    });
+    }, {replace: true});
     // eslint-disable-next-line
   }, [activeFilter, activeCategory, currentPage]);
 
