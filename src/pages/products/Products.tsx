@@ -46,7 +46,7 @@ export const Products = () => {
   useEffect(() => {
     dispatch(productAction.setCategory(isCategoryFromUrlExist ? categoryFromUrl : activeCategory));
     dispatch(productAction.setFilter(isFilterFromUrlExist ? filterFromUrl : filters[0]));
-    dispatch(productAction.setPage(!pageNumberFromUrl ? categoryPagesCount : pageNumberFromUrl)); // некорректное поведение без победы над единичкой
+    dispatch(productAction.setPage(!pageNumberFromUrl ? currentPage : pageNumberFromUrl)); // некорректное поведение без победы над единичкой
     // eslint-disable-next-line
   }, []);
 
