@@ -16,7 +16,7 @@ export const Filter = () => {
     <div className={classes.container}>
       {categoryFilters.map((filter: any, key: any) => (
         <Link
-          to={`/${transliterateUrl(activeCategory)}/${transliterateUrl(activeFilter)}/page-1`} // убрать хардкод
+          to={`/${transliterateUrl(activeCategory)}/${transliterateUrl(activeFilter)}`}
           className={activeFilter === filter ? `${classes.label} ${classes.active}` : classes.label}
           key={key}
           onClick={() => {

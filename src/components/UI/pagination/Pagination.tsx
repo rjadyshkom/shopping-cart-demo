@@ -19,7 +19,7 @@ export const Pagination = ({ pagesCount }: any) => {
     <nav className={classes.container}>
       {pageNumbers.map((number) => (
         <Link
-          to={`/${transliterateUrl(activeCategory)}/${transliterateUrl(activeFilter)}/page-${number}`}
+          to={`/${transliterateUrl(activeCategory)}/${transliterateUrl(activeFilter)}`}
           onClick={() => dispatch(productsActions.setPage(number))}
           className={currentPage === number ? `${classes.link} ${classes.active}` : classes.link}
           key={number}

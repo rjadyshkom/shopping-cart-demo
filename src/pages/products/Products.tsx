@@ -5,7 +5,7 @@ import { Pagination } from '../../components/UI/pagination/Pagination';
 import { useDispatch, useSelector } from 'react-redux';
 import { productsSelector } from '../../services/selectors/products';
 import { ProductCategories } from '../../components/UI/products/categories/ProductCategories';
-import { useNavigate, useParams } from 'react-router-dom';
+import { createSearchParams, useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { transliterateUrl, urlToCyrillic } from '../../helpers/constants';
 import { ProductsList } from '../../components/UI/products/list/ProductsList';
 import * as productAction from './../../services/actions/products';
@@ -14,6 +14,7 @@ export const Products = () => {
   const dispatch: any = useDispatch();
   const navigate = useNavigate();
   const params = useParams();
+  const [searchParams] = useSearchParams();
   const activeFilter = useSelector((state: any) => state.products.activeFilter);
   const activeCategory = useSelector((state: any) => state.products.activeCategory);
   const currentPage = useSelector((state: any) => state.products.currentPage);
@@ -28,18 +29,24 @@ export const Products = () => {
 
   const { categoryPagesCount } = useSelector(productsSelector);
 
-  const pageNumberFromUrl = Number(params.pageId);
-  const isPageNumberFromUrlExist = pageNumberFromUrl <= categoryPagesCount; // победить единичку
+  const pageNumberFromUrl = Number(searchParams.get('page'));
 
   useEffect(() => {
-    navigate(`/${transliterateUrl(activeCategory)}/${transliterateUrl(activeFilter)}/page-${currentPage}`);
+    navigate({
+      pathname: `/${transliterateUrl(activeCategory)}/${transliterateUrl(activeFilter)}`,
+      search: createSearchParams({
+        ...(categoryPagesCount > 1 && {
+          page: `${currentPage}`,
+        }),
+      }).toString(),
+    });
     // eslint-disable-next-line
-  }, [activeCategory, activeFilter, currentPage]);
+  }, [activeFilter, activeCategory, currentPage]);
 
   useEffect(() => {
     dispatch(productAction.setCategory(isCategoryFromUrlExist ? categoryFromUrl : activeCategory));
     dispatch(productAction.setFilter(isFilterFromUrlExist ? filterFromUrl : filters[0]));
-    dispatch(productAction.setPage(isPageNumberFromUrlExist ? pageNumberFromUrl : categoryPagesCount)); // некорректное поведение без победы над единичкой
+    dispatch(productAction.setPage(!pageNumberFromUrl ? categoryPagesCount : pageNumberFromUrl)); // некорректное поведение без победы над единичкой
     // eslint-disable-next-line
   }, []);
 

@@ -12,14 +12,11 @@ export const ProductCard = ({ product }: any) => {
   const isExist = useSelector((state: any) => state.cart.items.find((item: any) => item.id === product.id));
   const activeCategory = useSelector((state: any) => state.products.activeCategory);
   const activeFilter = useSelector((state: any) => state.products.activeFilter);
-  const currentPage = useSelector((state: any) => state.products.currentPage);
 
   return (
     <div className={classes.container}>
       <Link
-        to={`/${transliterateUrl(activeCategory)}/${transliterateUrl(activeFilter)}/page-${currentPage}/${transliterateUrl(
-          product.id,
-        )}`}
+        to={`/${transliterateUrl(activeCategory)}/${transliterateUrl(activeFilter)}/${transliterateUrl(product.id)}`}
       >
         <div className={classes.imageWrapper}>
           <img draggable={false} className={classes.image} src={product.image} alt={product.name} />

@@ -11,14 +11,13 @@ export const Categories = () => {
   const categories = useSelector((state: any) => state.products.categories);
   const filters = useSelector((state: any) => state.products.filters);
 
-  const currentPage = useSelector((state: any) => state.products.currentPage);
   return (
     <section className={classes.categories}>
       {categories.map((category: any, key: number) => (
         <Link
           className={classes.link}
           key={key}
-          to={`/${transliterateUrl(category)}/${transliterateUrl(filters[0])}/page-${currentPage}`} // написать проверку, чтобы не сбрасывать фильтры при клике
+          to={`/${transliterateUrl(category)}/${transliterateUrl(filters[0])}`} // написать проверку, чтобы не сбрасывать фильтры при клике
           onClick={() => {
             dispatch(productsActions.setCategory(category));
           }}

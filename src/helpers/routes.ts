@@ -13,11 +13,11 @@ export const routes = {
     },
   },
   products: {
-    path: '/:categoryId/:filterId/:pageId',
+    path: '/:categoryId/:filterId/',
     element: Products,
   },
   product: {
-    path: '/:categoryId/:filterId/:pageId/:productId',
+    path: '/:categoryId/:filterId/:productId',
     element: Product,
   },
   notFoundPage: {
