@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './product.module.css';
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from '../../components/UI/button/Button';
 import * as cartActions from '../../services/actions/cart';
@@ -15,12 +15,14 @@ export const Product = () => {
   const initialProductId = productId.split('-').join(' ').toUpperCase();
 
   const product = products.find((product: any) => product.id === initialProductId);
-  const inCart = useSelector((state: any) => state.cart.items.find((item: any) => item.id === product.id));
+  const inCart = useSelector((state: any) => state.cart.items.find((item: any) => item.id === product?.id));
 
   const notAFitnessCategory = ['благоустройство'];
   const isNotAFitnessMachine = notAFitnessCategory.includes(product?.category);
 
-  return (
+  return !product ? (
+    <Navigate to={'/404'} />
+  ) : (
     <section className={classes.product}>
       <div className={classes.container}>
         <div className={classes.slider}>
