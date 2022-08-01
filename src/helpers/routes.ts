@@ -13,7 +13,7 @@ export const routes = {
     },
   },
   products: {
-    path: '/:categoryId/:filterId/',
+    path: '/:categoryId/:filterId',
     element: Products,
   },
   product: {

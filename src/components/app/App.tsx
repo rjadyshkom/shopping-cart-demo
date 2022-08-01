@@ -17,7 +17,7 @@ function App() {
           <CartQuantity />
         </Header>
         <Routes>
-          <Route path={'*'} element={<Navigate replace to={'/404'} />} />
+          <Route path={'*'} element={<Navigate to={'/404'} />} />
           {Object.values(routes).map((route, key) => {
             return <Route key={key} path={route.path} element={<route.element />} />;
           })}
