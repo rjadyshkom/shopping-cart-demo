@@ -10,12 +10,18 @@
     margin: 0 auto;
 }
 
-.slider {
-    width: 575px;
-    height: 440px;
-    margin-bottom: 55px;
+.productWrapper {
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 110px;
+}
+
+.slider {
+    width: 630px;
+    height: 440px;
+    display: flex;
+    align-self: center;
     flex-shrink: 0;
 }
 
@@ -32,6 +38,7 @@
     font-weight: bold;
     text-transform: uppercase;
     color: #000;
+    padding-bottom: 50px;
 }
 
 .infoFitness, .infoNonFitness {
@@ -46,7 +53,7 @@
 }
 
 .infoFitness {
-    padding: 40px 0 10px;
+    padding: 0 0 10px;
 }
 
 .infoNonFitness {
@@ -140,13 +147,16 @@ li {
     width: 100%;
     gap: 70px;
     align-items: center;
-    margin-bottom: 55px;
 }
 
-.alertContainer {
+.alertContainer, .alertContainerNonFitness {
     display: flex;
     gap: 15px;
     align-items: center;
+}
+
+.alertContainerNonFitness {
+    margin-bottom: 40px;
 }
 
 .infoIcon {
@@ -160,3 +170,4 @@ li {
 .infoIcon:hover {
     opacity: .5;
 }
+

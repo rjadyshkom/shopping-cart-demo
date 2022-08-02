@@ -1,8 +1,104 @@
 .container {
-    max-width: 1280px;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 50px;
-    padding: 50px 60px 100px;
+    gap: 15px;
+}
+
+/* вынести в отдельный компонент */
+.heading {
+    font-weight: 700;
+    font-size: 37px;
+    line-height: 45px;
+    text-transform: uppercase;
+    padding-bottom: 50px;
+}
+
+/* вынести в отдельный компонент */
+.description {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    max-width: 670px;
+    font-size: 16px;
+    line-height: 22px;
+    color: #252525;
+}
+
+
+/* вынести в отдельный компонент */
+.alert {
+    text-transform: uppercase;
+}
+/* вынести в отдельный компонент */
+.alertContainer {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+/* вынести в отдельный компонент */
+.printContainer {
+    display: flex;
+    gap: 15px;
+    align-self: center;
+    cursor: pointer;
+}
+
+.infoIcon {
+    width: 20px;
+    height: 20px;
+    background: url(./../../images/info-icon.svg) no-repeat center center;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.printIcon {
+    width: 20px;
+    height: 20px;
+    background: url(./../../images/print-icon.svg) no-repeat center center;
+    background-size: contain;
+}
+
+.infoIcon:hover, .printContainer:hover {
+    opacity: .5;
+}
+
+/* вынести в отдельный компонент */
+
+.link {
+    font-size: 16px;
+    line-height: 22px;
+    color: #000;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    background: transparent;
+    border: none;
+    outline: none;
+    max-width: 475px;
+}
+
+.link::after {
+    content: '';
+    background: url(../../images/arrow-right-icon.svg) no-repeat center center;
+    width: 18px;
+    height: 18px;
+    background-size: contain;
+    flex-shrink: 0;
+}
+
+.link:active {
+    transform: scale(1);
+}
+
+.link:hover {
+    opacity: .5;
+}
+
+.cartWrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
 }

@@ -92,8 +92,8 @@ export const Products = () => {
             <Filter />
           </div>
           <ProductsList />
+          {categoryPagesCount > 1 && <Pagination pagesCount={categoryPagesCount} />}
         </div>
-        {categoryPagesCount > 1 && <Pagination pagesCount={categoryPagesCount} />}
       </section>
     </Layout>
   );
