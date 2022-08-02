@@ -6,6 +6,7 @@ import { Button } from '../../components/UI/button/Button';
 import * as cartActions from '../../services/actions/cart';
 import { Quantity } from '../../components/UI/quantity/Quantity';
 import { Lightbox } from '../../components/UI/lightbox/Lightbox';
+import { RoundedSectionWrapper } from '../../components/UI/rounded-section-wrapper/RoundedSectionWrapper';
 
 export const Product = () => {
   const { productId }: any = useParams();
@@ -24,7 +25,7 @@ export const Product = () => {
     <Navigate to={'/404'} />
   ) : (
     <section className={classes.product}>
-      <div className={classes.container}>
+      <RoundedSectionWrapper>
         <div className={classes.slider}>
           <Lightbox image={product.image} alt={product.name}>
             <img className={classes.image} src={product.image} alt={product.name} />
@@ -44,6 +45,7 @@ export const Product = () => {
               <span className={classes.taxBadge}>*Без НДС</span>
             </li>
           </ul>
+          {/*вынести в отдельный компонент*/}
           <div className={classes.alertContainer}>
             <p className={classes.alert}>Цены уточняйте у менеджеров!</p>
             <span className={classes.infoIcon}></span>
@@ -70,7 +72,7 @@ export const Product = () => {
             )}
           </div>
         </div>
-      </div>
+      </RoundedSectionWrapper>
     </section>
   );
 };

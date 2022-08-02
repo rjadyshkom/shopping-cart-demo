@@ -9,6 +9,8 @@ import { createSearchParams, useNavigate, useParams, useSearchParams } from 'rea
 import { transliterateUrl, urlToCyrillic } from '../../helpers/constants';
 import { ProductsList } from '../../components/UI/products/list/ProductsList';
 import * as productAction from './../../services/actions/products';
+import { RoundedSectionWrapper } from '../../components/UI/rounded-section-wrapper/RoundedSectionWrapper';
+import { Layout } from '../../components/UI/layout/Layout';
 
 export const Products = () => {
   const dispatch: any = useDispatch();
@@ -30,6 +32,9 @@ export const Products = () => {
   const { categoryPagesCount } = useSelector(productsSelector);
 
   const pageNumberFromUrl = Number(searchParams.get('page'));
+
+  const notAFitnessCategory = ['благоустройство'];
+  const isNotAFitnessMachine = notAFitnessCategory.includes(activeCategory);
 
   useEffect(() => {
     navigate(
@@ -57,15 +62,39 @@ export const Products = () => {
     navigate('/404'); // можно сделать компонент с предложениями похожих товаров и перекидывать на него
   }
   return (
-    <section className={classes.container}>
-      <div className={classes.categoriesWrapper}>
-        <ProductCategories />
-      </div>
-      <div className={classes.filterWrapper}>
-        <Filter />
-      </div>
-      <ProductsList />
-      {categoryPagesCount > 1 && <Pagination pagesCount={categoryPagesCount} />}
-    </section>
+    <Layout>
+      <section>
+        <RoundedSectionWrapper>
+          <div className={classes.dummyNav} />
+          <div>
+            <h1 className={classes.heading}>{activeCategory}</h1>
+            <div className={classes.description}>
+              <p>Всё оборудование сертифицировано и отвечает международным стандартам качества.</p>
+              {/*вынести в отдельный компонент*/}
+              <div className={classes.alertContainer}>
+                <p className={classes.alert}>Цены уточняйте у менеджеров!</p>
+                <span className={classes.infoIcon}></span>
+              </div>
+              {/*вынести в отдельный компонент*/}
+              {!isNotAFitnessMachine && (
+                <button className={classes.link}>
+                  Каждый тренажёр можно оборудовать уникальной мультимедийной системой
+                </button>
+              )}
+            </div>
+          </div>
+        </RoundedSectionWrapper>
+        <div className={classes.container}>
+          <div className={classes.categoriesWrapper}>
+            <ProductCategories />
+          </div>
+          <div className={classes.filterWrapper}>
+            <Filter />
+          </div>
+          <ProductsList />
+        </div>
+        {categoryPagesCount > 1 && <Pagination pagesCount={categoryPagesCount} />}
+      </section>
+    </Layout>
   );
 };
