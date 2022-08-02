@@ -167,3 +167,10 @@ export const urlToCyrillic = function (text: any) {
     .replace(/-/g, ' ');
   return text.toLowerCase();
 };
+
+export const scrollTo = (element: any, offset: any) => {
+  window.scrollTo({
+    top: element.current.offsetTop - offset,
+    behavior: 'smooth',
+  });
+};
