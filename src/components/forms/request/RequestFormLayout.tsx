@@ -65,7 +65,6 @@ export const RequestFormLayout = ({ formikProps, submitState, setSubmitState, is
         </label>
         <Field type="hidden" name="cartProducts" />
       </fieldset>
-      <TotalPrice /> 
       <fieldset className={classes.controlsWrapper}>
         <div className={classes.buttonWrapper}>
           <Button type="submit" disabled={!formikProps.isValid || formikProps.isSubmitting}>

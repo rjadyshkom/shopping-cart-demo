@@ -1,8 +1,27 @@
-.total {
+.totalContainer {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    font-size: 36px;
-    line-height: 40px;
-    font-weight: bold;
+    margin-top: 60px;
+}
+
+.total, .price {
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 36px;
+    color: #252525;
+}
+
+.totalWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.total {
+    text-transform: uppercase;
+}
+
+.price {
+    padding-right: 115px;
 }

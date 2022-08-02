@@ -1,7 +1,11 @@
 .trash {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     background: url(../../../images/trash-icon.svg) no-repeat center center;
     background-size: contain;
     flex-shrink: 0;
+}
+
+.trash:hover {
+    opacity: .5;
 }
