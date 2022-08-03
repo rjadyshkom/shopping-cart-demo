@@ -17,7 +17,7 @@ export const Categories = () => {
 
   const staticData: any = [
     {
-      category: 'благоустройство',
+      category: 'благоустройство (маф)',
       image: beautification,
       caption: 'Урны, лавочки, информационные стенды, велопарковки',
     },
