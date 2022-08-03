@@ -3,20 +3,18 @@
     grid-template-columns: repeat(3, 1fr);
     padding: 50px 60px 100px;
     gap: 15px;
-    grid-auto-rows: min-content;
 }
 
 .link {
-    background: rgb(242, 242, 242);
     text-decoration: none;
-    color: #252525;
-    font-size: 20px;
-    aspect-ratio: 1 / 1;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-transform: uppercase;
-    border-radius: 10px;
+    flex-direction: column;
+    color: #252525;
+}
+
+.link:hover .arrow {
+    transform-origin: center;
+    transform: rotate(45deg);
 }
 
 .heading {
@@ -35,4 +33,50 @@
     font-size: 16px;
     line-height: 22px;
     color: #252525;
+}
+
+.image {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 10px;
+    flex-shrink: 0;
+    max-width: 380px;
+}
+
+.nameWrapper {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-right: 15px;
+}
+
+.name {
+    font-size: 21px;
+    line-height: 29px;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.caption {
+    font-size: 16px;
+    line-height: 22px;
+    color: #252525;
+    margin-top: 10px;
+}
+
+.svg {
+    fill: none;
+    stroke: none;
+    border: 1px solid #252525;
+    border-radius: 4px;
+    width: 35px;
+    height: 35px;
+    flex-shrink: 0;
+}
+
+.arrow {
+    stroke: none;
+    fill: #252525;
+    flex-shrink: 0;
 }

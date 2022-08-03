@@ -11,6 +11,8 @@ import { RoundedSectionWrapper } from '../../components/UI/rounded-section-wrapp
 export const Product = () => {
   const { productId }: any = useParams();
   const products = useSelector((state: any) => state.products.products);
+
+  console.log(products);
   const dispatch: any = useDispatch();
 
   const initialProductId = productId.split('-').join(' ').toUpperCase();

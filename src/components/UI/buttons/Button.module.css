@@ -34,7 +34,6 @@
     justify-content: space-between;
     gap: 20px;
     align-items: center;
-    transition: all .3s ease-in-out;
 }
 
 .arrow {
@@ -42,7 +41,6 @@
     width: 15px;
     height: 15px;
     stroke: none;
-    transition: all .3s ease-in-out;
 }
 
 .buttonWithArrow:hover {
