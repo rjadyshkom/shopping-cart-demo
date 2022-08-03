@@ -25,6 +25,7 @@ export const RequestForm = () => {
           cartName: '',
           cartEmail: '',
           cartPhone: '',
+          cartMessage: '',
           cartProducts: [],
         },
       });

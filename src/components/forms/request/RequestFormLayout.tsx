@@ -1,17 +1,16 @@
 import React, { useEffect } from 'react';
 import classes from '../forms.module.css';
 import { ErrorMessage, Field, Form } from 'formik';
-import { Button } from '../../UI/buttons/Button';
 import { onStateSuccess, onStateError } from '../../../helpers/constants';
 import { Success } from '../../UI/success/Success';
 import { Error } from '../../UI/error/Error';
-import { TotalPrice } from '../../UI/cart/total-price/TotalPrice';
 import { PopupContent } from '../../UI/popup/PopupContent';
 import { useDispatch, useSelector } from 'react-redux';
 import * as formActions from '../../../services/actions/form';
+import { ButtonPrimary } from '../../UI/buttons/ButtonPrimary';
 
 export const RequestFormLayout = ({ formikProps, submitState, setSubmitState, isPopupOpen, setIsPopupOpen }: any) => {
-  const cartItems = useSelector((state:any) => state.cart.items);
+  const cartItems = useSelector((state: any) => state.cart.items);
   const dispatch = useDispatch();
   const productsInRequest =
     cartItems.length === 0
@@ -47,30 +46,32 @@ export const RequestFormLayout = ({ formikProps, submitState, setSubmitState, is
       )}
       <fieldset className={classes.dataWrapper}>
         <label htmlFor={'cartName'} className={classes.fieldWrapper}>
-          Имя:
-          <Field type="text" name="cartName" placeholder="Сергей" />
+          <Field type="text" name="cartName" placeholder="ФИО / Организация *" />
           <ErrorMessage name="cartName" component="span" className={classes.error} />
         </label>
 
         <label htmlFor={'cartEmail'} className={classes.fieldWrapper}>
-          Почта:
-          <Field type="email" name="cartEmail" placeholder="Заявка придёт на указанную почту" />
+          <Field type="email" name="cartEmail" placeholder="Эл. почта *" />
           <ErrorMessage name="cartEmail" component="span" className={classes.error} />
         </label>
 
         <label htmlFor={'cartPhone'} className={classes.fieldWrapper}>
-          Телефон:
-          <Field type="text" name="cartPhone" placeholder="89663672914" />
+          <Field type="text" name="cartPhone" placeholder="Телефон *" />
           <ErrorMessage name="cartPhone" component="span" className={classes.error} />
+        </label>
+        <label htmlFor={'cartMessage'} className={classes.fieldWrapper}>
+          <Field as="textarea" name="cartMessage" placeholder="Комментарий к заявке" />
         </label>
         <Field type="hidden" name="cartProducts" />
       </fieldset>
-      <fieldset className={classes.controlsWrapper}>
-        <div className={classes.buttonWrapper}>
-          <Button type="submit" disabled={!formikProps.isValid || formikProps.isSubmitting}>
-            {formikProps.isSubmitting ? 'Заявка отправляется ...' : submitState ? submitState : 'Отправить заявку'}
-          </Button>
-        </div>
+      <fieldset>
+        <p className={classes.beforeSubmitMessage}>
+          Нажимая «Отправить заявку», вы даёте согласие на обработку персональных данных в соответствии с политикой
+          конфиденциальности
+        </p>
+        <ButtonPrimary type="submit">
+          {formikProps.isSubmitting ? 'Заявка отправляется ...' : submitState ? submitState : 'Отправить заявку'}
+        </ButtonPrimary>
       </fieldset>
     </Form>
   );

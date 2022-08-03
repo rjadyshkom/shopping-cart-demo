@@ -18,7 +18,7 @@ export const Cart = () => {
       {cartItems.length < 1 && (
         <div className={classes.empty}>
           <h2 className={classes.emptyHeading}>Вы ничего не добавили</h2>
-          <p className={classes.emptyCaption}>Чтобы отправить заявку, перейдите в раздел «Продукция» и добавьте интересующие товары.</p>
+          <p className={classes.emptyCaption}>Чтобы отправить заявку, перейдите в раздел «Продукция» и добавьте интересующие вас товары.</p>
           <ButtonWithArrow onClick={() => navigate('/')}>Продукция</ButtonWithArrow>
         </div>
       )}

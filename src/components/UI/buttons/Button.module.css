@@ -1,4 +1,4 @@
-.button, .buttonWithArrow {
+.button, .buttonWithArrow, .primary {
     background-color: transparent;
     color: #000;
     padding: 15px 25px;
@@ -53,4 +53,16 @@
 .buttonWithArrow:hover .arrow {
     fill: #ff5c00;
     transform: rotate(45deg);
+}
+
+.primary {
+    background-color: #ff5c00;
+    color: #F2F2F2;
+    border: 1px solid transparent;
+}
+
+.primary:hover {
+    background-color: transparent;
+    border-color: #252525;
+    color: #252525;
 }

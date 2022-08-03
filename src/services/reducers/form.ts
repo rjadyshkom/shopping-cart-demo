@@ -6,6 +6,7 @@ const initialState = {
     cartName: '',
     cartEmail: '',
     cartPhone: '',
+    cartMessage: '',
     cartProducts: [],
   },
 };
