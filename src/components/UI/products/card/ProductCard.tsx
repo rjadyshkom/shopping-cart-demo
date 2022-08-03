@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './ProductCard.module.css';
-import { Button } from '../../button/Button';
+import { Button } from '../../buttons/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import * as cartActions from '../../../../services/actions/cart';
 import { Quantity } from '../../quantity/Quantity';

@@ -1,4 +1,4 @@
-.button {
+.button, .buttonWithArrow {
     background-color: transparent;
     color: #000;
     padding: 15px 25px;
@@ -27,4 +27,30 @@
 
 .exist:disabled {
     opacity: 1;
+}
+
+.buttonWithArrow {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+    transition: all .3s ease-in-out;
+}
+
+.arrow {
+    fill: #252525;
+    width: 15px;
+    height: 15px;
+    stroke: none;
+    transition: all .3s ease-in-out;
+}
+
+.buttonWithArrow:hover {
+    color: #ff5c00;
+    border-color: #ff5c00;
+}
+
+.buttonWithArrow:hover .arrow {
+    fill: #ff5c00;
+    transform: rotate(45deg);
 }

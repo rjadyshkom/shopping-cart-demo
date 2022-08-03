@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import classes from '../forms.module.css';
 import { ErrorMessage, Field, Form } from 'formik';
-import { Button } from '../../UI/button/Button';
+import { Button } from '../../UI/buttons/Button';
 import { onStateSuccess, onStateError } from '../../../helpers/constants';
 import { Success } from '../../UI/success/Success';
 import { Error } from '../../UI/error/Error';

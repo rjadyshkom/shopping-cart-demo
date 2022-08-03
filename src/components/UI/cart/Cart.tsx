@@ -6,13 +6,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as cartActions from '../../../services/actions/cart';
 import { Quantity } from '../quantity/Quantity';
 import { TotalPrice } from './total-price/TotalPrice';
+import { useNavigate } from 'react-router-dom';
+import { ButtonWithArrow } from '../buttons/ButtonWithArrow';
 
 export const Cart = () => {
   const cartItems = useSelector((state: any) => state.cart.items);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
     <div className={classes.container}>
-      {cartItems.length < 1 && <p className={classes.empty}>Вы ничего не добавили!</p>}
+      {cartItems.length < 1 && (
+        <div className={classes.empty}>
+          <h2 className={classes.emptyHeading}>Вы ничего не добавили</h2>
+          <p className={classes.emptyCaption}>Чтобы отправить заявку, перейдите в раздел «Продукция» и добавьте интересующие товары.</p>
+          <ButtonWithArrow onClick={() => navigate('/')}>Продукция</ButtonWithArrow>
+        </div>
+      )}
       {cartItems.map((product: any) => (
         <div key={product.id} className={classes.wrapper}>
           <div className={classes.infoWrapper}>

@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './product.module.css';
 import { Navigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button } from '../../components/UI/button/Button';
+import { Button } from '../../components/UI/buttons/Button';
 import * as cartActions from '../../services/actions/cart';
 import { Quantity } from '../../components/UI/quantity/Quantity';
 import { Lightbox } from '../../components/UI/lightbox/Lightbox';
