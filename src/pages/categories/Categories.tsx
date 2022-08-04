@@ -17,7 +17,7 @@ export const Categories = () => {
 
   const staticData: any = [
     {
-      category: 'благоустройство (маф)',
+      category: 'благоустройство',
       image: beautification,
       caption: 'Урны, лавочки, информационные стенды, велопарковки',
     },
@@ -55,7 +55,9 @@ export const Categories = () => {
                   dispatch(productsActions.setCategory(category));
                 }}
               >
-                <img src={currentCategory.image} alt={category} className={classes.image} />
+                <div className={classes.imageWrapper}>
+                  <img src={currentCategory.image} alt={category} className={classes.image} />
+                </div>
                 <div className={classes.nameWrapper}>
                   <h2 className={classes.name}>{category}</h2>
                   <svg className={classes.svg} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35">
