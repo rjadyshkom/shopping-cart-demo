@@ -58,7 +58,6 @@
     left: 0;
     background: #252525 url(./../../images/category-hover-pattern.svg) center bottom no-repeat;
     opacity: 0;
-    transition: opacity .15s ease-in-out;
 }
 
 .image {
