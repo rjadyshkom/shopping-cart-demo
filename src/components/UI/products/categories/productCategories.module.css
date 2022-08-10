@@ -26,12 +26,12 @@
 }
 
 .active:after {
-    content: url(../../../../images/arrow-right-icon.svg);
+    content: '';
+    background: url(../../../../images/arrow-right-icon.svg) center center no-repeat;
     width: 18px;
     height: 18px;
-    object-fit: contain;
-    object-position: center center;
+   background-size: contain;
     flex-shrink: 0;
-    padding-right: 10px;
+    margin-right: 10px;
     opacity: .5;
 }
