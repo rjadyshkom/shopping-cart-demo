@@ -22,7 +22,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "postbuild": "react-snap",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "deploy": "npm run build && scp -P 2222 -r ./build/* streetcoru@185.72.146.151:/home/s/streetcoru/sandbox.irontiger.ru"
