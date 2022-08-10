@@ -168,10 +168,10 @@ export const urlToCyrillic = function (text: any) {
   return text.toLowerCase();
 };
 
-export const scrollTo = (element: any, offset: any) => {
+export const scrollTo = (element: any, offset: any, behavior: any) => {
   window.scrollTo({
     top: element.current.offsetTop - offset,
-    behavior: 'smooth',
+    behavior: behavior,
   });
 };
 export const setPlurals = (number: number, one: string, two: string, five: string) => {

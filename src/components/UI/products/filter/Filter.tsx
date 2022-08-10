@@ -25,7 +25,7 @@ export const Filter = () => {
           onClick={() => {
             dispatch(productsActions.setPage(1));
             dispatch(productsActions.setFilter(filter));
-            scrollTo(filtersContainer, 60);
+            scrollTo(filtersContainer, 60, 'smooth');
           }}
         >
           {filter}
