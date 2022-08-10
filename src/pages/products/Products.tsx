@@ -11,6 +11,7 @@ import { ProductsList } from '../../components/UI/products/list/ProductsList';
 import * as productAction from './../../services/actions/products';
 import { RoundedSectionWrapper } from '../../components/UI/rounded-section-wrapper/RoundedSectionWrapper';
 import { Layout } from '../../components/UI/layout/Layout';
+import { PageNavigation } from '../../components/UI/page-navigation/PageNavigation';
 
 export const Products = () => {
   const dispatch: any = useDispatch();
@@ -35,6 +36,27 @@ export const Products = () => {
 
   const notAFitnessCategory = ['благоустройство'];
   const isNotAFitnessMachine = notAFitnessCategory.includes(activeCategory);
+
+  const links = {
+    catalogues: {
+      path: '/catalogues',
+      navigation: {
+        title: 'Каталоги PDF',
+      },
+    },
+    guaranties: {
+      path: '/guaranties',
+      navigation: {
+        title: 'Гарантии',
+      },
+    },
+    certificates: {
+      path: '/certificates',
+      navigation: {
+        title: 'Сертификаты',
+      },
+    },
+  };
 
   useEffect(() => {
     navigate(
@@ -65,7 +87,7 @@ export const Products = () => {
     <Layout>
       <section>
         <RoundedSectionWrapper>
-          <div className={classes.dummyNav} />
+          <PageNavigation items={links} />
           <div>
             <h1 className={classes.heading}>{activeCategory}</h1>
             <div className={classes.description}>

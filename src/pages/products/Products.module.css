@@ -28,12 +28,6 @@
     padding-bottom: 50px;
 }
 
-.dummyNav {
-    min-width: 295px;
-    height: 160px;
-    background-color: #f2f2f2;
-}
-
 /* вынести в отдельный компонент */
 .description {
     display: flex;

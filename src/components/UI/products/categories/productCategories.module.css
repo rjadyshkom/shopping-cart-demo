@@ -2,7 +2,7 @@
     width: 280px;
 }
 
-.category {
+.item {
     font-size: 16px;
     line-height: 23px;
     text-transform: uppercase;
@@ -13,13 +13,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-decoration: none;
 }
 
 .active {
     pointer-events: none;
 }
 
-.active, .category:hover {
+.active, .item:hover {
     color: #828282;
     border-bottom-color: #828282;
 }

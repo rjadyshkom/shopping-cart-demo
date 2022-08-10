@@ -6,10 +6,12 @@ import { Navigation } from '../UI/navigation/Navigation';
 import { CartQuantity } from '../UI/cart/quantity/CartQuantity';
 import { PopupPlace } from '../UI/popup/PopupPlace';
 import { routes } from '../../helpers/routes';
+import {ScrollToTop} from '../ScrollToTop';
 
 function App() {
   return (
     <>
+      <ScrollToTop/>
       <PopupPlace />
       <div className={classes.container}>
         <Header>

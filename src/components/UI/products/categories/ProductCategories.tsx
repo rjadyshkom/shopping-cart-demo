@@ -13,7 +13,7 @@ export const ProductCategories = () => {
       {categories.map((category: any, key: any) => (
         <span
           key={key}
-          className={activeCategory === category ? `${classes.category} ${classes.active}` : classes.category}
+          className={activeCategory === category ? `${classes.item} ${classes.active}` : classes.item}
           onClick={() => dispatch(productsActions.setCategory(category))}
         >
           {category}
