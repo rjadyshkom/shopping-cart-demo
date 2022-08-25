@@ -45,7 +45,7 @@ export const Categories = () => {
         </RoundedSectionWrapper>
         <div className={classes.categories}>
           {categories.map((category: any, key: number) => {
-            const currentCategory = staticData.find((cover: any) => cover.category == category);
+            const currentCategory = staticData.find((cover: any) => cover.category === category);
             return (
               <Link
                 className={classes.link}
