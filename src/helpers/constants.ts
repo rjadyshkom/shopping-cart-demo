@@ -189,3 +189,5 @@ export const setPlurals = (number: number, one: string, two: string, five: strin
   }
   return five;
 };
+
+export const capitalize = (string: string) => string[0].toUpperCase() + string.slice(1);
