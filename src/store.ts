@@ -1,10 +1,9 @@
 import { loadState, saveState } from './helpers/localStorage';
-import { applyMiddleware, legacy_createStore as createStore, compose } from 'redux';
+import { applyMiddleware, legacy_createStore as createStore } from 'redux';
 import { rootReducer } from './services/reducers';
 import { getProductsThunk } from './services/thunk/products';
 import { throttle } from 'lodash';
-// @ts-ignore
-const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 function thunk(store: any) {
   return function (next: any) {
@@ -18,7 +17,7 @@ function thunk(store: any) {
 }
 
 const persistedState = loadState();
-export const store = createStore(rootReducer, persistedState, composeEnhancer(applyMiddleware(thunk)));
+export const store = createStore(rootReducer, persistedState, composeWithDevTools(applyMiddleware(thunk)));
 
 store.dispatch(getProductsThunk);
 
